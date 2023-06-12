@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# Specific files
+A2_ED.jpeg
+README.pdf
