@@ -29,3 +29,8 @@ O objetivo do trabalho é construir um explorador de árvores.
 - [] Uma das opções deve converter a árvore em uma lista e ordenar por Insertion sort.
 - [] Uma das opções deve converter a árvore em uma lista e ordenar por Shell sort.
 - [] Representação gráfica da ordenação.
+
+## Integrantes
+Breno Marques Azevedo - 211708010
+Juliana
+Sofia
