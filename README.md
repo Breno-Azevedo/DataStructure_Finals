@@ -32,5 +32,5 @@ O objetivo do trabalho é construir um explorador de árvores.
 
 ## Integrantes
 Breno Marques Azevedo - 211708010
-Juliana
-Sofia
+Juliana Carrica Barcellos Miranda - 211704010
+Sofia de Arruda Lakschevitz Assunção - 211704011
