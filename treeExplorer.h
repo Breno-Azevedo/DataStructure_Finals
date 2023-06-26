@@ -66,6 +66,7 @@ void printTree(struct Node * ptrRoot);
 
 int heightTree(struct Node * ptrRoot);
 
+int sizeTree(struct Node * ptrRoot);
 
 #include "./treeExplorer.hpp"
 #endif // TREEEXPLORER_H

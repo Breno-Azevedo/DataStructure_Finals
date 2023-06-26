@@ -57,5 +57,7 @@ int main() {
 
     cout << "Height of tree 2: " << heightTree(ptrRoot2) << endl;
 
+    cout << "Size of tree 3: " << sizeTree(ptrRoot3) << endl;
+
     return 0;
 }

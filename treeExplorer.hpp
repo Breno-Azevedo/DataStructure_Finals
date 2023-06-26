@@ -78,11 +78,23 @@ void printTree(struct Node * ptrRoot) {
 int heightTree(struct Node * ptrRoot) {
     if (ptrRoot == nullptr) return 0;
 
-    int leftHeight = heightTree(ptrRoot->ptrLeft);
-    int rightHeight = heightTree(ptrRoot->ptrRight);
+    int iLeftHeight = heightTree(ptrRoot->ptrLeft);
+    int iRightHeight = heightTree(ptrRoot->ptrRight);
 
-    return max(leftHeight, rightHeight) + 1;
+    int iTreeHeight = max(iLeftHeight, iRightHeight) + 1;
+    
+    return iTreeHeight;
 }
 
+int sizeTree(struct Node * ptrRoot) {
+    if (ptrRoot == nullptr) return 0;
+
+    int iLeftSize = sizeTree(ptrRoot->ptrLeft);
+    int iRightSize = sizeTree(ptrRoot->ptrRight);
+
+    int iTreeSize = iLeftSize + iRightSize + 1;
+
+    return iTreeSize;
+}
 
 #endif // TREEEXPLORER_HPP_
