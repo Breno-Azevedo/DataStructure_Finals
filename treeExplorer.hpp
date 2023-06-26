@@ -27,10 +27,9 @@ struct Node * insertNode(struct Node * ptrRoot, int iPayload) {
     return ptrRoot;
 }
 
-struct Node * createTree(const char cList[]) {
-    //pq 10? é o tamanho do array?
+struct Node * createTree(const char cList[], int iTamanho) {
     struct Node * ptrRoot = nullptr;
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < iTamanho; i++) {
         ptrRoot = insertNode(ptrRoot, cList[i]);
     }
     return ptrRoot;
@@ -38,7 +37,7 @@ struct Node * createTree(const char cList[]) {
 
 struct Node * createTreeTxt(const char * fileName) {
     struct Node * ptrRoot = nullptr;
-    int x;
+    int iNum;
     ifstream inFile;
     
     inFile.open(fileName);
@@ -47,8 +46,8 @@ struct Node * createTreeTxt(const char * fileName) {
         exit(1); // terminate with error
     }
     
-    while (inFile >> x) {
-        ptrRoot = insertNode(ptrRoot, x);
+    while (inFile >> iNum) {
+        ptrRoot = insertNode(ptrRoot, iNum);
     }
     
     inFile.close();
@@ -70,11 +69,20 @@ struct Node * searchNode(struct Node * ptrRoot, int iPayload) {
 }
 
 void printTree(struct Node * ptrRoot) {
-    
     if (ptrRoot == nullptr) return;
     printTree(ptrRoot->ptrLeft);
     cout << ptrRoot->iPayload << " ";
     printTree(ptrRoot->ptrRight);
 }
+
+int heightTree(struct Node * ptrRoot) {
+    if (ptrRoot == nullptr) return 0;
+
+    int leftHeight = heightTree(ptrRoot->ptrLeft);
+    int rightHeight = heightTree(ptrRoot->ptrRight);
+
+    return max(leftHeight, rightHeight) + 1;
+}
+
 
 #endif // TREEEXPLORER_HPP_

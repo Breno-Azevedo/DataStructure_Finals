@@ -42,7 +42,7 @@ struct Node * insertNode(struct Node * ptrRoot, int iPayload);
  * @param cList 
  * @return Node* 
 **/
-struct Node * createTree(const char cList[]);
+struct Node * createTree(const char cList[], int iTamanho);
 
 struct Node * createTreeTxt(const char * fileName);
 
@@ -63,6 +63,9 @@ struct Node * searchNode(struct Node * ptrRoot, int iPayload);
  * @param ptrRoot 
  */
 void printTree(struct Node * ptrRoot);
+
+int heightTree(struct Node * ptrRoot);
+
 
 #include "./treeExplorer.hpp"
 #endif // TREEEXPLORER_H

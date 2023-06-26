@@ -31,8 +31,8 @@ int main() {
     cout << "ptrRoot->ptrRight->iPayload: " << ptrRoot->ptrRight->iPayload << endl;
 
     const char cList[10] = {4, 5, 3, 2, 6, 7, 8, 1, 9, 10};
-
-    struct Node * ptrRoot2 = createTree(cList);
+    int iTamanho = sizeof(cList)/sizeof(char);
+    struct Node * ptrRoot2 = createTree(cList, iTamanho);
 
     printTree(ptrRoot2);
 
@@ -53,6 +53,9 @@ int main() {
     struct Node * ptrRoot3 = createTreeTxt("test.txt");
 
     printTree(ptrRoot3);
+    cout << endl;
+
+    cout << "Height of tree 2: " << heightTree(ptrRoot2) << endl;
 
     return 0;
 }
