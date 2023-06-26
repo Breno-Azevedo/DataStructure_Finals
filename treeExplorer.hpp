@@ -6,15 +6,17 @@
 #include "./treeExplorer.h"
 #include <iostream>
 
-Node * createNode(int iPayload) {
-    struct Node * ptrNewNode = (struct Node *) malloc(sizeof(struct Node));
+using namespace std;
+
+struct Node * createNode(int iPayload) {
+    struct Node * ptrNewNode = (struct Node *)malloc(sizeof(struct Node));
     ptrNewNode->iPayload = iPayload;
     ptrNewNode->ptrLeft = nullptr;
     ptrNewNode->ptrRight = nullptr;
     return ptrNewNode;
 }
 
-Node * insertNode(struct Node * ptrRoot, int iPayload) {
+struct Node * insertNode(struct Node * ptrRoot, int iPayload) {
     if (ptrRoot == nullptr) return createNode(iPayload);
 
     if (iPayload < ptrRoot->iPayload) {
@@ -25,7 +27,8 @@ Node * insertNode(struct Node * ptrRoot, int iPayload) {
     return ptrRoot;
 }
 
-Node * createTree(const char cList[]) {
+struct Node * createTree(const char cList[]) {
+    //pq 10? é o tamanho do array?
     struct Node * ptrRoot = nullptr;
     for (int i = 0; i < 10; i++) {
         ptrRoot = insertNode(ptrRoot, cList[i]);
@@ -33,7 +36,27 @@ Node * createTree(const char cList[]) {
     return ptrRoot;
 }
 
-Node * searchNode(struct Node * ptrRoot, int iPayload) {
+struct Node * createTreeTxt(const char * fileName) {
+    struct Node * ptrRoot = nullptr;
+    int x;
+    ifstream inFile;
+    
+    inFile.open(fileName);
+    if (!inFile) {
+        cout << "Unable to open file";
+        exit(1); // terminate with error
+    }
+    
+    while (inFile >> x) {
+        ptrRoot = insertNode(ptrRoot, x);
+    }
+    
+    inFile.close();
+    
+    return ptrRoot;
+}
+
+struct Node * searchNode(struct Node * ptrRoot, int iPayload) {
     if (ptrRoot == nullptr) return nullptr;
     if (ptrRoot->iPayload == iPayload) return ptrRoot;
 
@@ -50,7 +73,7 @@ void printTree(struct Node * ptrRoot) {
     
     if (ptrRoot == nullptr) return;
     printTree(ptrRoot->ptrLeft);
-    std::cout << ptrRoot->iPayload << " ";
+    cout << ptrRoot->iPayload << " ";
     printTree(ptrRoot->ptrRight);
 }
 

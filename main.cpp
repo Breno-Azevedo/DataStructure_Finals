@@ -14,39 +14,45 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "./treeExplorer.h"
 
-int main() {
-    std::cout << "Hello, World!" << std::endl;
+using namespace std;
 
-    Node * ptrRoot = createNode(10);
+int main() {
+    
+    struct Node * ptrRoot = createNode(10);
 
     ptrRoot = insertNode(ptrRoot, 5);
     ptrRoot = insertNode(ptrRoot, 15);
 
-    std::cout << "ptrRoot->iPayload: " << ptrRoot->iPayload << std::endl;
-    std::cout << "ptrRoot->ptrLeft->iPayload: " << ptrRoot->ptrLeft->iPayload << std::endl;
-    std::cout << "ptrRoot->ptrRight->iPayload: " << ptrRoot->ptrRight->iPayload << std::endl;
+    cout << "ptrRoot->iPayload: " << ptrRoot->iPayload << endl;
+    cout << "ptrRoot->ptrLeft->iPayload: " << ptrRoot->ptrLeft->iPayload << endl;
+    cout << "ptrRoot->ptrRight->iPayload: " << ptrRoot->ptrRight->iPayload << endl;
 
     const char cList[10] = {4, 5, 3, 2, 6, 7, 8, 1, 9, 10};
 
-    Node * ptrRoot2 = createTree(cList);
+    struct Node * ptrRoot2 = createTree(cList);
 
     printTree(ptrRoot2);
 
-    std::cout << std::endl;
+    cout << endl;
 
     printTree(ptrRoot);
 
-    std::cout << std::endl;
+    cout << endl;
 
-    Node * ptrNode = searchNode(ptrRoot2, 10);
+    struct Node * ptrNode = searchNode(ptrRoot2, 10);
 
     if (ptrNode != nullptr) {
-        std::cout << ptrNode->iPayload << std::endl;
+        cout << ptrNode->iPayload << endl;
     } else {
-        std::cout << "Node not found!" << std::endl;
+        cout << "Node not found!" << endl;
     }
+
+    struct Node * ptrRoot3 = createTreeTxt("test.txt");
+
+    printTree(ptrRoot3);
 
     return 0;
 }

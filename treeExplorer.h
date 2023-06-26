@@ -22,8 +22,7 @@ struct Node {
  * @param iPayload The payload to be stored in the node.
  * @return struct Node* A pointer to the newly created node.
  */
-Node * createNode(int iPayload);
-
+struct Node * createNode(int iPayload);
 
 /**
  * @brief insertNode() - Given an existing Node and its iPayload,
@@ -34,7 +33,7 @@ Node * createNode(int iPayload);
  * @param iPayload 
  * @return struct Node* 
 **/
-Node * insertNode(struct Node * ptrRoot, int iPayload);
+struct Node * insertNode(struct Node * ptrRoot, int iPayload);
 
 /**
  * @brief createTree() - Given a char list, it creates a
@@ -43,8 +42,9 @@ Node * insertNode(struct Node * ptrRoot, int iPayload);
  * @param cList 
  * @return Node* 
 **/
-Node * createTree(const char cList[]);
+struct Node * createTree(const char cList[]);
 
+struct Node * createTreeTxt(const char * fileName);
 
 /**
  * @brief searchNode() - Given the root of a tree and an integer,
@@ -55,7 +55,7 @@ Node * createTree(const char cList[]);
  * @param iPayload 
  * @return Node* 
 **/
-Node * searchNode(struct Node * ptrRoot, int iPayload);
+struct Node * searchNode(struct Node * ptrRoot, int iPayload);
 
 /**
  * @brief printTree() - Prints the elements of the tree
