@@ -68,5 +68,24 @@ int heightTree(struct Node * ptrRoot);
 
 int sizeTree(struct Node * ptrRoot);
 
+struct Node* lesserNode(struct Node* ptrRoot);
+
+/*Função que deleta um nó, trocando dados*/
+struct Node* deleteNode(struct Node* ptrRoot, int iData);
+
+//MENU ASCII
+/*Cria a linha de cima*/
+void createUpperBound(int iSize);
+/*Cria a linha debaixo*/
+void createLowerBound(int iSize);
+/*Cria cada item do menu*/
+void createMenuItem(char cArray[], int iSize);
+/*Cria uma linha horizontal*/
+void createHLine(int iSize);
+/*Junção de todas as funções acima para criar o menu*/
+void buildMenu();
+/*Menu funcionando com casos*/
+void menu();
+
 #include "./treeExplorer.hpp"
 #endif // TREEEXPLORER_H
