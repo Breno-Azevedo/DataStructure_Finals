@@ -5,6 +5,8 @@
 
 #include "./treeExplorer.h"
 #include <iostream>
+#include <fstream>
+#include <iomanip>
 
 using namespace std;
 
@@ -156,23 +158,22 @@ struct Node* deleteNode(struct Node* ptrRoot, int iData)
  }   
 
 
-//MENU ASCII
 void createUpperBound(int iSize) {
     cout << char(201);
-    for(int i = 0; i < iSize;i++) cout << char(205);
+    for(int i = 0; i < iSize; i++) cout << char(205);
     cout << char(187) << endl;
 }
 
 void createLowerBound(int iSize) {
     cout << char(200);
-    for(int i = 0; i < iSize;i++) cout << char(205);
-    cout << char(188);
+    for(int i = 0; i < iSize; i++) cout << char(205);
+    cout << char(188) << endl;
 }
 
-void createMenuItem(char cArray[], int iSize) {
-    printf("%c",186);
-    printf("%-*s", iSize, cArray);
-    printf("%c\n",186);
+void createMenuItem(const char cArray[], int iSize) {
+    cout << char(186);
+    cout << setw(iSize) << left << cArray;
+    cout << char(186) << endl;
 }
 
 void createHLine(int iSize) {
