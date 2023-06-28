@@ -87,5 +87,9 @@ void buildMenu();
 /*Menu funcionando com casos*/
 void menu();
 
+
+bool fullLevel(struct Node* ptrRoot, int iLevel);
+bool perfectTree(struct Node* ptrRoot);
+
 #include "./treeExplorer.hpp"
 #endif // TREEEXPLORER_H

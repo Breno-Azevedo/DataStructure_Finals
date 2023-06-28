@@ -88,6 +88,43 @@ int heightTree(struct Node * ptrRoot) {
     return iTreeHeight;
 }
 
+//Função auxiliar para dizer se um determinado nível de uma árvore é completo ou não
+bool fullLevel(struct Node* ptrRoot, int iLevel) {
+    if (ptrRoot == nullptr) {
+        return false;
+    }
+
+    if (iLevel == 1) {
+        return (ptrRoot->ptrLeft != nullptr && ptrRoot-> ptrRight != nullptr);
+    }
+
+    bool leftSubtree = fullLevel(ptrRoot->ptrLeft, iLevel - 1);
+    bool rightSubtree = fullLevel(ptrRoot->ptrRight, iLevel - 1);
+
+    return (leftSubtree && rightSubtree);
+}
+
+//função que diz se a árvore é perfeita
+
+bool perfectTree(struct Node* ptrRoot)
+{
+    int iHeight = heightTree(ptrRoot);
+    cout << iHeight << endl;
+
+    if(ptrRoot = nullptr)return true;    
+    
+    for(int i = 1; i <= iHeight ; i++)
+    {
+        cout << "o i é" << i << endl;
+        if(fullLevel(ptrRoot,i) == 0)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+
 int sizeTree(struct Node * ptrRoot) {
     if (ptrRoot == nullptr) return 0;
 
@@ -181,6 +218,9 @@ void createHLine(int iSize) {
     for(int i = 0; i < iSize; i++) cout << char(205);
     cout << char(185) << endl;
 }
+
+
+
 
 /*APENAS UM MENU TESTE*/
 

@@ -23,17 +23,32 @@ int main() {
     
     //menu();
 
+    
     cout << "\n" << endl;
 
     struct Node * ptrRoot = createNode(10);
 
     ptrRoot = insertNode(ptrRoot, 5);
     ptrRoot = insertNode(ptrRoot, 15);
-    ptrRoot = insertNode(ptrRoot, 1);
-    ptrRoot = insertNode(ptrRoot, 8);
-    ptrRoot = insertNode(ptrRoot, 12);
-    ptrRoot = insertNode(ptrRoot, 17);
+    //ptrRoot = insertNode(ptrRoot, 1);
+    //ptrRoot = insertNode(ptrRoot, 8);
+    //ptrRoot = insertNode(ptrRoot, 12);
+    //ptrRoot = insertNode(ptrRoot, 17);
 
+    //altura e completa aqui
+
+    cout << "full level" << fullLevel(ptrRoot,1) << endl;
+
+    printTree(ptrRoot);
+    cout << "o nível 1 da árvore é completo: " << fullLevel(ptrRoot, 1) << endl;
+    cout << "o nível 2 da árvore é completo: " << fullLevel(ptrRoot, 2) << endl;
+    cout << "o nível 3 da árvore é completo: " << fullLevel(ptrRoot, 3) << endl;
+    
+    cout << heightTree(ptrRoot) << endl;
+    
+    cout << "a árvore é perfeita?" << perfectTree(ptrRoot) << endl;
+
+    /*
     cout << "ptrRoot->iPayload: " << ptrRoot->iPayload << endl;
     cout << "ptrRoot->ptrLeft->iPayload: " << ptrRoot->ptrLeft->iPayload << endl;
     cout << "ptrRoot->ptrRight->iPayload: " << ptrRoot->ptrRight->iPayload << endl;
@@ -69,9 +84,14 @@ int main() {
 
     ptrRoot = deleteNode(ptrRoot, 1);
 
-    printTree(ptrRoot);
+    */
+
+    //printTree(ptrRoot);
 
     cout << endl;
+    
+
+    
 
     return 0;
 }
