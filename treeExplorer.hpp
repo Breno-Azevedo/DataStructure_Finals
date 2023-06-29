@@ -170,6 +170,32 @@ void Breadth_First_Search(struct Node* ptrRoot) {
         if (ptrNode->ptrLeft != nullptr) qQueue.push(ptrNode->ptrLeft);
         if (ptrNode->ptrRight != nullptr) qQueue.push(ptrNode->ptrRight);
     }
+    cout << endl;
+}
+
+Node* SearchElement(Node* ptrRoot, int iPayload) {
+    if (ptrRoot == nullptr) {
+        return nullptr;
+    }
+
+    queue<Node*> qQueue;
+    qQueue.push(ptrRoot);
+
+    while (!qQueue.empty()) {
+        Node* ptrCurrentNode = qQueue.front();
+        qQueue.pop();
+
+        if (ptrCurrentNode->iPayload == iPayload) {
+            cout << "The memory address is: " << ptrCurrentNode << endl;
+            return ptrCurrentNode;
+        }
+
+        if (ptrCurrentNode->ptrLeft != nullptr) qQueue.push(ptrCurrentNode->ptrLeft);
+        if (ptrCurrentNode->ptrRight != nullptr) qQueue.push(ptrCurrentNode->ptrRight);
+    }
+
+    cout << "Element Not found." << endl;
+    return nullptr;
 }
 
 

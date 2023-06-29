@@ -71,6 +71,16 @@ void printTree(struct Node * ptrRoot);
  */
 void Breadth_First_Search(struct Node * ptrRoot);
 
+/**
+ * @brief searchElement() - Searchs and returns for the memory address
+ * of a given element using the BFS algorithm.
+ * 
+ * @param ptrNode 
+ * @param iPayload 
+ * @return Node* 
+ */
+Node * SearchElement(Node* ptrRoot, int iPayload);
+
 int heightTree(struct Node * ptrRoot);
 
 int sizeTree(struct Node * ptrRoot);
