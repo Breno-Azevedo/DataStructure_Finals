@@ -19,6 +19,7 @@ struct Node * createNode(int iPayload) {
     return ptrNewNode;
 }
 
+
 struct Node * insertNode(struct Node * ptrRoot, int iPayload) {
     if (ptrRoot == nullptr) return createNode(iPayload);
 
@@ -108,8 +109,38 @@ bool fullLevel(struct Node* ptrRoot, int iLevel) {
     
 }
 
-//função que diz se a árvore é perfeita
+//função que percorre a lista pelo trajeto Inorder
+//primeiro vemos tudo à esquerda, depois o nó que estamos e depois tudo à direita
+void traverseInorder(struct Node* ptrRoot)
+{
+    if(ptrRoot != nullptr)
+    {
+        //Função que usa recursao
+        traverseInorder(ptrRoot->ptrLeft);
+        cout << " " << ptrRoot->iPayload;
+        traverseInorder(ptrRoot->ptrRight);
+    }
+}
 
+//primeiro vemos o nó que estamos, vendo tudo à esquerda e depois tudo à direita
+void traversePreOrder(struct Node* ptrStartingNode)
+{
+    if(ptrStartingNode != nullptr)
+    {
+        //Função que usa recursão
+        //o caso base é o nullptr
+        cout << " " << ptrStartingNode->iPayload;
+        traversePreOrder(ptrStartingNode->ptrLeft);
+        traversePreOrder(ptrStartingNode->ptrRight);
+    }
+}
+
+
+
+
+//função que diz se a árvore é perfeita
+//usa a função de altura e de completa em níveis
+//analisa todos os níveis e se todos forem completos retorna que a árvore é perfeita
 bool perfectTree(struct Node* ptrRoot)
 {
     int iHeight = heightTree(ptrRoot);
@@ -120,6 +151,8 @@ bool perfectTree(struct Node* ptrRoot)
     }
     return true;
 }
+
+
 
 
 int sizeTree(struct Node * ptrRoot) {

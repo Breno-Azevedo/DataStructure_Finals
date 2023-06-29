@@ -87,6 +87,8 @@ void buildMenu();
 /*Menu funcionando com casos*/
 void menu();
 
+void traverseInorder(struct Node* ptrRoot);
+void traversePreOrder(struct Node* ptrStartingNode);
 
 bool fullLevel(struct Node* ptrRoot, int iLevel);
 bool perfectTree(struct Node* ptrRoot);

@@ -36,13 +36,14 @@ int main() {
     ptrRoot = insertNode(ptrRoot, 17);
     //ptrRoot = insertNode(ptrRoot, 18);
     
-     printTree(ptrRoot);
-
+    /*printTree(ptrRoot);
     if (perfectTree(ptrRoot) == 0) {
         cout << "A arvore nao a perfeita. " << endl;
     } else {
-        cout << "A arvore a perfeita "<< endl;
-    }
+        cout << "A arvore e perfeita "<< endl;
+    }*/
+
+    
     
 
     /*
