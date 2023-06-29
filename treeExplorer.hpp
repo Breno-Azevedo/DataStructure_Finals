@@ -94,9 +94,8 @@ int heightTree(struct Node * ptrRoot) {
 //Função auxiliar para dizer se um determinado nível de uma árvore é completo ou não
 
 bool fullLevel(struct Node* ptrRoot, int iLevel) {
-    if (ptrRoot == nullptr) {
-        return false;
-    }
+    if (ptrRoot == nullptr)return false;
+    
 
     if (iLevel == 1) {
         ptrRoot->ptrLeft != nullptr && ptrRoot-> ptrRight != nullptr;
@@ -136,8 +135,22 @@ void traversePreOrder(struct Node* ptrStartingNode)
     }
 }
 
+bool completeTree(struct Node* ptrRoot)
+{
+    if(ptrRoot == nullptr)return false;
+    
+    int iHeight = heightTree(ptrRoot);
 
+    if (iHeight == 1) {
+        (ptrRoot->ptrLeft != nullptr && ptrRoot-> ptrRight != nullptr) || (ptrRoot->ptrLeft == nullptr && ptrRoot-> ptrRight == nullptr);
+        return true;
+    }
+    bool leftSubtree = completeTree(ptrRoot->ptrLeft);
+    bool rightSubtree = completeTree(ptrRoot->ptrRight);   
 
+    return (leftSubtree && rightSubtree); 
+    
+}
 
 //função que diz se a árvore é perfeita
 //usa a função de altura e de completa em níveis

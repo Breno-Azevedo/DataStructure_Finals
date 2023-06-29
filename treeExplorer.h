@@ -107,6 +107,8 @@ void menu();
 void traverseInorder(struct Node* ptrRoot);
 void traversePreOrder(struct Node* ptrStartingNode);
 
+bool completeTree(struct Node* ptrRoot);
+
 bool fullLevel(struct Node* ptrRoot, int iLevel);
 bool perfectTree(struct Node* ptrRoot);
 

@@ -34,17 +34,8 @@ int main() {
     ptrRoot = insertNode(ptrRoot, 8);
     ptrRoot = insertNode(ptrRoot, 12);
     ptrRoot = insertNode(ptrRoot, 17);
-    //ptrRoot = insertNode(ptrRoot, 18);
-    
-    /*printTree(ptrRoot);
-    if (perfectTree(ptrRoot) == 0) {
-        cout << "A arvore nao a perfeita. " << endl;
-    } else {
-        cout << "A arvore e perfeita "<< endl;
-    }*/
-
-    
-    
+    ptrRoot = insertNode(ptrRoot, 18);
+        
 
     /*
     cout << "ptrRoot->iPayload: " << ptrRoot->iPayload << endl;
