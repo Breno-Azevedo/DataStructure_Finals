@@ -7,6 +7,8 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include <cmath>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -94,6 +96,89 @@ int heightTree(struct Node * ptrRoot) {
     
     return iTreeHeight;
 }
+
+//Função auxiliar para dizer se um determinado nível de uma árvore é completo ou não
+
+bool fullLevel(struct Node* ptrRoot, int iLevel) {
+    if (ptrRoot == nullptr) {
+        return false;
+    }
+
+    if (iLevel == 1) {
+        ptrRoot->ptrLeft != nullptr && ptrRoot-> ptrRight != nullptr;
+        return true;
+    }
+
+    bool leftSubtree = fullLevel(ptrRoot->ptrLeft, iLevel - 1);
+    bool rightSubtree = fullLevel(ptrRoot->ptrRight, iLevel - 1);
+
+    return (leftSubtree && rightSubtree);    
+    
+}
+
+//função que percorre a lista pelo trajeto Inorder
+//primeiro vemos tudo à esquerda, depois o nó que estamos e depois tudo à direita
+void traverseInorder(struct Node* ptrRoot)
+{
+    if(ptrRoot != nullptr)
+    {
+        //Função que usa recursao
+        traverseInorder(ptrRoot->ptrLeft);
+        cout << " " << ptrRoot->iPayload;
+        traverseInorder(ptrRoot->ptrRight);
+    }
+}
+
+//primeiro vemos o nó que estamos, vendo tudo à esquerda e depois tudo à direita
+void traversePreOrder(struct Node* ptrStartingNode)
+{
+    if(ptrStartingNode != nullptr)
+    {
+        //Função que usa recursão
+        //o caso base é o nullptr
+        cout << " " << ptrStartingNode->iPayload;
+        traversePreOrder(ptrStartingNode->ptrLeft);
+        traversePreOrder(ptrStartingNode->ptrRight);
+    }
+}
+
+
+
+
+//função que diz se a árvore é perfeita
+//usa a função de altura e de completa em níveis
+//analisa todos os níveis e se todos forem completos retorna que a árvore é perfeita
+bool perfectTree(struct Node* ptrRoot)
+{
+    int iHeight = heightTree(ptrRoot);
+
+    for(int i = 1; i <= iHeight ; i++)
+    {
+        if(fullLevel(ptrRoot,i) != 1)return false;
+    }
+    return true;
+}
+
+void Breadth_First_Search(struct Node* ptrRoot) {
+    if (ptrRoot == nullptr) {
+        cout << "Empty Tree" << endl;
+        return;
+    }
+
+    queue<Node*> qQueue;
+    qQueue.push(ptrRoot);
+
+    while (!qQueue.empty()) {
+        Node* ptrNode = qQueue.front();
+        cout << ptrNode->iPayload << " ";
+        qQueue.pop();
+
+        if (ptrNode->ptrLeft != nullptr) qQueue.push(ptrNode->ptrLeft);
+        if (ptrNode->ptrRight != nullptr) qQueue.push(ptrNode->ptrRight);
+    }
+}
+
+
 
 int sizeTree(struct Node * ptrRoot) {
     if (ptrRoot == nullptr) return 0;
@@ -189,6 +274,9 @@ void createHLine(int iSize) {
     cout << char(185) << endl;
 }
 
+
+
+
 /*APENAS UM MENU TESTE*/
 
 void buildMenu() {
@@ -227,41 +315,6 @@ void menu() {
                 break;
         }
     } while (choice != 0);
-}
-
-//Função auxiliar para dizer se um determinado nível de uma árvore é completo ou não
-bool fullLevel(struct Node * ptrRoot, int iLevel) {
-    if (ptrRoot == nullptr) {
-        return false;
-    }
-
-    if (iLevel == 1) {
-        return (ptrRoot->ptrLeft != nullptr && ptrRoot-> ptrRight != nullptr);
-    }
-
-    bool leftSubtree = fullLevel(ptrRoot->ptrLeft, iLevel - 1);
-    bool rightSubtree = fullLevel(ptrRoot->ptrRight, iLevel - 1);
-
-    return (leftSubtree && rightSubtree);
-}
-
-//função que diz se a árvore é perfeita
-bool perfectTree(struct Node * ptrRoot) {
-    cout << "raiz: " << ptrRoot->iPayload << endl;
-    int iHeight = heightTree(ptrRoot);
-    cout << "altura: " << iHeight << endl;
-
-    if(ptrRoot = nullptr)return true;
-
-    for(int i = 1; i <= iHeight; i++)
-    {
-        cout << "i: " << i << endl;
-        if(fullLevel(ptrRoot,i) == 0)
-        {
-            return false;
-        }
-    }
-    return true;
 }
 
 void printList(struct ListNode* ptrHead) {

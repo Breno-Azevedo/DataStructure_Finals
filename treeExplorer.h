@@ -71,6 +71,13 @@ struct Node * searchNode(struct Node * ptrRoot, int iPayload);
  */
 void printTree(struct Node * ptrRoot);
 
+/**
+ * @brief Breadth_First_Search() - Executes the BFS algorithm
+ * 
+ * @param ptrRoot 
+ */
+void Breadth_First_Search(struct Node * ptrRoot);
+
 int heightTree(struct Node * ptrRoot);
 
 int sizeTree(struct Node * ptrRoot);
@@ -80,13 +87,8 @@ struct Node* lesserNode(struct Node* ptrRoot);
 /*Função que deleta um nó, trocando dados*/
 struct Node* deleteNode(struct Node* ptrRoot, int iData);
 
-bool fullLevel(struct Node* ptrRoot, int iLevel);
-
-bool perfectTree(struct Node* ptrRoot);
-
-
 struct ListNode * treeToList(struct Node * ptrStartingNode, struct ListNode * ptrHead);
-void printList(struct Node* ptrHead);
+void printList(struct ListNode* ptrHead);
 struct ListNode * insertList(struct ListNode **ptrHead, int iValue);
 void SelectionSort(struct ListNode** ptrHead);
 
@@ -104,6 +106,11 @@ void buildMenu();
 /*Menu funcionando com casos*/
 void menu();
 
+void traverseInorder(struct Node* ptrRoot);
+void traversePreOrder(struct Node* ptrStartingNode);
+
+bool fullLevel(struct Node* ptrRoot, int iLevel);
+bool perfectTree(struct Node* ptrRoot);
 
 
 #include "./treeExplorer.hpp"

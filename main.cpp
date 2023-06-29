@@ -23,12 +23,14 @@ int main() {
     
     //menu();
 
+    
     cout << "\n" << endl;
 
     //Criando um no
     struct Node * ptrRoot = createNode(10);
 
     //Inserindo nos na arvore
+    
     ptrRoot = insertNode(ptrRoot, 5);
     ptrRoot = insertNode(ptrRoot, 15);
     ptrRoot = insertNode(ptrRoot, 1);
@@ -36,7 +38,15 @@ int main() {
     ptrRoot = insertNode(ptrRoot, 12);
     ptrRoot = insertNode(ptrRoot, 17);
     ptrRoot = insertNode(ptrRoot, 18);
+    
+    /*printTree(ptrRoot);
+    if (perfectTree(ptrRoot) == 0) {
+        cout << "A arvore nao a perfeita. " << endl;
+    } else {
+        cout << "A arvore e perfeita "<< endl;
+    }*/
 
+    
     cout << "ptrRoot->iPayload: " << ptrRoot->iPayload << endl;
     cout << "ptrRoot->ptrLeft->iPayload: " << ptrRoot->ptrLeft->iPayload << endl;
     cout << "ptrRoot->ptrRight->iPayload: " << ptrRoot->ptrRight->iPayload << endl;
@@ -47,15 +57,13 @@ int main() {
     struct Node * ptrRoot2 = createTree(cList, iLength);
 
     printTree(ptrRoot2);
-
     cout << endl;
 
     //Printando a arvore
     printTree(ptrRoot);
-
     cout << endl;
 
-    //Achando um no da arvore
+    //Achando o endereco de um no da arvore
     struct Node * ptrNode = searchNode(ptrRoot2, 10);
 
     if (ptrNode != nullptr) {
@@ -80,19 +88,8 @@ int main() {
     ptrRoot = deleteNode(ptrRoot, 18);
 
     printTree(ptrRoot);
-
     cout << endl;
-
-    /*   
-    //altura e completa aqui
-    cout << "o nível 1 da árvore é completo: " << fullLevel(ptrRoot, 1) << endl;
-    cout << "o nível 2 da árvore é completo: " << fullLevel(ptrRoot, 2) << endl;
-    cout << "o nível 3 da árvore é completo: " << fullLevel(ptrRoot, 3) << endl;
     
-    cout << heightTree(ptrRoot) << endl;
-    
-    cout << "a árvore é perfeita?" << perfectTree(ptrRoot) << endl;
-    */
 
    //criando uma lista encadeada a partir da arvore
     struct ListNode * ptrHead = nullptr;
