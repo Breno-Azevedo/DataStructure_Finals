@@ -8,6 +8,7 @@
 #include <fstream>
 #include <iomanip>
 #include <cmath>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -165,6 +166,24 @@ bool perfectTree(struct Node* ptrRoot)
     return true;
 }
 
+void Breadth_First_Search(struct Node* ptrRoot) {
+    if (ptrRoot == nullptr) {
+        cout << "Empty Tree" << endl;
+        return;
+    }
+
+    queue<Node*> qQueue;
+    qQueue.push(ptrRoot);
+
+    while (!qQueue.empty()) {
+        Node* ptrNode = qQueue.front();
+        cout << ptrNode->iPayload << " ";
+        qQueue.pop();
+
+        if (ptrNode->ptrLeft != nullptr) qQueue.push(ptrNode->ptrLeft);
+        if (ptrNode->ptrRight != nullptr) qQueue.push(ptrNode->ptrRight);
+    }
+}
 
 
 
