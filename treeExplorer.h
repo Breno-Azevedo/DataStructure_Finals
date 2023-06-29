@@ -16,6 +16,11 @@ struct Node {
     struct Node * ptrRight;
 };
 
+struct ListNode {
+    int iPayload;
+    struct ListNode * ptrNext;
+};
+
 /**
  * @brief createNode() - Creates a new node with the given payload.
  * 
@@ -23,6 +28,8 @@ struct Node {
  * @return struct Node* A pointer to the newly created node.
  */
 struct Node * createNode(int iPayload);
+
+struct ListNode* createListNode(int iPayload);
 
 /**
  * @brief insertNode() - Given an existing Node and its iPayload,
@@ -73,6 +80,16 @@ struct Node* lesserNode(struct Node* ptrRoot);
 /*Função que deleta um nó, trocando dados*/
 struct Node* deleteNode(struct Node* ptrRoot, int iData);
 
+bool fullLevel(struct Node* ptrRoot, int iLevel);
+
+bool perfectTree(struct Node* ptrRoot);
+
+
+struct ListNode * treeToList(struct Node * ptrStartingNode, struct ListNode * ptrHead);
+void printList(struct Node* ptrHead);
+struct ListNode * insertList(struct ListNode **ptrHead, int iValue);
+void SelectionSort(struct ListNode** ptrHead);
+
 //MENU ASCII
 /*Cria a linha de cima*/
 void createUpperBound(int iSize);
@@ -86,6 +103,8 @@ void createHLine(int iSize);
 void buildMenu();
 /*Menu funcionando com casos*/
 void menu();
+
+
 
 #include "./treeExplorer.hpp"
 #endif // TREEEXPLORER_H

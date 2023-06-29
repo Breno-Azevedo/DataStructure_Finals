@@ -18,6 +18,13 @@ struct Node * createNode(int iPayload) {
     return ptrNewNode;
 }
 
+struct ListNode* createListNode(int iPayload) {
+    struct ListNode* newNode = (struct ListNode*)malloc(sizeof(struct ListNode));
+    newNode->iPayload = iPayload;
+    newNode->ptrNext = nullptr;
+    return newNode;
+}
+
 struct Node * insertNode(struct Node * ptrRoot, int iPayload) {
     if (ptrRoot == nullptr) return createNode(iPayload);
 
@@ -185,14 +192,18 @@ void createHLine(int iSize) {
 /*APENAS UM MENU TESTE*/
 
 void buildMenu() {
-    int iSize = 40;
+    int iSize = 60;
 
     createUpperBound(iSize);
     createMenuItem("Menu Principal", iSize);
     createHLine(iSize);
-    createMenuItem("1 - Cadastrar", iSize);
-    createMenuItem("2 - Pesquisar", iSize);
-    createMenuItem("3 - Excluir", iSize);
+    createMenuItem("1 - Criar uma BST a partir de um .txt", iSize);
+    createMenuItem("2 - Criar uma BST a partir de inputs", iSize);
+    createMenuItem("3 - Informar altura da BST", iSize);
+    createMenuItem("4 - Informar tamanho da BST", iSize);
+    createMenuItem("5 - Inserir um elemento na BST", iSize);
+    createMenuItem("6 - Remover um elemento na BST", iSize);
+    createMenuItem("7 - Buscar o endereco de memoria um elemento na BST", iSize);
     createLowerBound(iSize);
 }
 
@@ -217,5 +228,118 @@ void menu() {
         }
     } while (choice != 0);
 }
+
+//Função auxiliar para dizer se um determinado nível de uma árvore é completo ou não
+bool fullLevel(struct Node * ptrRoot, int iLevel) {
+    if (ptrRoot == nullptr) {
+        return false;
+    }
+
+    if (iLevel == 1) {
+        return (ptrRoot->ptrLeft != nullptr && ptrRoot-> ptrRight != nullptr);
+    }
+
+    bool leftSubtree = fullLevel(ptrRoot->ptrLeft, iLevel - 1);
+    bool rightSubtree = fullLevel(ptrRoot->ptrRight, iLevel - 1);
+
+    return (leftSubtree && rightSubtree);
+}
+
+//função que diz se a árvore é perfeita
+bool perfectTree(struct Node * ptrRoot) {
+    cout << "raiz: " << ptrRoot->iPayload << endl;
+    int iHeight = heightTree(ptrRoot);
+    cout << "altura: " << iHeight << endl;
+
+    if(ptrRoot = nullptr)return true;
+
+    for(int i = 1; i <= iHeight; i++)
+    {
+        cout << "i: " << i << endl;
+        if(fullLevel(ptrRoot,i) == 0)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+void printList(struct ListNode* ptrHead) {
+    if (ptrHead == nullptr) {
+        cout << "Lista vazia." << endl;
+        return;
+    }
+
+    while (ptrHead != nullptr) {
+        cout << ptrHead->iPayload << " ";
+        ptrHead = ptrHead->ptrNext;
+    }
+    cout << endl;
+}
+
+struct ListNode * insertList(struct ListNode ** ptrHead, int iValue) {
+    struct ListNode * newNode = createListNode(iValue);
+
+    if(*ptrHead == nullptr){
+        *ptrHead = newNode;
+        return *ptrHead;
+    }
+
+    struct ListNode * ptrCurrent = *ptrHead;
+    while (ptrCurrent -> ptrNext != nullptr) ptrCurrent = ptrCurrent -> ptrNext;
+    
+    ptrCurrent -> ptrNext = newNode;
+
+    return *ptrHead;
+}
+
+//Transformando a arvore em lista
+struct ListNode * treeToList(struct Node * ptrStartingNode, struct ListNode * ptrHead) {
+    if(ptrStartingNode != nullptr) {
+        insertList(&ptrHead, ptrStartingNode->iPayload);
+
+        treeToList(ptrStartingNode->ptrLeft, ptrHead);
+        treeToList(ptrStartingNode->ptrRight, ptrHead);
+    }
+    return ptrHead;
+}
+
+void SelectionSort(struct ListNode** ptrHead) {
+    if (ptrHead == nullptr) {
+        cout << "Lista vazia." << endl; //não está saindo
+        return;
+    }
+
+    struct ListNode* ptrTemp = (*ptrHead);
+    struct ListNode* auxNode = (*ptrHead);
+    struct ListNode* ptrMin = nullptr;
+    struct ListNode* ptrAux = nullptr;
+
+    int iLength = 0;
+    while (auxNode != nullptr) {
+        iLength++;
+        auxNode = auxNode->ptrNext;
+    }
+    free(auxNode);
+
+    for (int iOuterLoop = 0; iOuterLoop < iLength - 1; iOuterLoop++) {
+        ptrMin = ptrTemp;
+        ptrAux = ptrTemp->ptrNext;
+
+        for (int iInnerLoop = iOuterLoop + 1; iInnerLoop < iLength; iInnerLoop++) {
+            if (ptrAux->iPayload < ptrMin->iPayload) ptrMin = ptrAux;
+            ptrAux = ptrAux->ptrNext;
+        }
+
+        int iTemp = ptrTemp->iPayload;
+        ptrTemp->iPayload = ptrMin->iPayload;
+        ptrMin->iPayload = iTemp;
+
+        ptrTemp = ptrTemp->ptrNext;
+    }
+
+    free(ptrAux);
+}
+
 
 #endif // TREEEXPLORER_HPP_
