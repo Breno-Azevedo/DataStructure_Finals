@@ -16,6 +16,11 @@ struct Node {
     struct Node * ptrRight;
 };
 
+struct ListNode {
+    int iPayload;
+    struct ListNode * ptrNext;
+};
+
 /**
  * @brief createNode() - Creates a new node with the given payload.
  * 
@@ -23,6 +28,8 @@ struct Node {
  * @return struct Node* A pointer to the newly created node.
  */
 struct Node * createNode(int iPayload);
+
+struct ListNode* createListNode(int iPayload);
 
 /**
  * @brief insertNode() - Given an existing Node and its iPayload,
@@ -89,6 +96,11 @@ struct Node* lesserNode(struct Node* ptrRoot);
 
 /*Função que deleta um nó, trocando dados*/
 struct Node* deleteNode(struct Node* ptrRoot, int iData);
+
+struct ListNode * treeToList(struct Node * ptrStartingNode, struct ListNode * ptrHead);
+void printList(struct ListNode* ptrHead);
+struct ListNode * insertList(struct ListNode **ptrHead, int iValue);
+void SelectionSort(struct ListNode** ptrHead);
 
 //MENU ASCII
 /*Cria a linha de cima*/
