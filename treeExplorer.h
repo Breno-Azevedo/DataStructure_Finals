@@ -100,7 +100,8 @@ struct Node* deleteNode(struct Node* ptrRoot, int iData);
 struct ListNode * treeToList(struct Node * ptrStartingNode, struct ListNode * ptrHead);
 void printList(struct ListNode* ptrHead);
 struct ListNode * insertList(struct ListNode **ptrHead, int iValue);
-void SelectionSort(struct ListNode** ptrHead);
+void selectionSort(struct ListNode** ptrHead);
+void insertionSort(struct ListNode** ptrHead);
 
 //MENU ASCII
 /*Cria a linha de cima*/

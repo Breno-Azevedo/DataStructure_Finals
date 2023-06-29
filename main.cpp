@@ -97,9 +97,11 @@ int main() {
     ptrHead = treeToList(ptrRoot,ptrHead);
     printList(ptrHead);
 
-    SelectionSort(&ptrHead);
-    printList(ptrHead);
+    //selectionSort(&ptrHead);
+    //printList(ptrHead);
 
+    insertionSort(&ptrHead);
+    printList(ptrHead);
 
     return 0;
 }

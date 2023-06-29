@@ -396,7 +396,7 @@ struct ListNode * treeToList(struct Node * ptrStartingNode, struct ListNode * pt
     return ptrHead;
 }
 
-void SelectionSort(struct ListNode** ptrHead) {
+void selectionSort(struct ListNode** ptrHead) {
     if (ptrHead == nullptr) {
         cout << "Lista vazia." << endl; //não está saindo
         return;
@@ -433,5 +433,35 @@ void SelectionSort(struct ListNode** ptrHead) {
     free(ptrAux);
 }
 
+void insertionSort(struct ListNode** ptrHead) {
+    //Checando se a lista é vazia
+    if (*ptrHead == nullptr) {
+        cout << "Lista vazia." << endl;
+        return;
+    }
+
+    //Fazendo o sort dos elementos
+    struct ListNode* sortedHead = nullptr;  //Head da nova lista (sorted list)
+    struct ListNode* ptrCurrent = *ptrHead;       //Nó atual na lista original
+
+    while (ptrCurrent != nullptr) {
+        struct ListNode* next = ptrCurrent->ptrNext;
+
+        //Inserindo o current na sorted list
+        if (sortedHead == nullptr || ptrCurrent->iPayload < sortedHead->iPayload) {
+            ptrCurrent->ptrNext = sortedHead;
+            sortedHead = ptrCurrent;
+        } else {
+            struct ListNode* sortedCurrent = sortedHead;
+            while (sortedCurrent->ptrNext != nullptr && ptrCurrent->iPayload > sortedCurrent->ptrNext->iPayload) {
+                sortedCurrent = sortedCurrent->ptrNext;
+            }
+            ptrCurrent->ptrNext = sortedCurrent->ptrNext;
+            sortedCurrent->ptrNext = ptrCurrent;
+        }
+
+        ptrCurrent = next;
+    }
+}
 
 #endif // TREEEXPLORER_HPP_
