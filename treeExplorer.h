@@ -64,6 +64,13 @@ struct Node * searchNode(struct Node * ptrRoot, int iPayload);
  */
 void printTree(struct Node * ptrRoot);
 
+/**
+ * @brief Breadth_First_Search() - Executes the BFS algorithm
+ * 
+ * @param ptrRoot 
+ */
+void Breadth_First_Search(struct Node * ptrRoot);
+
 int heightTree(struct Node * ptrRoot);
 
 int sizeTree(struct Node * ptrRoot);
