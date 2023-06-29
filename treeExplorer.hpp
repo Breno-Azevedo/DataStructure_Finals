@@ -40,6 +40,22 @@ struct Node * createTree(const char cList[], int iTamanho) {
     return ptrRoot;
 }
 
+struct Node* buildTree(int iSize)
+{
+    int* iArray = new int[iSize];
+    struct Node * newTree = nullptr;
+
+    cout << "Digite os elementos da árvore:" << endl;
+    for (int i = 1; i < iSize+1; i++) {
+        cout << "Elemento " << i << ": ";
+        cin >> iArray[i]; 
+        newTree = insertNode(newTree, iArray[i]);
+        
+    }
+    return newTree;   
+
+}
+
 struct Node * createTreeTxt(const char * fileName) {
     struct Node * ptrRoot = nullptr;
     int iNum;

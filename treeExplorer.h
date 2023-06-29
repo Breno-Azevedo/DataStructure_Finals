@@ -106,6 +106,7 @@ void menu();
 
 void traverseInorder(struct Node* ptrRoot);
 void traversePreOrder(struct Node* ptrStartingNode);
+struct Node* buildTree(int iSize);
 
 bool completeTree(struct Node* ptrRoot);
 

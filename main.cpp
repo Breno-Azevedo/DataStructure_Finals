@@ -35,7 +35,10 @@ int main() {
     ptrRoot = insertNode(ptrRoot, 12);
     ptrRoot = insertNode(ptrRoot, 17);
     ptrRoot = insertNode(ptrRoot, 18);
-        
+    
+
+    Node* sTree = buildTree(3);    
+    printTree(sTree);
 
     /*
     cout << "ptrRoot->iPayload: " << ptrRoot->iPayload << endl;
