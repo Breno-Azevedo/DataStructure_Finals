@@ -100,9 +100,8 @@ int heightTree(struct Node * ptrRoot) {
 //Função auxiliar para dizer se um determinado nível de uma árvore é completo ou não
 
 bool fullLevel(struct Node* ptrRoot, int iLevel) {
-    if (ptrRoot == nullptr) {
-        return false;
-    }
+    if (ptrRoot == nullptr)return false;
+    
 
     if (iLevel == 1) {
         ptrRoot->ptrLeft != nullptr && ptrRoot-> ptrRight != nullptr;
@@ -142,8 +141,22 @@ void traversePreOrder(struct Node* ptrStartingNode)
     }
 }
 
+bool completeTree(struct Node* ptrRoot)
+{
+    if(ptrRoot == nullptr)return false;
+    
+    int iHeight = heightTree(ptrRoot);
 
+    if (iHeight == 1) {
+        (ptrRoot->ptrLeft != nullptr && ptrRoot-> ptrRight != nullptr) || (ptrRoot->ptrLeft == nullptr && ptrRoot-> ptrRight == nullptr);
+        return true;
+    }
+    bool leftSubtree = completeTree(ptrRoot->ptrLeft);
+    bool rightSubtree = completeTree(ptrRoot->ptrRight);   
 
+    return (leftSubtree && rightSubtree); 
+    
+}
 
 //função que diz se a árvore é perfeita
 //usa a função de altura e de completa em níveis
@@ -176,6 +189,32 @@ void Breadth_First_Search(struct Node* ptrRoot) {
         if (ptrNode->ptrLeft != nullptr) qQueue.push(ptrNode->ptrLeft);
         if (ptrNode->ptrRight != nullptr) qQueue.push(ptrNode->ptrRight);
     }
+    cout << endl;
+}
+
+Node* SearchElement(Node* ptrRoot, int iPayload) {
+    if (ptrRoot == nullptr) {
+        return nullptr;
+    }
+
+    queue<Node*> qQueue;
+    qQueue.push(ptrRoot);
+
+    while (!qQueue.empty()) {
+        Node* ptrCurrentNode = qQueue.front();
+        qQueue.pop();
+
+        if (ptrCurrentNode->iPayload == iPayload) {
+            cout << "The memory address is: " << ptrCurrentNode << endl;
+            return ptrCurrentNode;
+        }
+
+        if (ptrCurrentNode->ptrLeft != nullptr) qQueue.push(ptrCurrentNode->ptrLeft);
+        if (ptrCurrentNode->ptrRight != nullptr) qQueue.push(ptrCurrentNode->ptrRight);
+    }
+
+    cout << "Element Not found." << endl;
+    return nullptr;
 }
 
 
