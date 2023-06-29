@@ -7,6 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include <cmath>
 
 using namespace std;
 
@@ -89,19 +90,22 @@ int heightTree(struct Node * ptrRoot) {
 }
 
 //Função auxiliar para dizer se um determinado nível de uma árvore é completo ou não
+
 bool fullLevel(struct Node* ptrRoot, int iLevel) {
     if (ptrRoot == nullptr) {
         return false;
     }
 
     if (iLevel == 1) {
-        return (ptrRoot->ptrLeft != nullptr && ptrRoot-> ptrRight != nullptr);
+        ptrRoot->ptrLeft != nullptr && ptrRoot-> ptrRight != nullptr;
+        return true;
     }
 
     bool leftSubtree = fullLevel(ptrRoot->ptrLeft, iLevel - 1);
     bool rightSubtree = fullLevel(ptrRoot->ptrRight, iLevel - 1);
 
-    return (leftSubtree && rightSubtree);
+    return (leftSubtree && rightSubtree);    
+    
 }
 
 //função que diz se a árvore é perfeita
@@ -109,17 +113,10 @@ bool fullLevel(struct Node* ptrRoot, int iLevel) {
 bool perfectTree(struct Node* ptrRoot)
 {
     int iHeight = heightTree(ptrRoot);
-    cout << iHeight << endl;
 
-    if(ptrRoot = nullptr)return true;    
-    
     for(int i = 1; i <= iHeight ; i++)
     {
-        cout << "o i é" << i << endl;
-        if(fullLevel(ptrRoot,i) == 0)
-        {
-            return false;
-        }
+        if(fullLevel(ptrRoot,i) != 1)return false;
     }
     return true;
 }
