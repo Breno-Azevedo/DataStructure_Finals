@@ -144,10 +144,8 @@ bool completeTree(struct Node* ptrRoot)
         (ptrRoot->ptrLeft != nullptr && ptrRoot-> ptrRight != nullptr) || (ptrRoot->ptrLeft == nullptr && ptrRoot-> ptrRight == nullptr);
         return true;
     }
-
     bool leftSubtree = completeTree(ptrRoot->ptrLeft);
-    bool rightSubtree = completeTree(ptrRoot->ptrRight);
-    
+    bool rightSubtree = completeTree(ptrRoot->ptrRight);   
 
     return (leftSubtree && rightSubtree); 
     

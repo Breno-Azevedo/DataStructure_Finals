@@ -31,24 +31,11 @@ int main() {
     ptrRoot = insertNode(ptrRoot, 5);
     ptrRoot = insertNode(ptrRoot, 15);
     ptrRoot = insertNode(ptrRoot, 1);
-    ptrRoot = insertNode(ptrRoot, 2);
-    ptrRoot = insertNode(ptrRoot, 3);
-    /*ptrRoot = insertNode(ptrRoot, 1);
     ptrRoot = insertNode(ptrRoot, 8);
     ptrRoot = insertNode(ptrRoot, 12);
     ptrRoot = insertNode(ptrRoot, 17);
-    ptrRoot = insertNode(ptrRoot, 18);*/
-    
-    /*printTree(ptrRoot);
-    if (perfectTree(ptrRoot) == 0) {
-        cout << "A arvore nao a perfeita. " << endl;
-    } else {
-        cout << "A arvore e perfeita "<< endl;
-    }*/
-
-    printTree(ptrRoot);
-    cout << "a arvore e completa: " << completeTree(ptrRoot) << endl;
-    
+    ptrRoot = insertNode(ptrRoot, 18);
+        
 
     /*
     cout << "ptrRoot->iPayload: " << ptrRoot->iPayload << endl;
