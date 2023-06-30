@@ -21,6 +21,12 @@ struct ListNode {
     struct ListNode * ptrNext;
 };
 
+struct DoubleNode {
+    int iPayload;
+    struct DoubleNode * ptrNext;
+    struct DoubleNode * ptrPrevious;
+};
+
 /**
  * @brief createNode() - Creates a new node with the given payload.
  * 
@@ -30,6 +36,8 @@ struct ListNode {
 struct Node * createNode(int iPayload);
 
 struct ListNode* createListNode(int iPayload);
+
+struct DoubleNode* createDoubleNode(int iPayload);
 
 /**
  * @brief insertNode() - Given an existing Node and its iPayload,

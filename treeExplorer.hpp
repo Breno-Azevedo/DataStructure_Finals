@@ -27,6 +27,14 @@ struct ListNode* createListNode(int iPayload) {
     return newNode;
 }
 
+struct DoubleNode* createDoubleNode(int iPayload) {
+    struct DoubleNode* newNode = (struct DoubleNode*)malloc(sizeof(struct DoubleNode));
+    newNode->iPayload = iPayload;
+    newNode->ptrNext = nullptr;
+    newNode->ptrPrevious = nullptr;
+    return newNode;
+}
+
 struct Node * insertNode(struct Node * ptrRoot, int iPayload) {
     if (ptrRoot == nullptr) return createNode(iPayload);
 
@@ -356,6 +364,7 @@ void menu() {
     } while (choice != 0);
 }
 
+//para simples e double
 void printList(struct ListNode* ptrHead) {
     if (ptrHead == nullptr) {
         cout << "Lista vazia." << endl;
@@ -381,6 +390,27 @@ struct ListNode * insertList(struct ListNode ** ptrHead, int iValue) {
     while (ptrCurrent -> ptrNext != nullptr) ptrCurrent = ptrCurrent -> ptrNext;
     
     ptrCurrent -> ptrNext = newNode;
+
+    return *ptrHead;
+}
+
+struct DoubleNode * insertDouble(struct DoubleNode ** ptrHead, int iValue) {
+    struct DoubleNode* newNode = createDoubleNode(iValue);
+    
+    if(*ptrHead == nullptr) //newNode é o novo head
+    {
+        newNode->ptrPrevious = nullptr;
+        (*ptrHead) = newNode;
+        return;
+    }
+    
+    //chegando no último nó da lista
+    struct DoubleNode* ptrTemp = (*ptrHead);
+    while(ptrTemp->ptrNext != nullptr) ptrTemp = ptrTemp->ptrNext;
+    
+    ptrTemp->ptrNext = newNode;
+    newNode->ptrPrevious = ptrTemp;
+
 
     return *ptrHead;
 }
