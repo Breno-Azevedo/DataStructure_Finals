@@ -46,6 +46,7 @@ struct Node * insertNode(struct Node * ptrRoot, int iPayload) {
         cout << "Invalid input. The node is already on the tree." << endl;
         return ptrRoot;
     }
+    free(ptrNode);
 
     if (ptrRoot == nullptr) return createNode(iPayload);
 
@@ -126,7 +127,7 @@ struct Node * createTreeTxt(const char * fileName) {
     inFile.open(fileName);
     if (!inFile) {
         cout << "Unable to open file.";
-        exit(1); // terminate with error
+        exit(1); // termina com erro
     }
     
     while (inFile >> iNum) {
@@ -169,6 +170,7 @@ struct Node * searchNode(struct Node * ptrRoot, int iPayload) {
         return searchNode(ptrRoot->ptrRight, iPayload);
     }
 
+    cout << "Node not found." << endl;
     return nullptr;
 }
 
@@ -401,49 +403,36 @@ struct Node* lesserNode(struct Node* ptrRoot)
 // Função recursiva para deletar nós de árvores binárias de busca
 struct Node* deleteNode(struct Node* ptrRoot, int iData)
 {
+    struct Node * ptrNode = searchNode(ptrRoot, iData);
+    if (ptrNode == nullptr) {
+        cout << "Invalid input. The node is not on the tree." << endl;
+        return ptrRoot;
+    }
+
     if (ptrRoot == nullptr) return ptrRoot; 
 
     if (iData < ptrRoot->iPayload) ptrRoot->ptrLeft = deleteNode(ptrRoot->ptrLeft, iData);
     else if (iData > ptrRoot->iPayload) ptrRoot->ptrRight = deleteNode(ptrRoot->ptrRight, iData);
-
-    else
-    {  
-        //estamso no nó certo
+    else {  
         struct Node* ptrTemp = nullptr;
-
-        //caso tenha um filho ou nenhum
         
-        if (ptrRoot->ptrLeft == nullptr) // Quando o nó deletado só tem filhos à direita ou nenhum filho
-        {
-            ptrTemp = ptrRoot->ptrRight; // Salvamos os filhos do nó deletado
-            free(ptrRoot); // Deletamos o nó
+        if (ptrRoot->ptrLeft == nullptr) {
+            ptrTemp = ptrRoot->ptrRight;
+            free(ptrRoot);
             
-            return ptrTemp; // Reconectamos a árvore
-        }
-        else if (ptrRoot->ptrRight == nullptr) // Quando o nó deletado só tem filhos à esquerda
-        {
-            ptrTemp = ptrRoot->ptrLeft; // Salvamos os filhos do nó deletado
-            free(ptrRoot); // Deletamos o nó
+            return ptrTemp;
+        } else if (ptrRoot->ptrRight == nullptr) {
+            ptrTemp = ptrRoot->ptrLeft;
+            free(ptrRoot);
             
-            return ptrTemp; // Reconectamos a árvore
-        }
-        else // Caso o nó tenha dois filhos
-        {
-            //queremos pegar o cara mais a esquerda da árvore direita
-            //é mais fácil sempre deixar a árvore balanceada
-            
-            //precisamos encontrar o candidato que vai substituir o nó que estamos e queremos apagar
-            
-            ptrTemp = lesserNode(ptrRoot->ptrRight); //menor elemento maior que eu
-            
-            //Fica para casa a versão com ponteiros
+            return ptrTemp;
+        } else {
+            ptrTemp = lesserNode(ptrRoot->ptrRight);
             ptrRoot->iPayload = ptrTemp->iPayload;
-            
             ptrRoot->ptrRight = deleteNode(ptrRoot->ptrRight, ptrTemp->iPayload);
         }
-     }
-
-     return ptrRoot;
+    }
+    return ptrRoot;
  }
 
 struct Node * deleteNodeMain(struct Node * ptrRoot) {
@@ -482,7 +471,7 @@ void printList(struct ListNode* ptrHead) {
 struct ListNode * insertList(struct ListNode ** ptrHead, int iValue) {
     struct ListNode * newNode = createListNode(iValue);
 
-    if(*ptrHead == nullptr){
+    if(*ptrHead == nullptr) {
         *ptrHead = newNode;
         return *ptrHead;
     }
