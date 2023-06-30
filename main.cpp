@@ -28,15 +28,16 @@ int main() {
 
     //Criando um no
     //struct Node * ptrRoot = createNode(10);
+    struct Node * ptrRoot = createNode(8);
 
     //Inserindo nos na arvore
     
     //ptrRoot = insertNode(ptrRoot, 5);
-    //ptrRoot = insertNode(ptrRoot, 15);
+    //ptrRoot = insertNode(ptrRoot, 3);
     //ptrRoot = insertNode(ptrRoot, 1);
-    //ptrRoot = insertNode(ptrRoot, 8);
-    //ptrRoot = insertNode(ptrRoot, 12);
-    //ptrRoot = insertNode(ptrRoot, 17);
+    //ptrRoot = insertNode(ptrRoot, 6);
+    ////ptrRoot = insertNode(ptrRoot, 12);
+    ////ptrRoot = insertNode(ptrRoot, 17);
     //ptrRoot = insertNode(ptrRoot, 2);
         
 
@@ -93,10 +94,15 @@ int main() {
    //criando uma lista encadeada a partir da arvore
     //struct ListNode * ptrHead = nullptr;
     
+    ptrHead = treeToList(ptrRoot,ptrHead);
+    printList(ptrHead);
+    
+    //printList(ptrHead);
     //ptrHead = treeToList(ptrRoot,ptrHead);
     //printList(ptrHead);
 
 
+    //struct DoubleNode * ptrHead2 = nullptr;
     //struct DoubleNode * ptrHead2 = nullptr;
     
     //ptrHead2 = treeToDoubleList(ptrRoot,ptrHead2);
