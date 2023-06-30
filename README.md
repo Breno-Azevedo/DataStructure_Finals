@@ -27,7 +27,7 @@ O objetivo do trabalho é construir um explorador de árvores.
 - [] Uma das opções deve converter a árvore em uma lista e ordenar por Bubble sort.
 - [-] Uma das opções deve converter a árvore em uma lista e ordenar por Selection sort.
 - [] Uma das opções deve converter a árvore em uma lista e ordenar por Insertion sort.
-- [] Uma das opções deve converter a árvore em uma lista e ordenar por Shell sort.
+- [-] Uma das opções deve converter a árvore em uma lista e ordenar por Shell sort.
 - [] Representação gráfica da ordenação.
 
 ## Integrantes

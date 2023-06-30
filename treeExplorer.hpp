@@ -449,6 +449,44 @@ void SelectionSort(struct ListNode** ptrHead) {
     free(ptrAux);
 }
 
+struct ListNode* FindNodeByPos(struct ListNode* ptrHead, int position) {
+    struct ListNode* ptrNode = ptrHead;
+    for (int i = 0; i < position && ptrNode != nullptr; i++) ptrNode = ptrNode->ptrNext;
+
+    return ptrNode;
+}
+
+void ShellSort(struct ListNode** ptrHead) {
+    // Empty list or list with only one node
+    if (*ptrHead == nullptr || (*ptrHead)->ptrNext == nullptr) return;
+
+    int length = 0;
+    struct ListNode* ptrTemp = *ptrHead;
+
+    while (ptrTemp != nullptr) {
+        length++;
+        ptrTemp = ptrTemp->ptrNext;
+    }
+
+    int gap = length / 2;
+    while (gap > 0) {
+        for (int iOuterLoop = gap; iOuterLoop < length; iOuterLoop++) {
+            struct ListNode* ptrNodeI = FindNodeByPos(*ptrHead, iOuterLoop);
+            struct ListNode* ptrNodeJ = FindNodeByPos(*ptrHead, iOuterLoop - gap);
+
+            int temp = ptrNodeI->iPayload;
+            while (iOuterLoop >= gap && ptrNodeJ->iPayload > temp) {
+                ptrNodeI->iPayload = ptrNodeJ->iPayload;
+                iOuterLoop -= gap;
+                ptrNodeI = FindNodeByPos(*ptrHead, iOuterLoop);
+                ptrNodeJ = FindNodeByPos(*ptrHead, iOuterLoop - gap);
+            }
+            ptrNodeI->iPayload = temp;
+        }
+        gap /= 2;
+    }
+}
+
 //bubblesort com ponteiros
 void bubbleSort(struct DoubleNode** head)
 {
