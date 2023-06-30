@@ -21,9 +21,9 @@ using namespace std;
 
 int main() {
     
-    menu();
+    //menu();
 
-    /*
+    
     cout << "\n" << endl;
 
     //Criando um no
@@ -91,16 +91,17 @@ int main() {
     
 
    //criando uma lista encadeada a partir da arvore
-    //struct ListNode * ptrHead = nullptr;
+    struct ListNode * ptrHead = nullptr;
     
-    //ptrHead = treeToList(ptrRoot,ptrHead);
-    //printList(ptrHead);
+    ptrHead = treeToList(ptrRoot,ptrHead);
+    printList(ptrHead);
 
-    //struct DoubleNode * ptrHead2 = nullptr;
+
+    struct DoubleNode * ptrHead2 = nullptr;
     
     //ptrHead2 = treeToDoubleList(ptrRoot,ptrHead2);
     //printDoubleList(ptrHead2);
-    //bubbleSort(&ptrHead2);
+    //buBBleSort(&ptrHead2);
     //printDoubleList(ptrHead2);
 
     //selectionSort(&ptrHead);

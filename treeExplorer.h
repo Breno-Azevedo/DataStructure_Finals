@@ -27,6 +27,7 @@ struct Node {
     struct Node * ptrLeft;
     struct Node * ptrRight;
 };
+ 
 
 struct ListNode {
     /**
@@ -301,14 +302,8 @@ void insertionSort(struct ListNode** ptrHead);
  * 
  * @param head 
  */
-void bubbleSort(struct DoubleNode* head);
-
-/**
- * @brief buBBleSort() - Sorts the double list using the bubble sort algorithm.
- * 
- * @param head 
- */
-void buBBleSort(struct DoubleNode** head);
+//void bubbleSort(struct DoubleNode* head);
+void bubbleSort(struct DoubleNode** head);
 
 
 /**

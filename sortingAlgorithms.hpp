@@ -160,7 +160,7 @@ void ShellSort(struct ListNode** ptrHead) {
 
 
 //bubblesort com dados
-void buBBleSort(struct DoubleNode** head) {
+void bubbleSort(struct DoubleNode** head) {
     struct DoubleNode* current = (*head);
     int iLength = 0;
     while ((*head) != nullptr) {
@@ -196,62 +196,6 @@ void buBBleSort(struct DoubleNode** head) {
 }
 
 
-//bubblesort com ponteiros
-
-void bubbleSort(struct DoubleNode* head)
-{
-    struct DoubleNode* current = (head);
-    
-    int iLength = 0;
-    while ((head) != nullptr)
-    {
-        iLength++;
-        (head) = (head) -> ptrNext;
-    }
-    
-    (head) = current;
-    
-    for(int iOuterLoop = 0; iOuterLoop < iLength - 1; iOuterLoop++)
-    {
-        current = (head);
-        
-        for(int iInnerLoop = 0; iInnerLoop < iLength - 1; iInnerLoop++)
-        {
-            if(current -> iPayload > current -> ptrNext ->iPayload)
-            {
-                if(current == (head)) //pro primeiro nó
-                {
-                    current->ptrNext->ptrPrevious = nullptr;
-                    current->ptrPrevious = current->ptrNext;
-                    current->ptrNext->ptrNext->ptrPrevious = current;
-                    current->ptrNext = current->ptrNext->ptrNext;
-                    current->ptrPrevious->ptrNext = current;
-                    (head) = current->ptrPrevious;
-                }
-                else if(current->ptrNext->ptrNext == nullptr) //pro penúltimo nó
-                {
-                    current->ptrNext->ptrPrevious = current->ptrPrevious;
-                    current->ptrPrevious->ptrNext = current->ptrNext;
-                    current->ptrNext->ptrNext = current;
-                    current->ptrPrevious = current->ptrNext;
-                    current->ptrNext = nullptr;
-                }
-                else
-                {
-                    //pro nó do meio
-                    current->ptrNext->ptrPrevious = current->ptrPrevious;
-                    current->ptrPrevious->ptrNext = current->ptrNext;
-                    current->ptrNext = current->ptrNext->ptrNext;
-                    current->ptrNext->ptrPrevious = current;
-                    current->ptrPrevious = current->ptrPrevious->ptrNext;
-                    current->ptrPrevious->ptrNext = current;
-                }
-               
-            }
-            current = current -> ptrNext;
-        }
-    }
-}
 
 void selectionSortMain(struct Node * ptrRoot) {
     struct ListNode * ptrHead = nullptr;
@@ -288,7 +232,7 @@ void bubbleSortMain(struct Node * ptrRoot) {
     ptrHead = treeToDoubleList(ptrRoot, ptrHead);
     cout << "Lista antes do Bubble Sort: " << endl;
     printDoubleList(ptrHead);
-    buBBleSort(&ptrHead);
+    bubbleSort(&ptrHead);
     cout << "Lista depois do Bubble Sort: " << endl;
     printDoubleList(ptrHead);
 }
