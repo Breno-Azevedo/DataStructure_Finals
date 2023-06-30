@@ -94,7 +94,6 @@ struct ListNode* FindNodeByPos(struct ListNode* ptrHead, int position) {
     return ptrNode;
 }
 
-#include <iostream>
 
 void ShellSort(struct ListNode** ptrHead) {
     if (*ptrHead == nullptr || (*ptrHead)->ptrNext == nullptr)
@@ -203,9 +202,16 @@ void selectionSortMain(struct Node * ptrRoot) {
     ptrHead = treeToList(ptrRoot, ptrHead);
     cout << "Lista antes do Selection Sort: " << endl;
     printList(ptrHead);
+
+    auto start = chrono::high_resolution_clock::now();
     selectionSort(&ptrHead);
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+
     cout << "Lista depois do Selection Sort: " << endl;
     printList(ptrHead);
+
+    cout << "Execution time: " << duration.count() << endl;
 }
 
 void insertionSortMain(struct Node * ptrRoot) {
@@ -213,9 +219,16 @@ void insertionSortMain(struct Node * ptrRoot) {
     ptrHead = treeToList(ptrRoot, ptrHead);
     cout << "Lista antes do Insertion Sort: " << endl;
     printList(ptrHead);
+
+    auto start = chrono::high_resolution_clock::now();
     insertionSort(&ptrHead);
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+
     cout << "Lista depois do Insertion Sort: " << endl;
     printList(ptrHead);
+
+    cout << "Execution time: " << duration.count() << endl;
 }
 
 void shellSortMain(struct Node * ptrRoot) {
@@ -223,9 +236,16 @@ void shellSortMain(struct Node * ptrRoot) {
     ptrHead = treeToList(ptrRoot, ptrHead);
     cout << "Lista antes do Shell Sort: " << endl;
     printList(ptrHead);
+
+    auto start = chrono::high_resolution_clock::now();
     ShellSort(&ptrHead);
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+
     cout << "Lista depois do Shell Sort: " << endl;
     printList(ptrHead);
+
+    cout << "Execution time: " << duration.count() << endl;
 }
 
 void bubbleSortMain(struct Node * ptrRoot) {
@@ -233,9 +253,16 @@ void bubbleSortMain(struct Node * ptrRoot) {
     ptrHead = treeToList(ptrRoot, ptrHead);
     cout << "Lista antes do Bubble Sort: " << endl;
     printList(ptrHead);
+
+    auto start = chrono::high_resolution_clock::now();
     bubbleSort(ptrHead);
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+
     cout << "Lista depois do Bubble Sort: " << endl;
     printList(ptrHead);
+
+    cout << "Execution time: " << duration.count() << endl;
 }
 
 #endif // SORTINGALGORITHMS_HPP_
