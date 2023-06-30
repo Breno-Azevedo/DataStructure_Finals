@@ -32,12 +32,12 @@ int main() {
     //Inserindo nos na arvore
     
     ptrRoot = insertNode(ptrRoot, 5);
+    ptrRoot = insertNode(ptrRoot, 15);
+    ptrRoot = insertNode(ptrRoot, 1);
     ptrRoot = insertNode(ptrRoot, 8);
-    ptrRoot = insertNode(ptrRoot,371);
-    ptrRoot = insertNode(ptrRoot, 18);
-    ptrRoot = insertNode(ptrRoot, 212);
-    ptrRoot = insertNode(ptrRoot, 7);
-    ptrRoot = insertNode(ptrRoot, 2);
+    ptrRoot = insertNode(ptrRoot, 12);
+    ptrRoot = insertNode(ptrRoot, 17);
+    //ptrRoot = insertNode(ptrRoot, 2);
         
 
     /*
@@ -109,7 +109,6 @@ int main() {
     //insertionSort(&ptrHead);
     //printList(ptrHead);
     
-
 
     return 0;
 }

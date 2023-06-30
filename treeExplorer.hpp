@@ -690,6 +690,10 @@ void menu() {
                 iHeight = heightTree(ptrRoot);
                 cout << "A altura da árvore é: " << iHeight << endl;
                 break;
+            case 4:
+                iSize = sizeTree(ptrRoot);
+                cout << "O tamanho da árvore é: " << iSize << endl;
+                break;
         }
     } while (choice != 0);
 }
