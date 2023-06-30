@@ -806,6 +806,9 @@ void menu() {
             case 14:
                 shellSortMain(ptrRoot);
                 break;
+            case 15:
+                cout << "Aqui vai ter a representação gráfica da árvore." << endl;
+                break;
         }
     } while (choice != 0);
 }
