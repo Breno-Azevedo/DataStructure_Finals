@@ -148,6 +148,8 @@ struct Node * buildTreeMain();
 
 bool completeTree(struct Node* ptrRoot);
 
+void completeTreeMain(struct Node * ptrRoot);
+
 bool fullLevel(struct Node* ptrRoot, int iLevel);
 bool perfectTree(struct Node* ptrRoot);
 
