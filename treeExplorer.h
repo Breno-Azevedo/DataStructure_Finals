@@ -60,7 +60,7 @@ struct Node * insertNode(struct Node * ptrRoot, int iPayload);
 struct Node * createTree(const char cList[], int iTamanho);
 
 struct Node * createTreeTxt(const char * fileName);
-void createTreeTxtMain();
+struct Node * createTreeTxtMain();
 
 /**
  * @brief searchNode() - Given the root of a tree and an integer,
@@ -140,7 +140,7 @@ void menu();
 void traverseInorder(struct Node* ptrRoot);
 void traversePreOrder(struct Node* ptrStartingNode);
 struct Node* buildTree(int iSize);
-void buildTreeMain();
+struct Node * buildTreeMain();
 
 bool completeTree(struct Node* ptrRoot);
 

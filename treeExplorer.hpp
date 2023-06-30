@@ -67,7 +67,7 @@ struct Node* buildTree(int iSize) {
     return newTree;
 }
 
-void buildTreeMain() {
+struct Node * buildTreeMain() {
     int iSize;
     cout << "Insira a quantidade de nós que terá a árvore: ";
     cin >> iSize;
@@ -75,6 +75,8 @@ void buildTreeMain() {
     cout << "A árore construída foi: " << endl;
     printTree(ptrRoot2);
     cout << endl;
+
+    return ptrRoot2;
 }
 
 struct Node * createTreeTxt(const char * fileName) {
@@ -97,7 +99,7 @@ struct Node * createTreeTxt(const char * fileName) {
     return ptrRoot;
 }
 
-void createTreeTxtMain() {
+struct Node * createTreeTxtMain() {
     string strFile;
     cout << "Insira o nome do arquivo: ";
     cin >> strFile;
@@ -106,6 +108,8 @@ void createTreeTxtMain() {
     cout << "A árore construída foi: " << endl;
     printTree(ptrRoot1);
     cout << endl;
+
+    return ptrRoot1;
 }
 
 struct Node * searchNode(struct Node * ptrRoot, int iPayload) {
@@ -665,6 +669,9 @@ void buildMenu() {
 
 void menu() {
     int choice;
+    struct Node * ptrRoot = nullptr;
+    int iHeight;
+    int iSize;
     do {
         buildMenu();
         cout << "Insira o número da ação desejada: ";
@@ -674,13 +681,14 @@ void menu() {
                 cout << "Programa finalizado." << endl;
                 break;
             case 1:
-                createTreeTxtMain();
+                ptrRoot = createTreeTxtMain();
                 break;
             case 2:
-                buildTreeMain();
+                ptrRoot = buildTreeMain();
                 break;
             case 3:
-                cout << "Excluindo" << endl;
+                iHeight = heightTree(ptrRoot);
+                cout << "A altura da árvore é: " << iHeight << endl;
                 break;
         }
     } while (choice != 0);

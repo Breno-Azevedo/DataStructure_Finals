@@ -91,12 +91,12 @@ int main() {
     
 
    //criando uma lista encadeada a partir da arvore
-    struct ListNode * ptrHead = nullptr;
+    //struct ListNode * ptrHead = nullptr;
     
     //ptrHead = treeToList(ptrRoot,ptrHead);
     //printList(ptrHead);
 
-    struct DoubleNode * ptrHead2 = nullptr;
+    //struct DoubleNode * ptrHead2 = nullptr;
     
     //ptrHead2 = treeToDoubleList(ptrRoot,ptrHead2);
     //printDoubleList(ptrHead2);
@@ -106,8 +106,8 @@ int main() {
     //selectionSort(&ptrHead);
     //printList(ptrHead);
 
-    insertionSort(&ptrHead);
-    printList(ptrHead);
+    //insertionSort(&ptrHead);
+    //printList(ptrHead);
     
 
 
