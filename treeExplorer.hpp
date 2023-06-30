@@ -78,14 +78,6 @@ struct Node * insertNodeMain(struct Node * ptrRoot) {
     return ptrRoot;
 }
 
-struct Node * createTree(const char cList[], int iTamanho) {
-    struct Node * ptrRoot = nullptr;
-    for (int i = 0; i < iTamanho; i++) {
-        ptrRoot = insertNode(ptrRoot, cList[i]);
-    }
-    return ptrRoot;
-}
-
 struct Node* buildTree(int iSize) {
     int* iArray = new int[iSize];
     struct Node * newTree = nullptr;
@@ -217,32 +209,6 @@ bool fullLevel(struct Node* ptrRoot, int iLevel) {
 
     return (leftSubtree && rightSubtree);    
     
-}
-
-//função que percorre a lista pelo trajeto Inorder
-//primeiro vemos tudo à esquerda, depois o nó que estamos e depois tudo à direita
-void traverseInorder(struct Node* ptrRoot)
-{
-    if(ptrRoot != nullptr)
-    {
-        //Função que usa recursao
-        traverseInorder(ptrRoot->ptrLeft);
-        cout << " " << ptrRoot->iPayload;
-        traverseInorder(ptrRoot->ptrRight);
-    }
-}
-
-//primeiro vemos o nó que estamos, vendo tudo à esquerda e depois tudo à direita
-void traversePreOrder(struct Node* ptrStartingNode)
-{
-    if(ptrStartingNode != nullptr)
-    {
-        //Função que usa recursão
-        //o caso base é o nullptr
-        cout << " " << ptrStartingNode->iPayload;
-        traversePreOrder(ptrStartingNode->ptrLeft);
-        traversePreOrder(ptrStartingNode->ptrRight);
-    }
 }
 
 bool completeTree(struct Node* ptrRoot)

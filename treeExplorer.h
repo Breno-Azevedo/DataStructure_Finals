@@ -77,14 +77,6 @@ struct ListNode* createListNode(int iPayload);
 **/
 struct Node * insertNode(struct Node * ptrRoot, int iPayload);
 
-/**
- * @brief createTree() - Given a char list, it creates a
- * BFS with the elements of the list.
- * 
- * @param cList 
- * @return Node* 
-**/
-struct Node * createTree(const char cList[], int iTamanho);
 
 /**
  * @brief createTreeTxt() - Given a txt file, it creates a
@@ -220,22 +212,6 @@ void printList(struct ListNode* ptrHead);
  * @return struct ListNode* 
  */
 struct ListNode * insertList(struct ListNode **ptrHead, int iValue);
-
-
-// Functions headers for the treeExplorer.hpp - Traversels
-/**
- * @brief traverseInorder() - Traverses the tree in the Inorder algorithm.
- * 
- * @param ptrRoot 
- */
-void traverseInorder(struct Node* ptrRoot);
-
-/**
- * @brief traversePreOrder() - Traverses the tree in the Preorder algorithm.
- * 
- * @param ptrStartingNode 
- */
-void traversePreOrder(struct Node* ptrStartingNode);
 
 /**
  * @brief buildTree() - Builds a tree with the given size.
