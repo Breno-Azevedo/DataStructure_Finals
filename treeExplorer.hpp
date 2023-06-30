@@ -54,8 +54,7 @@ struct Node * createTree(const char cList[], int iTamanho) {
     return ptrRoot;
 }
 
-struct Node* buildTree(int iSize)
-{
+struct Node* buildTree(int iSize) {
     int* iArray = new int[iSize];
     struct Node * newTree = nullptr;
 
@@ -64,10 +63,18 @@ struct Node* buildTree(int iSize)
         cout << "Elemento " << i << ": ";
         cin >> iArray[i]; 
         newTree = insertNode(newTree, iArray[i]);        
-        
     }
-    return newTree;   
+    return newTree;
+}
 
+void buildTreeMain() {
+    int iSize;
+    cout << "Insira a quantidade de nós que terá a árvore: ";
+    cin >> iSize;
+    struct Node* ptrRoot2 = buildTree(iSize);
+    cout << "A árore construída foi: " << endl;
+    printTree(ptrRoot2);
+    cout << endl;
 }
 
 struct Node * createTreeTxt(const char * fileName) {
@@ -95,9 +102,9 @@ void createTreeTxtMain() {
     cout << "Insira o nome do arquivo: ";
     cin >> strFile;
     const char * fileName = strFile.c_str();
-    struct Node * ptrRoot3 = createTreeTxt(fileName);
-    cout << "A árore construída é: " << endl;
-    printTree(ptrRoot3);
+    struct Node * ptrRoot1 = createTreeTxt(fileName);
+    cout << "A árore construída foi: " << endl;
+    printTree(ptrRoot1);
     cout << endl;
 }
 
@@ -639,7 +646,7 @@ void menu() {
                 createTreeTxtMain();
                 break;
             case 2:
-                cout << "Pesquisando" << endl;
+                buildTreeMain();
                 break;
             case 3:
                 cout << "Excluindo" << endl;

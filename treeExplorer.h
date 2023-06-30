@@ -16,13 +16,11 @@ struct Node {
     struct Node * ptrRight;
 };
 
-struct DoubleNode
-{
+struct DoubleNode {
     int iPayload;
     struct DoubleNode* ptrNext;
     struct DoubleNode* ptrPrevious;
 };
-
 
 struct ListNode {
     int iPayload;
@@ -141,6 +139,7 @@ void menu();
 void traverseInorder(struct Node* ptrRoot);
 void traversePreOrder(struct Node* ptrStartingNode);
 struct Node* buildTree(int iSize);
+void buildTreeMain();
 
 bool completeTree(struct Node* ptrRoot);
 
