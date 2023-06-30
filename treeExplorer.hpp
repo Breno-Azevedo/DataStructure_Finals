@@ -86,7 +86,11 @@ struct Node* buildTree(int iSize) {
     for (int i = 1; i < iSize+1; i++) {
         cout << "Element " << i << ": ";
         cin >> iArray[i]; 
-        newTree = insertNode(newTree, iArray[i]);        
+        if(searchNode(newTree, iArray[i])!=0){
+            cout << "Invalid Number. Please enter a different number. " << endl;
+             i--;
+        }
+        else newTree = insertNode(newTree, iArray[i]);        
     }
     return newTree;
 }
