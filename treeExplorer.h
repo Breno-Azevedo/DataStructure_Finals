@@ -62,6 +62,7 @@ struct Node * insertNode(struct Node * ptrRoot, int iPayload);
 struct Node * createTree(const char cList[], int iTamanho);
 
 struct Node * createTreeTxt(const char * fileName);
+void createTreeTxtMain();
 
 /**
  * @brief searchNode() - Given the root of a tree and an integer,

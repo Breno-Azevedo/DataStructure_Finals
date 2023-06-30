@@ -90,6 +90,17 @@ struct Node * createTreeTxt(const char * fileName) {
     return ptrRoot;
 }
 
+void createTreeTxtMain() {
+    string strFile;
+    cout << "Insira o nome do arquivo: ";
+    cin >> strFile;
+    const char * fileName = strFile.c_str();
+    struct Node * ptrRoot3 = createTreeTxt(fileName);
+    cout << "A árore construída é: " << endl;
+    printTree(ptrRoot3);
+    cout << endl;
+}
+
 struct Node * searchNode(struct Node * ptrRoot, int iPayload) {
     if (ptrRoot == nullptr) return nullptr;
     if (ptrRoot->iPayload == iPayload) return ptrRoot;
@@ -241,8 +252,6 @@ Node* SearchElement(Node* ptrRoot, int iPayload) {
     return nullptr;
 }
 
-
-
 int sizeTree(struct Node * ptrRoot) {
     if (ptrRoot == nullptr) return 0;
 
@@ -311,74 +320,6 @@ struct Node* deleteNode(struct Node* ptrRoot, int iData)
 
      return ptrRoot;
  }   
-
-
-void createUpperBound(int iSize) {
-    cout << char(201);
-    for(int i = 0; i < iSize; i++) cout << char(205);
-    cout << char(187) << endl;
-}
-
-void createLowerBound(int iSize) {
-    cout << char(200);
-    for(int i = 0; i < iSize; i++) cout << char(205);
-    cout << char(188) << endl;
-}
-
-void createMenuItem(const char cArray[], int iSize) {
-    cout << char(186);
-    cout << setw(iSize) << left << cArray;
-    cout << char(186) << endl;
-}
-
-void createHLine(int iSize) {
-    cout << char(204);
-    for(int i = 0; i < iSize; i++) cout << char(205);
-    cout << char(185) << endl;
-}
-
-
-
-
-/*APENAS UM MENU TESTE*/
-
-void buildMenu() {
-    int iSize = 60;
-
-    createUpperBound(iSize);
-    createMenuItem("Menu Principal", iSize);
-    createHLine(iSize);
-    createMenuItem("1 - Criar uma BST a partir de um .txt", iSize);
-    createMenuItem("2 - Criar uma BST a partir de inputs", iSize);
-    createMenuItem("3 - Informar altura da BST", iSize);
-    createMenuItem("4 - Informar tamanho da BST", iSize);
-    createMenuItem("5 - Inserir um elemento na BST", iSize);
-    createMenuItem("6 - Remover um elemento na BST", iSize);
-    createMenuItem("7 - Buscar o endereco de memoria um elemento na BST", iSize);
-    createLowerBound(iSize);
-}
-
-void menu() {
-    int choice;
-    do {
-        buildMenu();
-        cin >> choice;
-        switch (choice) {
-            case 0:
-                cout << "Tchau" << endl;
-                break;
-            case 1:
-                cout << "Cadastrando" << endl;
-                break;
-            case 2:
-                cout << "Pesquisando" << endl;
-                break;
-            case 3:
-                cout << "Excluindo" << endl;
-                break;
-        }
-    } while (choice != 0);
-}
 
 void printList(struct ListNode* ptrHead) {
     if (ptrHead == nullptr) {
@@ -533,15 +474,11 @@ void insertionSort(struct ListNode** ptrHead) {
             ptrCurrent->ptrNext = sortedCurrent->ptrNext;
             sortedCurrent->ptrNext = ptrCurrent;
         }
-
         ptrCurrent = next;
     }
-
     *ptrHead = sortedHead;
-
     free(ptrCurrent);
 }
-
 
 struct ListNode* FindNodeByPos(struct ListNode* ptrHead, int position) {
     struct ListNode* ptrNode = ptrHead;
@@ -637,5 +574,80 @@ void bubbleSort(struct DoubleNode** head)
     }
 }
 */
+
+/*FUNÇÕES DO MENU*/
+void createUpperBound(int iSize) {
+    cout << char(201);
+    for(int i = 0; i < iSize; i++) cout << char(205);
+    cout << char(187) << endl;
+}
+
+void createLowerBound(int iSize) {
+    cout << char(200);
+    for(int i = 0; i < iSize; i++) cout << char(205);
+    cout << char(188) << endl;
+}
+
+void createMenuItem(const char cArray[], int iSize) {
+    cout << char(186);
+    cout << setw(iSize) << left << cArray;
+    cout << char(186) << endl;
+}
+
+void createHLine(int iSize) {
+    cout << char(204);
+    for(int i = 0; i < iSize; i++) cout << char(205);
+    cout << char(185) << endl;
+}
+
+void buildMenu() {
+    int iSize = 70;
+
+    createUpperBound(iSize);
+    createMenuItem("Menu Principal", iSize);
+    createHLine(iSize);
+    createMenuItem("1 - Criar uma BST a partir de um arquivo de texto (.txt).", iSize);
+    createMenuItem("2 - Criar uma BST a partir de inputs.", iSize);
+    createMenuItem("3 - Informar altura da BST.", iSize);
+    createMenuItem("4 - Informar tamanho da BST.", iSize);
+    createMenuItem("5 - Inserir um elemento na BST.", iSize);
+    createMenuItem("6 - Remover um elemento na BST.", iSize);
+    createMenuItem("7 - Buscar o endereço de memória um elemento na BST.", iSize);
+    createMenuItem("8 - Informar se a BST é completa.", iSize);
+    createMenuItem("9 - Informar se a BST é perfeita.", iSize);
+    createMenuItem("10 - Exibir a BST através do algoritmo Breadth First Search.", iSize);
+    createMenuItem("11 - Converter a BST em lista e ordená-la pelo Bubble Sort.", iSize);
+    createMenuItem("12 - Converter a BST em lista e ordená-la pelo Selection Sort.", iSize);
+    createMenuItem("13 - Converter a BST em lista e ordená-la pelo Insertion Sort.", iSize);
+    createMenuItem("14 - Converter a BST em lista e ordená-la pelo Shell Sort.", iSize);
+    createMenuItem("15 - Representação gráfica da ordenação.", iSize);
+    createMenuItem("0 - Sair.", iSize);
+    createLowerBound(iSize);
+}
+
+void menu() {
+    int choice;
+    do {
+        buildMenu();
+        cout << "Insira o número da ação desejada: ";
+        cin >> choice;
+        switch (choice) {
+            case 0:
+                cout << "Programa finalizado." << endl;
+                break;
+            case 1:
+                createTreeTxtMain();
+                break;
+            case 2:
+                cout << "Pesquisando" << endl;
+                break;
+            case 3:
+                cout << "Excluindo" << endl;
+                break;
+        }
+    } while (choice != 0);
+}
+
+
 
 #endif // TREEEXPLORER_HPP_

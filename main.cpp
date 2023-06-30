@@ -21,9 +21,9 @@ using namespace std;
 
 int main() {
     
-    //menu();
+    menu();
 
-    
+    /*
     cout << "\n" << endl;
 
     //Criando um no
@@ -100,6 +100,8 @@ int main() {
 
     insertionSort(&ptrHead);
     printList(ptrHead);
+    */
+
 
     return 0;
 }
