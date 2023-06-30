@@ -751,6 +751,10 @@ void menu() {
             case 9:
                 perfectTreeMain(ptrRoot);
                 break;
+            case 10:
+                cout << "Árvore exibida pelo algoritmo Breadth First Search: " << endl;
+                Breadth_First_Search(ptrRoot);
+                break;
         }
     } while (choice != 0);
 }
