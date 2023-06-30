@@ -102,6 +102,10 @@ void printList(struct ListNode* ptrHead);
 struct ListNode * insertList(struct ListNode **ptrHead, int iValue);
 void SelectionSort(struct ListNode** ptrHead);
 
+struct ListNode* FindNodeByPos(struct ListNode* ptrHead, int position);
+
+void ShellSort(struct ListNode** ptrHead);
+
 //MENU ASCII
 /*Cria a linha de cima*/
 void createUpperBound(int iSize);
