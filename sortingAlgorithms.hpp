@@ -19,7 +19,7 @@
 
 void selectionSort(struct ListNode** ptrHead) {
     if (ptrHead == nullptr) {
-        cout << "Lista vazia." << endl; //não está saindo
+        std::cout << "Lista vazia." << std::endl;
         return;
     }
 
@@ -40,7 +40,8 @@ void selectionSort(struct ListNode** ptrHead) {
         ptrAux = ptrTemp->ptrNext;
 
         for (int iInnerLoop = iOuterLoop + 1; iInnerLoop < iLength; iInnerLoop++) {
-            if (ptrAux->iPayload < ptrMin->iPayload) ptrMin = ptrAux;
+            if (ptrAux->iPayload < ptrMin->iPayload)
+                ptrMin = ptrAux;
             ptrAux = ptrAux->ptrNext;
         }
 
@@ -49,10 +50,22 @@ void selectionSort(struct ListNode** ptrHead) {
         ptrMin->iPayload = iTemp;
 
         ptrTemp = ptrTemp->ptrNext;
+
+        // Print the list after each iteration
+        /*
+        std::cout << "Intermediate list: ";
+        struct ListNode* ptrCurrent = *ptrHead;
+        while (ptrCurrent != nullptr) {
+            std::cout << ptrCurrent->iPayload << " ";
+            ptrCurrent = ptrCurrent->ptrNext;
+        }
+        std::cout << std::endl;
+        */
     }
 
     free(ptrAux);
 }
+
 
 void insertionSort(struct ListNode** ptrHead) {
     if (*ptrHead == nullptr) {
@@ -78,9 +91,21 @@ void insertionSort(struct ListNode** ptrHead) {
             sortedCurrent->ptrNext = ptrCurrent;
         }
         ptrCurrent = next;
+
+        // Print the list after each iteration
+        /*
+        std::cout << "Intermediate list: ";
+        struct ListNode* ptrPrint = sortedHead;
+        while (ptrPrint != nullptr) {
+            std::cout << ptrPrint->iPayload << " ";
+            ptrPrint = ptrPrint->ptrNext;
+        }
+        std::cout << std::endl;
+        */
     }
     *ptrHead = sortedHead;
 }
+
 
 struct ListNode* FindNodeByPos(struct ListNode* ptrHead, int position) {
     struct ListNode* ptrNode = ptrHead;
@@ -89,9 +114,11 @@ struct ListNode* FindNodeByPos(struct ListNode* ptrHead, int position) {
     return ptrNode;
 }
 
+#include <iostream>
+
 void ShellSort(struct ListNode** ptrHead) {
-    // Empty list or list with only one node
-    if (*ptrHead == nullptr || (*ptrHead)->ptrNext == nullptr) return;
+    if (*ptrHead == nullptr || (*ptrHead)->ptrNext == nullptr)
+        return;
 
     int length = 0;
     struct ListNode* ptrTemp = *ptrHead;
@@ -115,40 +142,59 @@ void ShellSort(struct ListNode** ptrHead) {
                 ptrNodeJ = FindNodeByPos(*ptrHead, iOuterLoop - gap);
             }
             ptrNodeI->iPayload = temp;
+
+            // Print the list after each iteration
+            /*
+            cout << "Intermediate list: ";
+            struct ListNode* ptrCurrent = *ptrHead;
+            while (ptrCurrent != nullptr) {
+                cout << ptrCurrent->iPayload << " ";
+                ptrCurrent = ptrCurrent->ptrNext;
+            }
+            cout << endl;
+            */
         }
         gap /= 2;
     }
 }
 
+
 //bubblesort com dados
-void buBBleSort(struct DoubleNode** head)
-{
-    struct DoubleNode* current = (*head);    
+void buBBleSort(struct DoubleNode** head) {
+    struct DoubleNode* current = (*head);
     int iLength = 0;
-    while ((*head) != nullptr)
-    {
+    while ((*head) != nullptr) {
         iLength++;
-        (*head) = (*head) -> ptrNext;
+        (*head) = (*head)->ptrNext;
     }
-    
+
     (*head) = current;
-    
-    for(int iOuterLoop = 0; iOuterLoop < iLength - 1; iOuterLoop++)
-    {
+
+    for (int iOuterLoop = 0; iOuterLoop < iLength - 1; iOuterLoop++) {
         current = (*head);
-        
-        for(int iInnerLoop = 0; iInnerLoop < iLength - 1; iInnerLoop++)
-        {
-            if(current -> iPayload > current -> ptrNext -> iPayload)
-            {
+
+        for (int iInnerLoop = 0; iInnerLoop < iLength - 1; iInnerLoop++) {
+            if (current->iPayload > current->ptrNext->iPayload) {
                 int iTemp = current->iPayload;
                 current->iPayload = current->ptrNext->iPayload;
                 current->ptrNext->iPayload = iTemp;
             }
             current = current->ptrNext;
         }
+
+        // Print the list after each iteration
+        /*
+        std::cout << "Intermediate list: ";
+        struct DoubleNode* ptrPrint = (*head);
+        while (ptrPrint != nullptr) {
+            std::cout << ptrPrint->iPayload << " ";
+            ptrPrint = ptrPrint->ptrNext;
+        }
+        std::cout << std::endl;
+        */
     }
 }
+
 
 //bubblesort com ponteiros
 
