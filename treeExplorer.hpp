@@ -525,12 +525,10 @@ void ShellSort(struct ListNode** ptrHead) {
     }
 }
 
-//bubblesort com ponteiros
-/*
-void bubbleSort(struct DoubleNode** head)
+//bubblesort com dados
+void buBBleSort(struct DoubleNode** head)
 {
-    struct DoubleNode* current = (*head);
-    
+    struct DoubleNode* current = (*head);    
     int iLength = 0;
     while ((*head) != nullptr)
     {
@@ -540,22 +538,54 @@ void bubbleSort(struct DoubleNode** head)
     
     (*head) = current;
     
-    for(int iOuterLoop = 0; iOuterLoop < iLength - 2; iOuterLoop++)
+    for(int iOuterLoop = 0; iOuterLoop < iLength - 1; iOuterLoop++)
     {
         current = (*head);
         
-        for(int iInnerLoop = 0; iInnerLoop < iLength - 2; iInnerLoop++)
+        for(int iInnerLoop = 0; iInnerLoop < iLength - 1; iInnerLoop++)
         {
-            if(comparison(current->iPayload,current->ptrNext->iPayload) == false)
+            if(current -> iPayload > current -> ptrNext -> iPayload)
             {
-                if(current == (*head)) //pro primeiro nó
+                int iTemp = current->iPayload;
+                current->iPayload = current->ptrNext->iPayload;
+                current->ptrNext->iPayload = iTemp;
+            }
+            current = current->ptrNext;
+        }
+    }
+}
+
+//bubblesort com ponteiros
+
+void bubbleSort(struct DoubleNode* head)
+{
+    struct DoubleNode* current = (head);
+    
+    int iLength = 0;
+    while ((head) != nullptr)
+    {
+        iLength++;
+        (head) = (head) -> ptrNext;
+    }
+    
+    (head) = current;
+    
+    for(int iOuterLoop = 0; iOuterLoop < iLength - 1; iOuterLoop++)
+    {
+        current = (head);
+        
+        for(int iInnerLoop = 0; iInnerLoop < iLength - 1; iInnerLoop++)
+        {
+            if(current -> iPayload > current -> ptrNext ->iPayload)
+            {
+                if(current == (head)) //pro primeiro nó
                 {
                     current->ptrNext->ptrPrevious = nullptr;
                     current->ptrPrevious = current->ptrNext;
                     current->ptrNext->ptrNext->ptrPrevious = current;
                     current->ptrNext = current->ptrNext->ptrNext;
                     current->ptrPrevious->ptrNext = current;
-                    (*head) = current->ptrPrevious;
+                    (head) = current->ptrPrevious;
                 }
                 else if(current->ptrNext->ptrNext == nullptr) //pro penúltimo nó
                 {
@@ -575,12 +605,13 @@ void bubbleSort(struct DoubleNode** head)
                     current->ptrPrevious = current->ptrPrevious->ptrNext;
                     current->ptrPrevious->ptrNext = current;
                 }
+               
             }
-            current = current->ptrNext;
+            current = current -> ptrNext;
         }
     }
 }
-*/
+
 
 /*FUNÇÕES DO MENU*/
 void createUpperBound(int iSize) {

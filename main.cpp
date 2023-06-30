@@ -32,14 +32,15 @@ int main() {
     //Inserindo nos na arvore
     
     ptrRoot = insertNode(ptrRoot, 5);
-    ptrRoot = insertNode(ptrRoot, 15);
-    ptrRoot = insertNode(ptrRoot, 1);
     ptrRoot = insertNode(ptrRoot, 8);
-    ptrRoot = insertNode(ptrRoot, 12);
-    ptrRoot = insertNode(ptrRoot, 17);
+    ptrRoot = insertNode(ptrRoot,371);
     ptrRoot = insertNode(ptrRoot, 18);
+    ptrRoot = insertNode(ptrRoot, 212);
+    ptrRoot = insertNode(ptrRoot, 7);
+    ptrRoot = insertNode(ptrRoot, 2);
         
 
+    /*
     cout << "ptrRoot->iPayload: " << ptrRoot->iPayload << endl;
     cout << "ptrRoot->ptrLeft->iPayload: " << ptrRoot->ptrLeft->iPayload << endl;
     cout << "ptrRoot->ptrRight->iPayload: " << ptrRoot->ptrRight->iPayload << endl;
@@ -55,6 +56,7 @@ int main() {
     //Printando a arvore
     printTree(ptrRoot);
     cout << endl;
+    
 
     //Achando o endereco de um no da arvore
     struct Node * ptrNode = searchNode(ptrRoot2, 10);
@@ -64,6 +66,8 @@ int main() {
     } else {
         cout << "Node not found!" << endl;
     }
+
+    
 
     //Criando um arvore a partir de .txt
     struct Node * ptrRoot3 = createTreeTxt("test.txt");
@@ -82,17 +86,21 @@ int main() {
 
     printTree(ptrRoot);
     cout << endl;
+
+    */
     
 
    //criando uma lista encadeada a partir da arvore
     struct ListNode * ptrHead = nullptr;
     
-    ptrHead = treeToList(ptrRoot,ptrHead);
-    printList(ptrHead);
+    //ptrHead = treeToList(ptrRoot,ptrHead);
+    //printList(ptrHead);
 
-    //struct DoubleNode * ptrHead2 = nullptr;
+    struct DoubleNode * ptrHead2 = nullptr;
     
     //ptrHead2 = treeToDoubleList(ptrRoot,ptrHead2);
+    //printDoubleList(ptrHead2);
+    //bubbleSort(&ptrHead2);
     //printDoubleList(ptrHead2);
 
     //selectionSort(&ptrHead);
@@ -100,7 +108,7 @@ int main() {
 
     insertionSort(&ptrHead);
     printList(ptrHead);
-    */
+    
 
 
     return 0;
