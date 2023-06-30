@@ -369,28 +369,35 @@ void BFSMain(struct Node * ptrRoot) {
     cout << "Execution time: " << duration.count() << endl;
 }
 
-struct Node* SearchElement(struct Node* ptrRoot, int iPayload) {
+Node* SearchElement(Node* ptrRoot, int iPayload) {
     if (ptrRoot == nullptr) {
         return nullptr;
     }
 
-    queue<Node*> qQueue;
-    qQueue.push(ptrRoot);
+    Queue queue;
+    queue.ptrFront = nullptr;
+    queue.ptrRear = nullptr;
+    queuePush(&queue, ptrRoot);
 
-    while (!qQueue.empty()) {
-        Node* ptrCurrentNode = qQueue.front();
-        qQueue.pop();
+    while (!queueEmpty(&queue)) {
+        Node* ptrCurrentNode = queueFront(&queue);
+        queuePop(&queue);
 
         if (ptrCurrentNode->iPayload == iPayload) {
-            cout << "The node's memory address: " << ptrCurrentNode << endl;
+            std::cout << "The node's memory address: " << ptrCurrentNode << std::endl;
             return ptrCurrentNode;
         }
 
-        if (ptrCurrentNode->ptrLeft != nullptr) qQueue.push(ptrCurrentNode->ptrLeft);
-        if (ptrCurrentNode->ptrRight != nullptr) qQueue.push(ptrCurrentNode->ptrRight);
+        if (ptrCurrentNode->ptrLeft != nullptr) {
+            queuePush(&queue, ptrCurrentNode->ptrLeft);
+        }
+
+        if (ptrCurrentNode->ptrRight != nullptr) {
+            queuePush(&queue, ptrCurrentNode->ptrRight);
+        }
     }
 
-    cout << "Element not found." << endl;
+    std::cout << "Element not found." << std::endl;
     return nullptr;
 }
 
