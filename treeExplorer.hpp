@@ -20,6 +20,7 @@
 #include <iomanip>
 #include <cmath>
 #include <bits/stdc++.h>
+#include <chrono>
 
 using namespace std;
 
@@ -126,10 +127,18 @@ struct Node * createTreeTxtMain() {
     cout << "Insira o nome do arquivo: ";
     cin >> strFile;
     const char * fileName = strFile.c_str();
+
+    auto start = chrono::high_resolution_clock::now();
     struct Node * ptrRoot1 = createTreeTxt(fileName);
+    auto stop = chrono::high_resolution_clock::now();
+
+    auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+
     cout << "A árore construída foi: " << endl;
     printTree(ptrRoot1);
     cout << endl;
+
+    cout << "O tempo de execução foi: " << duration.count() << endl;
 
     return ptrRoot1;
 }
