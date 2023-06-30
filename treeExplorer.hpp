@@ -224,8 +224,7 @@ void completeTreeMain(struct Node * ptrRoot) {
 //função que diz se a árvore é perfeita
 //usa a função de altura e de completa em níveis
 //analisa todos os níveis e se todos forem completos retorna que a árvore é perfeita
-bool perfectTree(struct Node* ptrRoot)
-{
+bool perfectTree(struct Node* ptrRoot) {
     int iHeight = heightTree(ptrRoot);
 
     for(int i = 1; i <= iHeight ; i++)
@@ -233,6 +232,12 @@ bool perfectTree(struct Node* ptrRoot)
         if(fullLevel(ptrRoot,i) != 1)return false;
     }
     return true;
+}
+
+void perfectTreeMain(struct Node * ptrRoot) {
+    bool is_perfect = perfectTree(ptrRoot);
+    if(is_perfect == true) cout << "A árvore é perfeita." << endl;
+    else cout << "A árvore não é perfeita." << endl;
 }
 
 void Breadth_First_Search(struct Node* ptrRoot) {
@@ -742,6 +747,9 @@ void menu() {
                 break;
             case 8:
                 completeTreeMain(ptrRoot);
+                break;
+            case 9:
+                perfectTreeMain(ptrRoot);
                 break;
         }
     } while (choice != 0);
