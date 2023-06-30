@@ -16,17 +16,15 @@ struct Node {
     struct Node * ptrRight;
 };
 
-struct DoubleNode
-{
-    int iPayload;
-    struct DoubleNode* ptrNext;
-    struct DoubleNode* ptrPrevious;
-};
-
-
 struct ListNode {
     int iPayload;
     struct ListNode * ptrNext;
+};
+
+struct DoubleNode{
+    int iPayload;
+    struct DoubleNode* ptrNext;
+    struct DoubleNode* ptrPrevious;
 };
 
 /**
@@ -118,6 +116,7 @@ struct DoubleNode * insertDouble(struct DoubleNode ** ptrHead, int iValue);
 void selectionSort(struct ListNode** ptrHead);
 void insertionSort(struct ListNode** ptrHead);
 void bubbleSort(struct Node** head);
+void buBBleSort(struct DoubleNode** head);
 
 struct ListNode* FindNodeByPos(struct ListNode* ptrHead, int position);
 
