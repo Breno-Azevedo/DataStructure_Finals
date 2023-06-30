@@ -14,6 +14,7 @@
 
 #include <iostream>
 
+// Structs
 struct Node {
     /**
      * @brief Basic node structure for the tree.
@@ -25,24 +26,26 @@ struct Node {
     struct Node * ptrRight;
 };
 
-/**
- * @brief Basic node structure for the list.
- * The lists are used to sort the tree.
- */
 struct ListNode {
+    /**
+     * @brief Basic node structure for the list.
+     * The lists are used to sort the tree.
+     */
     int iPayload;
     struct ListNode * ptrNext;
 };
 
-/**
- * @brief Basic node structure for the double list.
- * This struct is also used to sort the tree.
- */
 struct DoubleNode{
+    /**
+     * @brief Basic node structure for the double list.
+     * This struct is also used to sort the tree.
+     */
     int iPayload;
     struct DoubleNode* ptrNext;
     struct DoubleNode* ptrPrevious;
 };
+
+// Functions headers for the treeExplorer.cpp
 
 /**
  * @brief createNode() - Creates a new node with the given payload.
@@ -80,15 +83,6 @@ struct DoubleNode* createDoubleNode(int iPayload);
 struct Node * insertNode(struct Node * ptrRoot, int iPayload);
 
 /**
- * @brief insertNodeMain() - Calls the insertNode() function
- * on the main function via CLI.
- * 
- * @param ptrRoot 
- * @return struct Node* 
- */
-struct Node * insertNodeMain(struct Node * ptrRoot);
-
-/**
  * @brief createTree() - Given a char list, it creates a
  * BFS with the elements of the list.
  * 
@@ -105,14 +99,6 @@ struct Node * createTree(const char cList[], int iTamanho);
  * @return struct Node* 
  */
 struct Node * createTreeTxt(const char * fileName);
-
-/**
- * @brief createTreeTxtMain() - Calls the createTreeTxt() function
- * on the main function via CLI.
- * 
- * @return struct Node* 
- */
-struct Node * createTreeTxtMain();
 
 /**
  * @brief searchNode() - Given the root of a tree and an integer,
@@ -150,15 +136,6 @@ void Breadth_First_Search(struct Node * ptrRoot);
 struct Node * SearchElement(struct Node* ptrRoot, int iPayload);
 
 /**
- * @brief searchElementMain() - Calls the searchElement() function
- * on the main function via CLI.
- * 
- * @param ptrRoot 
- * @return struct Node* 
- */
-struct Node * searchElementMain(struct Node * ptrRoot);
-
-/**
  * @brief heightTree() - Returns the height of the tree.
  * 
  * @param ptrRoot 
@@ -191,15 +168,6 @@ struct Node* lesserNode(struct Node* ptrRoot);
  * @return struct Node* 
  */
 struct Node* deleteNode(struct Node* ptrRoot, int iData);
-
-/**
- * @brief deleteNodeMain() - Calls the deleteNode() function
- * on the main function via CLI.
- * 
- * @param ptrRoot 
- * @return struct Node* 
- */
-struct Node * deleteNodeMain(struct Node * ptrRoot);
 
 /**
  * @brief treeToList() - Given a tree, it creates a list with the elements
@@ -244,6 +212,65 @@ struct DoubleNode * treeToDoubleList(struct Node * ptrStartingNode, struct Doubl
  */
 void printDoubleList(struct DoubleNode* ptrHead);
 
+// Functions headers for the treeExplorer.hpp - Traversels
+/**
+ * @brief traverseInorder() - Traverses the tree in the Inorder algorithm.
+ * 
+ * @param ptrRoot 
+ */
+void traverseInorder(struct Node* ptrRoot);
+
+/**
+ * @brief traversePreOrder() - Traverses the tree in the Preorder algorithm.
+ * 
+ * @param ptrStartingNode 
+ */
+void traversePreOrder(struct Node* ptrStartingNode);
+
+/**
+ * @brief buildTree() - Builds a tree with the given size.
+ * 
+ * @param iSize 
+ * @return struct Node* 
+ */
+struct Node* buildTree(int iSize);
+
+/**
+ * @brief completeTree() - Checks if the tree is complete.
+ * A complete tree is a tree where all the levels are full,
+ * except for the last one, which is filled from left to right.
+ * 
+ * @param ptrRoot 
+ * @return true 
+ * @return false 
+ */
+bool completeTree(struct Node* ptrRoot);
+
+/**
+ * @brief fullLevel() - Checks if the given level is full.
+ * A full level is a level where all the nodes are filled.
+ * Auxiliary function for the perfectTree().
+ * 
+ * @param ptrRoot 
+ * @param iLevel 
+ * @return true 
+ * @return false 
+ */
+bool fullLevel(struct Node* ptrRoot, int iLevel);
+
+/**
+ * @brief perfectTree() - Checks if the tree is perfect.
+ * A perfect tree is a tree where all the levels are full.
+ * 
+ * @param ptrRoot 
+ * @return true 
+ * @return false 
+ */
+bool perfectTree(struct Node* ptrRoot);
+
+
+// Functions headers for the sortingAlgorithms.cpp
+
 /**
  * @brief insertDouble() - Inserts a new node into the double list.
  * 
@@ -261,27 +288,11 @@ struct DoubleNode * insertDouble(struct DoubleNode ** ptrHead, int iValue);
 void selectionSort(struct ListNode** ptrHead);
 
 /**
- * @brief selectionSortMain() - Calls the selectionSort() function
- * on the main function via CLI.
- * 
- * @param ptrRoot 
- */
-void selectionSortMain(struct Node * ptrRoot);
-
-/**
  * @brief insertionSort() - Sorts the list using the insertion sort algorithm.
  * 
  * @param ptrHead 
  */
 void insertionSort(struct ListNode** ptrHead);
-
-/**
- * @brief insertionSortMain() - Calls the insertionSort() function
- * on the main function via CLI.
- * 
- * @param ptrRoot 
- */
-void insertionSortMain(struct Node * ptrRoot);
 
 /**
  * @brief bubbleSort() - Sorts the list using the bubble sort algorithm.
@@ -297,13 +308,6 @@ void bubbleSort(struct DoubleNode* head);
  */
 void buBBleSort(struct DoubleNode** head);
 
-/**
- * @brief bubbleSortMain() - Calls the bubbleSort() function
- * on the main function via CLI.
- * 
- * @param ptrRoot 
- */
-void bubbleSortMain(struct Node * ptrRoot);
 
 /**
  * @brief FindNodeByPos() - Given a list and a position, it returns the node
@@ -322,6 +326,66 @@ struct ListNode* FindNodeByPos(struct ListNode* ptrHead, int position);
  */
 void ShellSort(struct ListNode** ptrHead);
 
+// Functions headers for the menu.cpp
+
+/**
+ * @brief insertNodeMain() - Calls the insertNode() function
+ * on the main function via CLI.
+ * 
+ * @param ptrRoot 
+ * @return struct Node* 
+ */
+struct Node * insertNodeMain(struct Node * ptrRoot);
+
+/**
+ * @brief createTreeTxtMain() - Calls the createTreeTxt() function
+ * on the main function via CLI.
+ * 
+ * @return struct Node* 
+ */
+struct Node * createTreeTxtMain();
+
+/**
+ * @brief searchElementMain() - Calls the searchElement() function
+ * on the main function via CLI.
+ * 
+ * @param ptrRoot 
+ * @return struct Node* 
+ */
+struct Node * searchElementMain(struct Node * ptrRoot);
+
+/**
+ * @brief selectionSortMain() - Calls the selectionSort() function
+ * on the main function via CLI.
+ * 
+ * @param ptrRoot 
+ */
+void selectionSortMain(struct Node * ptrRoot);
+
+/**
+ * @brief buildTreeMain() - Calls the buildTree() function
+ * on the main function via CLI.
+ * 
+ * @return struct Node* 
+ */
+struct Node * buildTreeMain();
+
+/**
+ * @brief insertionSortMain() - Calls the insertionSort() function
+ * on the main function via CLI.
+ * 
+ * @param ptrRoot 
+ */
+void insertionSortMain(struct Node * ptrRoot);
+
+/**
+ * @brief bubbleSortMain() - Calls the bubbleSort() function
+ * on the main function via CLI.
+ * 
+ * @param ptrRoot 
+ */
+void bubbleSortMain(struct Node * ptrRoot);
+
 /**
  * @brief shellSortMain() - Calls the ShellSort() function
  * on the main function via CLI.
@@ -330,32 +394,41 @@ void ShellSort(struct ListNode** ptrHead);
  */
 void shellSortMain(struct Node * ptrRoot);
 
+/**
+ * @brief completeTreeMain() - Calls the completeTree() function
+ * on the main function via CLI.
+ * 
+ * @param ptrRoot 
+ */
+void completeTreeMain(struct Node * ptrRoot);
+
+/**
+ * @brief perfectTreeMain() - Calls the perfectTree() function
+ * on the main function via CLI.
+ * 
+ * @param ptrRoot 
+ */
+void perfectTreeMain(struct Node * ptrRoot);
+
+
 //MENU ASCII
 /*Cria a linha de cima*/
 void createUpperBound(int iSize);
+
 /*Cria a linha debaixo*/
 void createLowerBound(int iSize);
+
 /*Cria cada item do menu*/
 void createMenuItem(char cArray[], int iSize);
+
 /*Cria uma linha horizontal*/
 void createHLine(int iSize);
+
 /*Junção de todas as funções acima para criar o menu*/
 void buildMenu();
+
 /*Menu funcionando com casos*/
 void menu();
-
-void traverseInorder(struct Node* ptrRoot);
-void traversePreOrder(struct Node* ptrStartingNode);
-struct Node* buildTree(int iSize);
-struct Node * buildTreeMain();
-
-bool completeTree(struct Node* ptrRoot);
-
-void completeTreeMain(struct Node * ptrRoot);
-
-bool fullLevel(struct Node* ptrRoot, int iLevel);
-bool perfectTree(struct Node* ptrRoot);
-void perfectTreeMain(struct Node * ptrRoot);
 
 #include "./treeExplorer.hpp"
 #endif // TREEEXPLORER_H
