@@ -17,9 +17,11 @@
 #include "./treeExplorer.h"
 #include <iostream>
 
+using namespace std;
+
 void selectionSort(struct ListNode** ptrHead) {
     if (ptrHead == nullptr) {
-        std::cout << "Lista vazia." << std::endl;
+        cout << "Lista vazia." << endl;
         return;
     }
 
@@ -53,13 +55,13 @@ void selectionSort(struct ListNode** ptrHead) {
 
         // Print the list after each iteration
         /*
-        std::cout << "Intermediate list: ";
+        cout << "Intermediate list: ";
         struct ListNode* ptrCurrent = *ptrHead;
         while (ptrCurrent != nullptr) {
-            std::cout << ptrCurrent->iPayload << " ";
+            cout << ptrCurrent->iPayload << " ";
             ptrCurrent = ptrCurrent->ptrNext;
         }
-        std::cout << std::endl;
+        cout << endl;
         */
     }
 
@@ -94,13 +96,13 @@ void insertionSort(struct ListNode** ptrHead) {
 
         // Print the list after each iteration
         /*
-        std::cout << "Intermediate list: ";
+        cout << "Intermediate list: ";
         struct ListNode* ptrPrint = sortedHead;
         while (ptrPrint != nullptr) {
-            std::cout << ptrPrint->iPayload << " ";
+            cout << ptrPrint->iPayload << " ";
             ptrPrint = ptrPrint->ptrNext;
         }
-        std::cout << std::endl;
+        cout << endl;
         */
     }
     *ptrHead = sortedHead;
@@ -184,13 +186,13 @@ void buBBleSort(struct DoubleNode** head) {
 
         // Print the list after each iteration
         /*
-        std::cout << "Intermediate list: ";
+        cout << "Intermediate list: ";
         struct DoubleNode* ptrPrint = (*head);
         while (ptrPrint != nullptr) {
-            std::cout << ptrPrint->iPayload << " ";
+            cout << ptrPrint->iPayload << " ";
             ptrPrint = ptrPrint->ptrNext;
         }
-        std::cout << std::endl;
+        cout << endl;
         */
     }
 }
