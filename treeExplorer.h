@@ -106,6 +106,7 @@ struct Node* lesserNode(struct Node* ptrRoot);
 
 /*Função que deleta um nó, trocando dados*/
 struct Node* deleteNode(struct Node* ptrRoot, int iData);
+struct Node * deleteNodeMain(struct Node * ptrRoot);
 
 struct ListNode * treeToList(struct Node * ptrStartingNode, struct ListNode * ptrHead);
 void printList(struct ListNode* ptrHead);

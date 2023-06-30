@@ -341,7 +341,19 @@ struct Node* deleteNode(struct Node* ptrRoot, int iData)
      }
 
      return ptrRoot;
- }   
+ }
+
+struct Node * deleteNodeMain(struct Node * ptrRoot) {
+    int iValue;
+    cout << "Digite o valor a ser removido da árvore: ";
+    cin >> iValue;
+    ptrRoot = deleteNode(ptrRoot, iValue);
+    cout << "A árore construída foi: " << endl;
+    printTree(ptrRoot);
+    cout << endl;
+    return ptrRoot;
+}
+
 
 void printList(struct ListNode* ptrHead) {
     if (ptrHead == nullptr) {
@@ -707,6 +719,9 @@ void menu() {
                 break;
             case 5:
                 ptrRoot = insertNodeMain(ptrRoot);
+                break;
+            case 6:
+                ptrRoot = deleteNodeMain(ptrRoot);
                 break;
         }
     } while (choice != 0);
