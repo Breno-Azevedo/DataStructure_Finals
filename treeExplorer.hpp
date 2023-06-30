@@ -62,10 +62,19 @@ struct Node * insertNodeMain(struct Node * ptrRoot) {
     int iValue;
     cout << "Digite o valor a ser inserido na árvore: ";
     cin >> iValue;
+
+    auto start = chrono::high_resolution_clock::now();
     ptrRoot = insertNode(ptrRoot, iValue);
+    auto stop = chrono::high_resolution_clock::now();
+
+    auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+
     cout << "A árore construída foi: " << endl;
     printTree(ptrRoot);
     cout << endl;
+
+    cout << "O tempo de execução foi: " << duration.count() << endl;
+
     return ptrRoot;
 }
 
@@ -94,10 +103,18 @@ struct Node * buildTreeMain() {
     int iSize;
     cout << "Insira a quantidade de nós que terá a árvore: ";
     cin >> iSize;
+
+    auto start = chrono::high_resolution_clock::now();
     struct Node* ptrRoot2 = buildTree(iSize);
+    auto stop = chrono::high_resolution_clock::now();
+
+    auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+
     cout << "A árore construída foi: " << endl;
     printTree(ptrRoot2);
     cout << endl;
+
+    cout << "O tempo de execução foi: " << duration.count() << endl;
 
     return ptrRoot2;
 }
@@ -174,6 +191,15 @@ int heightTree(struct Node * ptrRoot) {
     return iTreeHeight;
 }
 
+void heightTreeMain(struct Node * ptrRoot) {
+    auto start = chrono::high_resolution_clock::now();
+    int iHeight = heightTree(ptrRoot);
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+    cout << "A altura da árvore é: " << iHeight << endl;
+    cout << "O tempo de execução foi: " << duration.count() << endl;
+}
+
 //Função auxiliar para dizer se um determinado nível de uma árvore é completo ou não
 
 bool fullLevel(struct Node* ptrRoot, int iLevel) {
@@ -236,9 +262,16 @@ bool completeTree(struct Node* ptrRoot)
 }
 
 void completeTreeMain(struct Node * ptrRoot) {
+    auto start = chrono::high_resolution_clock::now();
     bool is_complete = completeTree(ptrRoot);
+    auto stop = chrono::high_resolution_clock::now();
+
+    auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+
     if(is_complete == true) cout << "A árvore é completa." << endl;
     else cout << "A árvore não é completa." << endl;
+
+    cout << "O tempo de execução foi: " << duration.count() << endl;
 }
 
 //função que diz se a árvore é perfeita
@@ -255,9 +288,16 @@ bool perfectTree(struct Node* ptrRoot) {
 }
 
 void perfectTreeMain(struct Node * ptrRoot) {
+    auto start = chrono::high_resolution_clock::now();
     bool is_perfect = perfectTree(ptrRoot);
+    auto stop = chrono::high_resolution_clock::now();
+
+    auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+
     if(is_perfect == true) cout << "A árvore é perfeita." << endl;
     else cout << "A árvore não é perfeita." << endl;
+
+    cout << "O tempo de execução foi: " << duration.count() << endl;
 }
 
 void Breadth_First_Search(struct Node* ptrRoot) {
@@ -278,6 +318,15 @@ void Breadth_First_Search(struct Node* ptrRoot) {
         if (ptrNode->ptrRight != nullptr) qQueue.push(ptrNode->ptrRight);
     }
     cout << endl;
+}
+
+void BFSMain(struct Node * ptrRoot) {
+    cout << "Árvore exibida pelo algoritmo Breadth First Search: " << endl;
+    auto start = chrono::high_resolution_clock::now();
+    Breadth_First_Search(ptrRoot);
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+    cout << "O tempo de execução foi: " << duration.count() << endl;
 }
 
 struct Node* SearchElement(struct Node* ptrRoot, int iPayload) {
@@ -309,7 +358,14 @@ struct Node * searchElementMain(struct Node * ptrRoot) {
     int iValue;
     cout << "Digite o valor do nó cujo endereço deve ser encontrado: ";
     cin >> iValue;
+
+    auto start = chrono::high_resolution_clock::now();
     ptrRoot = SearchElement(ptrRoot, iValue);
+    auto stop = chrono::high_resolution_clock::now();
+
+    auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+    cout << "O tempo de execução foi: " << duration.count() << endl;
+
     return ptrRoot;
 }
 
@@ -322,6 +378,15 @@ int sizeTree(struct Node * ptrRoot) {
     int iTreeSize = iLeftSize + iRightSize + 1;
 
     return iTreeSize;
+}
+
+void sizeTreeMain(struct Node * ptrRoot) {
+    auto start = chrono::high_resolution_clock::now();
+    int iSize = sizeTree(ptrRoot);
+    auto stop = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+    cout << "O tamanho da árvore é: " << iSize << endl;
+    cout << "O tempo de execução foi: " << duration.count() << endl;
 }
 
 struct Node* lesserNode(struct Node* ptrRoot)
@@ -386,13 +451,21 @@ struct Node * deleteNodeMain(struct Node * ptrRoot) {
     int iValue;
     cout << "Digite o valor a ser removido da árvore: ";
     cin >> iValue;
+
+    auto start = chrono::high_resolution_clock::now();
     ptrRoot = deleteNode(ptrRoot, iValue);
+    auto stop = chrono::high_resolution_clock::now();
+
+    auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+
     cout << "A árore construída foi: " << endl;
     printTree(ptrRoot);
     cout << endl;
+
+    cout << "O tempo de execução foi: " << duration.count() << endl;
+
     return ptrRoot;
 }
-
 
 void printList(struct ListNode* ptrHead) {
     if (ptrHead == nullptr) {
@@ -556,12 +629,10 @@ void menu() {
                 ptrRoot = buildTreeMain();
                 break;
             case 3:
-                iHeight = heightTree(ptrRoot);
-                cout << "A altura da árvore é: " << iHeight << endl;
+                heightTreeMain(ptrRoot);
                 break;
             case 4:
-                iSize = sizeTree(ptrRoot);
-                cout << "O tamanho da árvore é: " << iSize << endl;
+                sizeTreeMain(ptrRoot);
                 break;
             case 5:
                 ptrRoot = insertNodeMain(ptrRoot);
@@ -579,8 +650,7 @@ void menu() {
                 perfectTreeMain(ptrRoot);
                 break;
             case 10:
-                cout << "Árvore exibida pelo algoritmo Breadth First Search: " << endl;
-                Breadth_First_Search(ptrRoot);
+                BFSMain(ptrRoot);
                 break;
             case 11:
                 bubbleSortMain(ptrRoot);

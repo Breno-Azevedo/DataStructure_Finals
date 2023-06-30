@@ -28,7 +28,6 @@ struct Node {
     struct Node * ptrRight;
 };
  
-
 struct ListNode {
     /**
      * @brief Basic node structure for the list.
@@ -407,6 +406,11 @@ void completeTreeMain(struct Node * ptrRoot);
  */
 void perfectTreeMain(struct Node * ptrRoot);
 
+void BFSMain(struct Node * ptrRoot);
+
+void sizeTreeMain(struct Node * ptrRoot);
+
+void heightTreeMain(struct Node * ptrRoot);
 
 //MENU ASCII
 /*Cria a linha de cima*/
