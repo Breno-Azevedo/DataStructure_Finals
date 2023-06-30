@@ -13,21 +13,21 @@ O objetivo do trabalho é construir um explorador de árvores.
 - [] O programa deve oferecer um menu ASCII contendo as opções de uso para o usuário.
 - [] Todas as operações devem indicar o tempo de processamento utilizado.
 - [X] Opção de criar uma árvore binária de busca (BST) a partir de um arquivo de texto.
-- [] Opção de criar uma árvore binária de busca (BST) a partir de inputs do usuário.
+- [X] Opção de criar uma árvore binária de busca (BST) a partir de inputs do usuário.
 - [X] Uma das opções deve ser informar a altura da árvore.
 - [X] Uma das opções deve ser informar o tamanho da árvore.
 - [X] Uma das opções deve ser a inserção de um elemento fornecido pelo usuário.
 - [X] Uma das opções deve ser a remoção de um elemento fornecido pelo usuário.
-- [] Uma das opções deve ser a busca do endereço de memória de um elemento fornecido pelo usuário.
+- [X] Uma das opções deve ser a busca do endereço de memória de um elemento fornecido pelo usuário.
 
 ## Requisitos - Objetivos (2 pontos)
-- [] Uma das opções deve ser informar se a árvore é completa.
+- [X] Uma das opções deve ser informar se a árvore é completa.
 - [X] Uma das opções deve ser informar se a árvore é perfeita.
-- [] Uma das opções deve ser exibir a árvore usando o algoritmo de BFS.
+- [X] Uma das opções deve ser exibir a árvore usando o algoritmo de BFS.
 - [] Uma das opções deve converter a árvore em uma lista e ordenar por Bubble sort.
-- [] Uma das opções deve converter a árvore em uma lista e ordenar por Selection sort.
+- [-] Uma das opções deve converter a árvore em uma lista e ordenar por Selection sort.
 - [] Uma das opções deve converter a árvore em uma lista e ordenar por Insertion sort.
-- [] Uma das opções deve converter a árvore em uma lista e ordenar por Shell sort.
+- [-] Uma das opções deve converter a árvore em uma lista e ordenar por Shell sort.
 - [] Representação gráfica da ordenação.
 
 ## Integrantes

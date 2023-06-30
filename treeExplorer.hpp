@@ -54,6 +54,22 @@ struct Node * createTree(const char cList[], int iTamanho) {
     return ptrRoot;
 }
 
+struct Node* buildTree(int iSize)
+{
+    int* iArray = new int[iSize];
+    struct Node * newTree = nullptr;
+
+    cout << "Digite os elementos da árvore:" << endl;
+    for (int i = 1; i < iSize+1; i++) {
+        cout << "Elemento " << i << ": ";
+        cin >> iArray[i]; 
+        newTree = insertNode(newTree, iArray[i]);        
+        
+    }
+    return newTree;   
+
+}
+
 struct Node * createTreeTxt(const char * fileName) {
     struct Node * ptrRoot = nullptr;
     int iNum;
@@ -523,5 +539,101 @@ void insertionSort(struct ListNode** ptrHead) {
         ptrCurrent = next;
     }
 }
+
+
+struct ListNode* FindNodeByPos(struct ListNode* ptrHead, int position) {
+    struct ListNode* ptrNode = ptrHead;
+    for (int i = 0; i < position && ptrNode != nullptr; i++) ptrNode = ptrNode->ptrNext;
+
+    return ptrNode;
+}
+
+void ShellSort(struct ListNode** ptrHead) {
+    // Empty list or list with only one node
+    if (*ptrHead == nullptr || (*ptrHead)->ptrNext == nullptr) return;
+
+    int length = 0;
+    struct ListNode* ptrTemp = *ptrHead;
+
+    while (ptrTemp != nullptr) {
+        length++;
+        ptrTemp = ptrTemp->ptrNext;
+    }
+
+    int gap = length / 2;
+    while (gap > 0) {
+        for (int iOuterLoop = gap; iOuterLoop < length; iOuterLoop++) {
+            struct ListNode* ptrNodeI = FindNodeByPos(*ptrHead, iOuterLoop);
+            struct ListNode* ptrNodeJ = FindNodeByPos(*ptrHead, iOuterLoop - gap);
+
+            int temp = ptrNodeI->iPayload;
+            while (iOuterLoop >= gap && ptrNodeJ->iPayload > temp) {
+                ptrNodeI->iPayload = ptrNodeJ->iPayload;
+                iOuterLoop -= gap;
+                ptrNodeI = FindNodeByPos(*ptrHead, iOuterLoop);
+                ptrNodeJ = FindNodeByPos(*ptrHead, iOuterLoop - gap);
+            }
+            ptrNodeI->iPayload = temp;
+        }
+        gap /= 2;
+    }
+}
+
+//bubblesort com ponteiros
+/*
+void bubbleSort(struct DoubleNode** head)
+{
+    struct DoubleNode* current = (*head);
+    
+    int iLength = 0;
+    while ((*head) != nullptr)
+    {
+        iLength++;
+        (*head) = (*head) -> ptrNext;
+    }
+    
+    (*head) = current;
+    
+    for(int iOuterLoop = 0; iOuterLoop < iLength - 2; iOuterLoop++)
+    {
+        current = (*head);
+        
+        for(int iInnerLoop = 0; iInnerLoop < iLength - 2; iInnerLoop++)
+        {
+            if(comparison(current->iPayload,current->ptrNext->iPayload) == false)
+            {
+                if(current == (*head)) //pro primeiro nó
+                {
+                    current->ptrNext->ptrPrevious = nullptr;
+                    current->ptrPrevious = current->ptrNext;
+                    current->ptrNext->ptrNext->ptrPrevious = current;
+                    current->ptrNext = current->ptrNext->ptrNext;
+                    current->ptrPrevious->ptrNext = current;
+                    (*head) = current->ptrPrevious;
+                }
+                else if(current->ptrNext->ptrNext == nullptr) //pro penúltimo nó
+                {
+                    current->ptrNext->ptrPrevious = current->ptrPrevious;
+                    current->ptrPrevious->ptrNext = current->ptrNext;
+                    current->ptrNext->ptrNext = current;
+                    current->ptrPrevious = current->ptrNext;
+                    current->ptrNext = nullptr;
+                }
+                else
+                {
+                    //pro nó do meio
+                    current->ptrNext->ptrPrevious = current->ptrPrevious;
+                    current->ptrPrevious->ptrNext = current->ptrNext;
+                    current->ptrNext = current->ptrNext->ptrNext;
+                    current->ptrNext->ptrPrevious = current;
+                    current->ptrPrevious = current->ptrPrevious->ptrNext;
+                    current->ptrPrevious->ptrNext = current;
+                }
+            }
+            current = current->ptrNext;
+        }
+    }
+}
+*/
 
 #endif // TREEEXPLORER_HPP_

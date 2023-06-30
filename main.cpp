@@ -38,15 +38,8 @@ int main() {
     ptrRoot = insertNode(ptrRoot, 12);
     ptrRoot = insertNode(ptrRoot, 17);
     ptrRoot = insertNode(ptrRoot, 18);
-    
-    /*printTree(ptrRoot);
-    if (perfectTree(ptrRoot) == 0) {
-        cout << "A arvore nao a perfeita. " << endl;
-    } else {
-        cout << "A arvore e perfeita "<< endl;
-    }*/
+        
 
-    
     cout << "ptrRoot->iPayload: " << ptrRoot->iPayload << endl;
     cout << "ptrRoot->ptrLeft->iPayload: " << ptrRoot->ptrLeft->iPayload << endl;
     cout << "ptrRoot->ptrRight->iPayload: " << ptrRoot->ptrRight->iPayload << endl;
@@ -98,9 +91,10 @@ int main() {
     printList(ptrHead);
 
     struct DoubleNode * ptrHead2 = nullptr;
-
+    
     ptrHead2 = treeToDoubleList(ptrRoot,ptrHead2);
     printDoubleList(ptrHead2);
+
     //selectionSort(&ptrHead);
     //printList(ptrHead);
 

@@ -16,6 +16,14 @@ struct Node {
     struct Node * ptrRight;
 };
 
+struct DoubleNode
+{
+    int iPayload;
+    struct DoubleNode* ptrNext;
+    struct DoubleNode* ptrPrevious;
+};
+
+
 struct ListNode {
     int iPayload;
     struct ListNode * ptrNext;
@@ -115,6 +123,11 @@ struct DoubleNode * insertDouble(struct DoubleNode ** ptrHead, int iValue);
 
 void selectionSort(struct ListNode** ptrHead);
 void insertionSort(struct ListNode** ptrHead);
+void bubbleSort(struct Node** head);
+
+struct ListNode* FindNodeByPos(struct ListNode* ptrHead, int position);
+
+void ShellSort(struct ListNode** ptrHead);
 
 //MENU ASCII
 /*Cria a linha de cima*/
@@ -132,6 +145,7 @@ void menu();
 
 void traverseInorder(struct Node* ptrRoot);
 void traversePreOrder(struct Node* ptrStartingNode);
+struct Node* buildTree(int iSize);
 
 bool completeTree(struct Node* ptrRoot);
 
