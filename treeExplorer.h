@@ -38,15 +38,6 @@ struct ListNode {
     struct ListNode * ptrNext;
 };
 
-struct DoubleNode{
-    /**
-     * @brief Basic node structure for the double list.
-     * This struct is also used to sort the tree.
-     */
-    int iPayload;
-    struct DoubleNode* ptrNext;
-    struct DoubleNode* ptrPrevious;
-};
 
 // Functions headers for the treeExplorer.cpp
 
@@ -66,13 +57,6 @@ struct Node * createNode(int iPayload);
  */
 struct ListNode* createListNode(int iPayload);
 
-/**
- * @brief createDoubleNode() - Creates a Double Node object with the given payload.
- * 
- * @param iPayload 
- * @return struct DoubleNode* 
- */
-struct DoubleNode* createDoubleNode(int iPayload);
 
 /**
  * @brief insertNode() - Given an existing Node and its iPayload,
@@ -198,22 +182,6 @@ void printList(struct ListNode* ptrHead);
  */
 struct ListNode * insertList(struct ListNode **ptrHead, int iValue);
 
-/**
- * @brief treeToDoubleList() - Given a tree, it creates a double list with the elements
- * of the tree. This function is used in the sorting algorithms.
- * 
- * @param ptrStartingNode 
- * @param ptrHead 
- * @return struct DoubleNode* 
- */
-struct DoubleNode * treeToDoubleList(struct Node * ptrStartingNode, struct DoubleNode * ptrHead);
-
-/**
- * @brief printDoubleList() - Prints the elements of the double list.
- * 
- * @param ptrHead 
- */
-void printDoubleList(struct DoubleNode* ptrHead);
 
 // Functions headers for the treeExplorer.hpp - Traversels
 /**
@@ -275,15 +243,6 @@ bool perfectTree(struct Node* ptrRoot);
 // Functions headers for the sortingAlgorithms.cpp
 
 /**
- * @brief insertDouble() - Inserts a new node into the double list.
- * 
- * @param ptrHead 
- * @param iValue 
- * @return struct DoubleNode* 
- */
-struct DoubleNode * insertDouble(struct DoubleNode ** ptrHead, int iValue);
-
-/**
  * @brief selectionSort() - Sorts the list using the selection sort algorithm.
  * 
  * @param ptrHead 
@@ -302,8 +261,8 @@ void insertionSort(struct ListNode** ptrHead);
  * 
  * @param head 
  */
-//void bubbleSort(struct DoubleNode* head);
-void bubbleSort(struct DoubleNode** head);
+void bubbleSort(struct ListNode* head);
+
 
 
 /**
@@ -426,6 +385,11 @@ void buildMenu();
 
 /*Menu funcionando com casos*/
 void menu();
+
+void sortGraphRep(ListNode* ptrHead);
+void swap(ListNode* a, ListNode* b);
+
+
 
 #include "./treeExplorer.hpp"
 #include "./sortingAlgorithms.hpp"

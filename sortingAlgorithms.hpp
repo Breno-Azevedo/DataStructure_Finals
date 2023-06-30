@@ -161,40 +161,72 @@ void ShellSort(struct ListNode** ptrHead) {
 }
 
 
-//bubblesort com dados
-void bubbleSort(struct DoubleNode** head) {
-    struct DoubleNode* current = (*head);
-    int iLength = 0;
-    while ((*head) != nullptr) {
-        iLength++;
-        (*head) = (*head)->ptrNext;
+
+//Função auxiliar(pra bubble sort) que troca dois nós
+void swap(ListNode* a, ListNode* b) {
+    int temp = a->iPayload;
+    a->iPayload = b->iPayload;
+    b->iPayload = temp;
+}
+
+// Função de Bubble Sort para linked list
+void bubbleSort(ListNode* head) {
+    int swapped;
+    ListNode* ptr1;
+    ListNode* lptr = nullptr;
+
+    // Verifica se a linked list está vazia
+    if (head == nullptr)
+        return;
+
+    do {
+        swapped = 0;
+        ptr1 = head;
+
+        // Executa uma passagem do Bubble Sort na linked list
+        while (ptr1->ptrNext != lptr) {
+            if (ptr1->iPayload > ptr1->ptrNext->iPayload) {
+                swap(ptr1, ptr1->ptrNext);
+                swapped = 1;
+            }
+            ptr1 = ptr1->ptrNext;
+        }
+        lptr = ptr1;
+    } while (swapped);
+}
+
+
+void sortGraphRep(ListNode* ptrHead) {
+    ListNode* current = ptrHead;
+
+    // Determina o valor máximo na linked list
+    int maxVal = 0;
+    while (current != nullptr) {
+        if (current->iPayload > maxVal)
+            maxVal = current->iPayload;
+        current = current->ptrNext;
     }
 
-    (*head) = current;
-
-    for (int iOuterLoop = 0; iOuterLoop < iLength - 1; iOuterLoop++) {
-        current = (*head);
-
-        for (int iInnerLoop = 0; iInnerLoop < iLength - 1; iInnerLoop++) {
-            if (current->iPayload > current->ptrNext->iPayload) {
-                int iTemp = current->iPayload;
-                current->iPayload = current->ptrNext->iPayload;
-                current->ptrNext->iPayload = iTemp;
-            }
+    // Exibe a representação gráfica da linked list para cada valor
+    for (int i = maxVal; i > 0; i--) {
+        current = ptrHead;
+        while (current != nullptr) {
+            if (current->iPayload >= i)
+                std::cout << "*";
+            else
+                std::cout << " ";
             current = current->ptrNext;
         }
-
-        // Print the list after each iteration
-        /*
-        cout << "Intermediate list: ";
-        struct DoubleNode* ptrPrint = (*head);
-        while (ptrPrint != nullptr) {
-            cout << ptrPrint->iPayload << " ";
-            ptrPrint = ptrPrint->ptrNext;
-        }
-        cout << endl;
-        */
+        std::cout << std::endl;
     }
+
+    // Exibe os números da linked list
+    current = ptrHead;
+    while (current != nullptr) {
+        std::cout <<" "<< current->iPayload << " ";
+        current = current->ptrNext;
+    }
+    std::cout << std::endl;
 }
 
 
@@ -230,13 +262,13 @@ void shellSortMain(struct Node * ptrRoot) {
 }
 
 void bubbleSortMain(struct Node * ptrRoot) {
-    struct DoubleNode * ptrHead = nullptr;
-    ptrHead = treeToDoubleList(ptrRoot, ptrHead);
+    struct ListNode * ptrHead = nullptr;
+    ptrHead = treeToList(ptrRoot, ptrHead);
     cout << "Lista antes do Bubble Sort: " << endl;
-    printDoubleList(ptrHead);
-    bubbleSort(&ptrHead);
+    printList(ptrHead);
+    bubbleSort(ptrHead);
     cout << "Lista depois do Bubble Sort: " << endl;
-    printDoubleList(ptrHead);
+    printList(ptrHead);
 }
 
 #endif // SORTINGALGORITHMS_HPP_

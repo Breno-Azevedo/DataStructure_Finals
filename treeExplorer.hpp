@@ -39,13 +39,6 @@ struct ListNode* createListNode(int iPayload) {
     return newNode;
 }
 
-struct DoubleNode* createDoubleNode(int iPayload) {
-    struct DoubleNode* newNode = (struct DoubleNode*)malloc(sizeof(struct DoubleNode));
-    newNode->iPayload = iPayload;
-    newNode->ptrNext = nullptr;
-    newNode->ptrPrevious = nullptr;
-    return newNode;
-}
 
 struct Node * insertNode(struct Node * ptrRoot, int iPayload) {
     if (ptrRoot == nullptr) return createNode(iPayload);
@@ -407,26 +400,6 @@ void printList(struct ListNode* ptrHead) {
     cout << endl;
 }
 
-void printDoubleList(struct DoubleNode* ptrHead) {
-    if(ptrHead == nullptr)
-    {
-        cout << "Não é possível exibir: lista vazia!" << endl;
-        return;
-    }
-    
-    if(ptrHead->ptrPrevious != nullptr)
-    {
-        cout << "Não é possível exibir: meio da lista!" << endl;
-        return;
-    }
-
-    while (ptrHead != nullptr) {
-        cout << ptrHead->iPayload << " ";
-        ptrHead = ptrHead->ptrNext;
-    }
-    cout << endl;
-}
-
 struct ListNode * insertList(struct ListNode ** ptrHead, int iValue) {
     struct ListNode * newNode = createListNode(iValue);
 
@@ -443,26 +416,6 @@ struct ListNode * insertList(struct ListNode ** ptrHead, int iValue) {
     return *ptrHead;
 }
 
-struct DoubleNode * insertDouble(struct DoubleNode ** ptrHead, int iValue) {
-    struct DoubleNode* newNode = createDoubleNode(iValue);
-    
-    if(*ptrHead == nullptr) //newNode é o novo head
-    {
-        newNode->ptrPrevious = nullptr;
-        (*ptrHead) = newNode;
-        return *ptrHead;
-    }
-    
-    //chegando no último nó da lista
-    struct DoubleNode* ptrTemp = (*ptrHead);
-    while(ptrTemp->ptrNext != nullptr) ptrTemp = ptrTemp->ptrNext;
-    
-    ptrTemp->ptrNext = newNode;
-    newNode->ptrPrevious = ptrTemp;
-
-
-    return *ptrHead;
-}
 
 //Transformando a arvore em lista encadeada
 struct ListNode * treeToList(struct Node * ptrStartingNode, struct ListNode * ptrHead) {
@@ -475,16 +428,7 @@ struct ListNode * treeToList(struct Node * ptrStartingNode, struct ListNode * pt
     return ptrHead;
 }
 
-//Transformando a arvore em lista duplamente encadeada
-struct DoubleNode * treeToDoubleList(struct Node * ptrStartingNode, struct DoubleNode * ptrHead) {
-    if(ptrStartingNode != nullptr) {
-        insertDouble(&ptrHead, ptrStartingNode->iPayload);
 
-        treeToDoubleList(ptrStartingNode->ptrLeft, ptrHead);
-        treeToDoubleList(ptrStartingNode->ptrRight, ptrHead);
-    }
-    return ptrHead;
-}
 
 /*FUNÇÕES DO MENU*/
 void createUpperBound(int iSize) {
