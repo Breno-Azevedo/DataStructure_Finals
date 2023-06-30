@@ -515,9 +515,8 @@ void insertionSort(struct ListNode** ptrHead) {
         return;
     }
 
-    //Fazendo o sort dos elementos
-    struct ListNode* sortedHead = nullptr;  //Head da nova lista (sorted list)
-    struct ListNode* ptrCurrent = *ptrHead;       //Nó atual na lista original
+    struct ListNode* sortedHead = nullptr;
+    struct ListNode* ptrCurrent = *ptrHead;
 
     while (ptrCurrent != nullptr) {
         struct ListNode* next = ptrCurrent->ptrNext;
@@ -528,7 +527,7 @@ void insertionSort(struct ListNode** ptrHead) {
             sortedHead = ptrCurrent;
         } else {
             struct ListNode* sortedCurrent = sortedHead;
-            while (sortedCurrent->ptrNext != nullptr && ptrCurrent->iPayload > sortedCurrent->ptrNext->iPayload) {
+            while (sortedCurrent->ptrNext->ptrNext != nullptr && ptrCurrent->iPayload > sortedCurrent->ptrNext->iPayload) {
                 sortedCurrent = sortedCurrent->ptrNext;
             }
             ptrCurrent->ptrNext = sortedCurrent->ptrNext;
@@ -537,6 +536,10 @@ void insertionSort(struct ListNode** ptrHead) {
 
         ptrCurrent = next;
     }
+
+    *ptrHead = sortedHead;
+
+    free(ptrCurrent);
 }
 
 

@@ -98,8 +98,8 @@ int main() {
     //selectionSort(&ptrHead);
     //printList(ptrHead);
 
-    //insertionSort(&ptrHead);
-    //printList(ptrHead);
+    insertionSort(&ptrHead);
+    printList(ptrHead);
 
     return 0;
 }
