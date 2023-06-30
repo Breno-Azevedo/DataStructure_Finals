@@ -52,17 +52,6 @@ void selectionSort(struct ListNode** ptrHead) {
         ptrMin->iPayload = iTemp;
 
         ptrTemp = ptrTemp->ptrNext;
-
-        // Print the list after each iteration
-        /*
-        cout << "Intermediate list: ";
-        struct ListNode* ptrCurrent = *ptrHead;
-        while (ptrCurrent != nullptr) {
-            cout << ptrCurrent->iPayload << " ";
-            ptrCurrent = ptrCurrent->ptrNext;
-        }
-        cout << endl;
-        */
     }
 
     free(ptrAux);
@@ -93,17 +82,6 @@ void insertionSort(struct ListNode** ptrHead) {
             sortedCurrent->ptrNext = ptrCurrent;
         }
         ptrCurrent = next;
-
-        // Print the list after each iteration
-        /*
-        cout << "Intermediate list: ";
-        struct ListNode* ptrPrint = sortedHead;
-        while (ptrPrint != nullptr) {
-            cout << ptrPrint->iPayload << " ";
-            ptrPrint = ptrPrint->ptrNext;
-        }
-        cout << endl;
-        */
     }
     *ptrHead = sortedHead;
 }
@@ -144,17 +122,6 @@ void ShellSort(struct ListNode** ptrHead) {
                 ptrNodeJ = FindNodeByPos(*ptrHead, iOuterLoop - gap);
             }
             ptrNodeI->iPayload = temp;
-
-            // Print the list after each iteration
-            /*
-            cout << "Intermediate list: ";
-            struct ListNode* ptrCurrent = *ptrHead;
-            while (ptrCurrent != nullptr) {
-                cout << ptrCurrent->iPayload << " ";
-                ptrCurrent = ptrCurrent->ptrNext;
-            }
-            cout << endl;
-            */
         }
         gap /= 2;
     }

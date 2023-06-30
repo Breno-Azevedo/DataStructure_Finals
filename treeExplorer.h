@@ -37,6 +37,15 @@ struct ListNode {
     struct ListNode * ptrNext;
 };
 
+struct QueueNode {
+    Node* ptrNode;
+    QueueNode* ptrNext;
+};
+
+struct Queue {
+    QueueNode* ptrFront;
+    QueueNode* ptrRear;
+};
 
 // Functions headers for the treeExplorer.cpp
 
@@ -103,6 +112,37 @@ struct Node * searchNode(struct Node * ptrRoot, int iPayload);
  * @param ptrRoot 
  */
 void printTree(struct Node * ptrRoot);
+
+/**
+ * @brief queueEmpty() - Checks if the queue is empty.
+ * 
+ * @param ptrQueue 
+ * @return bool 
+ */
+bool queueEmpty(Queue* ptrQueue);
+
+/**
+ * @brief queuePop() - Removes the first element of the queue.
+ * 
+ * @param ptrQueue 
+ */
+void queuePop(Queue* ptrQueue);
+
+/**
+ * @brief queuePush() - Inserts a new element into the queue.
+ * 
+ * @param ptrQueue 
+ * @param ptrNode 
+ */
+void queuePush(Queue* ptrQueue, Node* ptrNode);
+
+/**
+ * @brief queueFront() - Returns the first element of the queue.
+ * 
+ * @param ptrQueue 
+ * @return Node* 
+ */
+Node* queueFront(Queue* ptrQueue);
 
 /**
  * @brief Breadth_First_Search() - Executes the BFS algorithm

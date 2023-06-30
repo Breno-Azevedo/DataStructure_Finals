@@ -301,24 +301,65 @@ void perfectTreeMain(struct Node * ptrRoot) {
     cout << "Execution time: " << duration.count() << endl;
 }
 
-void Breadth_First_Search(struct Node* ptrRoot) {
+bool queueEmpty(Queue* ptrQueue) {
+    return ptrQueue->ptrFront == nullptr;
+}
+
+void queuePop(Queue* ptrQueue) {
+    if (ptrQueue == nullptr || queueEmpty(ptrQueue)) return;
+    QueueNode* ptrTemp = ptrQueue->ptrFront;
+    ptrQueue->ptrFront = ptrQueue->ptrFront->ptrNext;
+    if (ptrQueue->ptrFront == nullptr) {
+        ptrQueue->ptrRear = nullptr;
+    }
+    delete ptrTemp;
+}
+
+void queuePush(Queue* ptrQueue, Node* ptrNode) {
+    if (ptrQueue == nullptr || ptrNode == nullptr) return;
+    QueueNode* ptrNewNode = new QueueNode;
+    ptrNewNode->ptrNode = ptrNode;
+    ptrNewNode->ptrNext = nullptr;
+    if (queueEmpty(ptrQueue)) {
+        ptrQueue->ptrFront = ptrNewNode;
+        ptrQueue->ptrRear = ptrNewNode;
+    } else {
+        ptrQueue->ptrRear->ptrNext = ptrNewNode;
+        ptrQueue->ptrRear = ptrNewNode;
+    }
+}
+
+Node* queueFront(Queue* ptrQueue) {
+    if (ptrQueue == nullptr || queueEmpty(ptrQueue)) return nullptr;
+    return ptrQueue->ptrFront->ptrNode;
+}
+
+void Breadth_First_Search(Node* ptrRoot) {
     if (ptrRoot == nullptr) {
-        cout << "Empty Tree" << endl;
+        std::cout << "Empty Tree" << std::endl;
         return;
     }
 
-    queue<Node*> qQueue;
-    qQueue.push(ptrRoot);
+    Queue queue;
+    queue.ptrFront = nullptr;
+    queue.ptrRear = nullptr;
+    queuePush(&queue, ptrRoot);
 
-    while (!qQueue.empty()) {
-        Node* ptrNode = qQueue.front();
-        cout << ptrNode->iPayload << " ";
-        qQueue.pop();
+    while (!queueEmpty(&queue)) {
+        Node* ptrCurrentNode = queueFront(&queue);
+        std::cout << ptrCurrentNode->iPayload << " ";
+        queuePop(&queue);
 
-        if (ptrNode->ptrLeft != nullptr) qQueue.push(ptrNode->ptrLeft);
-        if (ptrNode->ptrRight != nullptr) qQueue.push(ptrNode->ptrRight);
+        if (ptrCurrentNode->ptrLeft != nullptr) {
+            queuePush(&queue, ptrCurrentNode->ptrLeft);
+        }
+
+        if (ptrCurrentNode->ptrRight != nullptr) {
+            queuePush(&queue, ptrCurrentNode->ptrRight);
+        }
     }
-    cout << endl;
+
+    std::cout << std::endl;
 }
 
 void BFSMain(struct Node * ptrRoot) {
@@ -330,28 +371,35 @@ void BFSMain(struct Node * ptrRoot) {
     cout << "Execution time: " << duration.count() << endl;
 }
 
-struct Node* SearchElement(struct Node* ptrRoot, int iPayload) {
+Node* SearchElement(Node* ptrRoot, int iPayload) {
     if (ptrRoot == nullptr) {
         return nullptr;
     }
 
-    queue<Node*> qQueue;
-    qQueue.push(ptrRoot);
+    Queue queue;
+    queue.ptrFront = nullptr;
+    queue.ptrRear = nullptr;
+    queuePush(&queue, ptrRoot);
 
-    while (!qQueue.empty()) {
-        Node* ptrCurrentNode = qQueue.front();
-        qQueue.pop();
+    while (!queueEmpty(&queue)) {
+        Node* ptrCurrentNode = queueFront(&queue);
+        queuePop(&queue);
 
         if (ptrCurrentNode->iPayload == iPayload) {
-            cout << "The node's memory address: " << ptrCurrentNode << endl;
+            std::cout << "The node's memory address: " << ptrCurrentNode << std::endl;
             return ptrCurrentNode;
         }
 
-        if (ptrCurrentNode->ptrLeft != nullptr) qQueue.push(ptrCurrentNode->ptrLeft);
-        if (ptrCurrentNode->ptrRight != nullptr) qQueue.push(ptrCurrentNode->ptrRight);
+        if (ptrCurrentNode->ptrLeft != nullptr) {
+            queuePush(&queue, ptrCurrentNode->ptrLeft);
+        }
+
+        if (ptrCurrentNode->ptrRight != nullptr) {
+            queuePush(&queue, ptrCurrentNode->ptrRight);
+        }
     }
 
-    cout << "Element not found." << endl;
+    std::cout << "Element not found." << std::endl;
     return nullptr;
 }
 
