@@ -211,7 +211,7 @@ void selectionSortMain(struct Node * ptrRoot) {
     cout << "Lista depois do Selection Sort: " << endl;
     printList(ptrHead);
 
-    cout << "Execution time: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << " microssegundos" << endl;
 }
 
 void insertionSortMain(struct Node * ptrRoot) {
@@ -228,7 +228,7 @@ void insertionSortMain(struct Node * ptrRoot) {
     cout << "Lista depois do Insertion Sort: " << endl;
     printList(ptrHead);
 
-    cout << "Execution time: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << " microssegundos" << endl;
 }
 
 void shellSortMain(struct Node * ptrRoot) {
@@ -245,7 +245,7 @@ void shellSortMain(struct Node * ptrRoot) {
     cout << "Lista depois do Shell Sort: " << endl;
     printList(ptrHead);
 
-    cout << "Execution time: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << " microssegundos" << endl;
 }
 
 void bubbleSortMain(struct Node * ptrRoot) {
@@ -262,7 +262,7 @@ void bubbleSortMain(struct Node * ptrRoot) {
     cout << "Lista depois do Bubble Sort: " << endl;
     printList(ptrHead);
 
-    cout << "Execution time: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << " microssegundos" << endl;
 }
 
 #endif // SORTINGALGORITHMS_HPP_

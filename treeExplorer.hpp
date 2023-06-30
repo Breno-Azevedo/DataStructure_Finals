@@ -73,7 +73,7 @@ struct Node * insertNodeMain(struct Node * ptrRoot) {
     printTree(ptrRoot);
     cout << endl;
 
-    cout << "Execution time: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << " microssegundos" << endl;
 
     return ptrRoot;
 }
@@ -114,7 +114,7 @@ struct Node * buildTreeMain() {
     printTree(ptrRoot2);
     cout << endl;
 
-    cout << "Execution time: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << " microssegundos" << endl;
 
     return ptrRoot2;
 }
@@ -155,7 +155,7 @@ struct Node * createTreeTxtMain() {
     printTree(ptrRoot1);
     cout << endl;
 
-    cout << "Execution time: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << " microssegundos" << endl;
 
     return ptrRoot1;
 }
@@ -198,7 +198,7 @@ void heightTreeMain(struct Node * ptrRoot) {
     auto stop = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
     cout << "The height of tree is: " << iHeight << endl;
-    cout << "Execution time: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << " microssegundos" << endl;
 }
 
 //Função auxiliar para dizer se um determinado nível de uma árvore é completo ou não
@@ -246,7 +246,7 @@ void completeTreeMain(struct Node * ptrRoot) {
     if(is_complete == true) cout << "The tree is complete." << endl;
     else cout << "The tree is not complete." << endl;
 
-    cout << "Execution time: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << " microssegundos" << endl;
 }
 
 //função que diz se a árvore é perfeita
@@ -272,7 +272,7 @@ void perfectTreeMain(struct Node * ptrRoot) {
     if(is_perfect == true) cout << "The tree is perfect." << endl;
     else cout << "The tree is not perfect." << endl;
 
-    cout << "Execution time: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << " microssegundos" << endl;
 }
 
 bool queueEmpty(Queue* ptrQueue) {
@@ -342,7 +342,7 @@ void BFSMain(struct Node * ptrRoot) {
     Breadth_First_Search(ptrRoot);
     auto stop = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
-    cout << "Execution time: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << " microssegundos" << endl;
 }
 
 Node* SearchElement(Node* ptrRoot, int iPayload) {
@@ -387,7 +387,7 @@ struct Node * searchElementMain(struct Node * ptrRoot) {
     auto stop = chrono::high_resolution_clock::now();
 
     auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
-    cout << "Execution time: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << " microssegundos" << endl;
 
     return ptrRoot;
 }
@@ -409,7 +409,7 @@ void sizeTreeMain(struct Node * ptrRoot) {
     auto stop = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
     cout << "The size of three is: " << iSize << endl;
-    cout << "Execution time: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << " microssegundos" << endl;
 }
 
 struct Node* lesserNode(struct Node* ptrRoot)
@@ -472,7 +472,7 @@ struct Node * deleteNodeMain(struct Node * ptrRoot) {
     printTree(ptrRoot);
     cout << endl;
 
-    cout << "Execution time: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << " microssegundos" << endl;
 
     return ptrRoot;
 }
