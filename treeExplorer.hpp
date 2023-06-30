@@ -41,6 +41,12 @@ struct ListNode* createListNode(int iPayload) {
 
 
 struct Node * insertNode(struct Node * ptrRoot, int iPayload) {
+    struct Node * ptrNode = searchNode(ptrRoot, iPayload);
+    if (ptrNode != nullptr) {
+        cout << "Invalid input. The node is already on the tree." << endl;
+        return ptrRoot;
+    }
+
     if (ptrRoot == nullptr) return createNode(iPayload);
 
     if (iPayload < ptrRoot->iPayload) {
@@ -53,7 +59,7 @@ struct Node * insertNode(struct Node * ptrRoot, int iPayload) {
 
 struct Node * insertNodeMain(struct Node * ptrRoot) {
     int iValue;
-    cout << "Digite o valor a ser inserido na árvore: ";
+    cout << "Type the value to be inserted (int): ";
     cin >> iValue;
 
     auto start = chrono::high_resolution_clock::now();
@@ -62,11 +68,11 @@ struct Node * insertNodeMain(struct Node * ptrRoot) {
 
     auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
 
-    cout << "A árore construída foi: " << endl;
+    cout << "Resultant tree: " << endl;
     printTree(ptrRoot);
     cout << endl;
 
-    cout << "O tempo de execução foi: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << endl;
 
     return ptrRoot;
 }
@@ -83,9 +89,9 @@ struct Node* buildTree(int iSize) {
     int* iArray = new int[iSize];
     struct Node * newTree = nullptr;
 
-    cout << "Digite os elementos da árvore:" << endl;
+    cout << "Type the elements from the tree (int):" << endl;
     for (int i = 1; i < iSize+1; i++) {
-        cout << "Elemento " << i << ": ";
+        cout << "Element " << i << ": ";
         cin >> iArray[i]; 
         newTree = insertNode(newTree, iArray[i]);        
     }
@@ -94,7 +100,7 @@ struct Node* buildTree(int iSize) {
 
 struct Node * buildTreeMain() {
     int iSize;
-    cout << "Insira a quantidade de nós que terá a árvore: ";
+    cout << "Type the number of tree nodes (int): ";
     cin >> iSize;
 
     auto start = chrono::high_resolution_clock::now();
@@ -103,11 +109,11 @@ struct Node * buildTreeMain() {
 
     auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
 
-    cout << "A árore construída foi: " << endl;
+    cout << "Resultant tree: " << endl;
     printTree(ptrRoot2);
     cout << endl;
 
-    cout << "O tempo de execução foi: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << endl;
 
     return ptrRoot2;
 }
@@ -119,7 +125,7 @@ struct Node * createTreeTxt(const char * fileName) {
     
     inFile.open(fileName);
     if (!inFile) {
-        cout << "Unable to open file";
+        cout << "Unable to open file.";
         exit(1); // terminate with error
     }
     
@@ -134,7 +140,7 @@ struct Node * createTreeTxt(const char * fileName) {
 
 struct Node * createTreeTxtMain() {
     string strFile;
-    cout << "Insira o nome do arquivo: ";
+    cout << "Type the file name (with .txt ending): ";
     cin >> strFile;
     const char * fileName = strFile.c_str();
 
@@ -144,11 +150,11 @@ struct Node * createTreeTxtMain() {
 
     auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
 
-    cout << "A árore construída foi: " << endl;
+    cout << "Resultant tree: " << endl;
     printTree(ptrRoot1);
     cout << endl;
 
-    cout << "O tempo de execução foi: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << endl;
 
     return ptrRoot1;
 }
@@ -189,8 +195,8 @@ void heightTreeMain(struct Node * ptrRoot) {
     int iHeight = heightTree(ptrRoot);
     auto stop = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
-    cout << "A altura da árvore é: " << iHeight << endl;
-    cout << "O tempo de execução foi: " << duration.count() << endl;
+    cout << "The height of tree is: " << iHeight << endl;
+    cout << "Execution time: " << duration.count() << endl;
 }
 
 //Função auxiliar para dizer se um determinado nível de uma árvore é completo ou não
@@ -261,10 +267,10 @@ void completeTreeMain(struct Node * ptrRoot) {
 
     auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
 
-    if(is_complete == true) cout << "A árvore é completa." << endl;
-    else cout << "A árvore não é completa." << endl;
+    if(is_complete == true) cout << "The tree is complete." << endl;
+    else cout << "The tree is not complete." << endl;
 
-    cout << "O tempo de execução foi: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << endl;
 }
 
 //função que diz se a árvore é perfeita
@@ -287,10 +293,10 @@ void perfectTreeMain(struct Node * ptrRoot) {
 
     auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
 
-    if(is_perfect == true) cout << "A árvore é perfeita." << endl;
-    else cout << "A árvore não é perfeita." << endl;
+    if(is_perfect == true) cout << "The tree is perfect." << endl;
+    else cout << "The tree is not perfect." << endl;
 
-    cout << "O tempo de execução foi: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << endl;
 }
 
 void Breadth_First_Search(struct Node* ptrRoot) {
@@ -314,12 +320,12 @@ void Breadth_First_Search(struct Node* ptrRoot) {
 }
 
 void BFSMain(struct Node * ptrRoot) {
-    cout << "Árvore exibida pelo algoritmo Breadth First Search: " << endl;
+    cout << "Tree exhibited through the Breadth First Search Algorithm : " << endl;
     auto start = chrono::high_resolution_clock::now();
     Breadth_First_Search(ptrRoot);
     auto stop = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
-    cout << "O tempo de execução foi: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << endl;
 }
 
 struct Node* SearchElement(struct Node* ptrRoot, int iPayload) {
@@ -335,7 +341,7 @@ struct Node* SearchElement(struct Node* ptrRoot, int iPayload) {
         qQueue.pop();
 
         if (ptrCurrentNode->iPayload == iPayload) {
-            cout << "O endereço de memória é: " << ptrCurrentNode << endl;
+            cout << "The node's memory address: " << ptrCurrentNode << endl;
             return ptrCurrentNode;
         }
 
@@ -343,13 +349,13 @@ struct Node* SearchElement(struct Node* ptrRoot, int iPayload) {
         if (ptrCurrentNode->ptrRight != nullptr) qQueue.push(ptrCurrentNode->ptrRight);
     }
 
-    cout << "Elemento não encontrado." << endl;
+    cout << "Element not found." << endl;
     return nullptr;
 }
 
 struct Node * searchElementMain(struct Node * ptrRoot) {
     int iValue;
-    cout << "Digite o valor do nó cujo endereço deve ser encontrado: ";
+    cout << "Type the value from the node whose address is to be found (int): ";
     cin >> iValue;
 
     auto start = chrono::high_resolution_clock::now();
@@ -357,7 +363,7 @@ struct Node * searchElementMain(struct Node * ptrRoot) {
     auto stop = chrono::high_resolution_clock::now();
 
     auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
-    cout << "O tempo de execução foi: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << endl;
 
     return ptrRoot;
 }
@@ -378,8 +384,8 @@ void sizeTreeMain(struct Node * ptrRoot) {
     int iSize = sizeTree(ptrRoot);
     auto stop = chrono::high_resolution_clock::now();
     auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
-    cout << "O tamanho da árvore é: " << iSize << endl;
-    cout << "O tempo de execução foi: " << duration.count() << endl;
+    cout << "The size of three is: " << iSize << endl;
+    cout << "Execution time: " << duration.count() << endl;
 }
 
 struct Node* lesserNode(struct Node* ptrRoot)
@@ -442,7 +448,7 @@ struct Node* deleteNode(struct Node* ptrRoot, int iData)
 
 struct Node * deleteNodeMain(struct Node * ptrRoot) {
     int iValue;
-    cout << "Digite o valor a ser removido da árvore: ";
+    cout << "Type the value of the node to be removed (int): ";
     cin >> iValue;
 
     auto start = chrono::high_resolution_clock::now();
@@ -451,18 +457,18 @@ struct Node * deleteNodeMain(struct Node * ptrRoot) {
 
     auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
 
-    cout << "A árore construída foi: " << endl;
+    cout << "Resultant tree: " << endl;
     printTree(ptrRoot);
     cout << endl;
 
-    cout << "O tempo de execução foi: " << duration.count() << endl;
+    cout << "Execution time: " << duration.count() << endl;
 
     return ptrRoot;
 }
 
 void printList(struct ListNode* ptrHead) {
     if (ptrHead == nullptr) {
-        cout << "Lista vazia." << endl;
+        cout << "Empty List." << endl;
         return;
     }
 
@@ -534,22 +540,22 @@ void buildMenu() {
     createUpperBound(iSize);
     createMenuItem("Menu Principal", iSize);
     createHLine(iSize);
-    createMenuItem("1 - Criar uma BST a partir de um arquivo de texto (.txt).", iSize);
-    createMenuItem("2 - Criar uma BST a partir de inputs.", iSize);
-    createMenuItem("3 - Informar altura da BST.", iSize);
-    createMenuItem("4 - Informar tamanho da BST.", iSize);
-    createMenuItem("5 - Inserir um elemento na BST.", iSize);
-    createMenuItem("6 - Remover um elemento na BST.", iSize);
-    createMenuItem("7 - Buscar o endereço de memória um elemento na BST.", iSize);
-    createMenuItem("8 - Informar se a BST é completa.", iSize);
-    createMenuItem("9 - Informar se a BST é perfeita.", iSize);
-    createMenuItem("10 - Exibir a BST através do algoritmo Breadth First Search.", iSize);
-    createMenuItem("11 - Converter a BST em lista e ordená-la pelo Bubble Sort.", iSize);
-    createMenuItem("12 - Converter a BST em lista e ordená-la pelo Selection Sort.", iSize);
-    createMenuItem("13 - Converter a BST em lista e ordená-la pelo Insertion Sort.", iSize);
-    createMenuItem("14 - Converter a BST em lista e ordená-la pelo Shell Sort.", iSize);
-    createMenuItem("15 - Representação gráfica da ordenação.", iSize);
-    createMenuItem("0 - Sair.", iSize);
+    createMenuItem("1 - Create a BST from a text file (.txt).", iSize);
+    createMenuItem("2 - Create a BST from user inputs.", iSize);
+    createMenuItem("3 - Inform BST's height.", iSize);
+    createMenuItem("4 - Inform BST's size.", iSize);
+    createMenuItem("5 - Insert an element in the BST.", iSize);
+    createMenuItem("6 - Remove an element from the BST.", iSize);
+    createMenuItem("7 - Search a BST element's memory address.", iSize);
+    createMenuItem("8 - Inform if the BST is complete.", iSize);
+    createMenuItem("9 - Inform if the BST is perfect.", iSize);
+    createMenuItem("10 - Exhibit the BST through the Breadth First Search Algorithm.", iSize);
+    createMenuItem("11 - Convert the BST to a list and sort it through the Bubble Sort.", iSize);
+    createMenuItem("12 - Convert the BST to a list and sort it through the Selection Sort.", iSize);
+    createMenuItem("13 - Convert the BST to a list and sort it through the Insertion Sort.", iSize);
+    createMenuItem("14 - Convert the BST to a list and sort it through the Shell Sort.", iSize);
+    createMenuItem("15 - Graphic representation of the sort.", iSize);
+    createMenuItem("0 - Finish program.", iSize);
     createLowerBound(iSize);
 }
 
@@ -560,11 +566,11 @@ void menu() {
     int iSize;
     do {
         buildMenu();
-        cout << "Insira o número da ação desejada: ";
+        cout << "Type the number of the action wanted (int): ";
         cin >> choice;
         switch (choice) {
             case 0:
-                cout << "Programa finalizado." << endl;
+                cout << "Program finished." << endl;
                 break;
             case 1:
                 ptrRoot = createTreeTxtMain();
