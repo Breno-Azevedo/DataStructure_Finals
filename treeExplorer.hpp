@@ -579,7 +579,11 @@ void menu() {
     do {
         buildMenu();
         cout << "Type the number of the action wanted (int): ";
-        cin >> choice;
+        while (!(cin >> choice) || choice < 0) {
+            cout << "Invalid input. Please enter a positive integer: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
         switch (choice) {
             case 0:
                 cout << "Program finished." << endl;
