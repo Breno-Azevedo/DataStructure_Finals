@@ -93,8 +93,12 @@ struct Node* buildTree(int iSize) {
 
 struct Node * buildTreeMain() {
     int iSize;
-    cout << "Type the number of tree nodes (int): ";
-    cin >> iSize;
+    cout << "Type the number of nodes (int): ";
+    while (!(cin >> iSize) || iSize <= 0) {
+        cout << "Invalid input. Please enter a positive integer: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }   
 
     auto start = chrono::high_resolution_clock::now();
     struct Node* ptrRoot2 = buildTree(iSize);
@@ -543,6 +547,7 @@ void buildMenu() {
     createUpperBound(iSize);
     createMenuItem("Menu Principal", iSize);
     createHLine(iSize);
+    createMenuItem("Binary Search Tree Explorer - Integer Payload", iSize);
     createMenuItem("1 - Create a BST from a text file (.txt).", iSize);
     createMenuItem("2 - Create a BST from user inputs.", iSize);
     createMenuItem("3 - Inform BST's height.", iSize);
