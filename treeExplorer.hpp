@@ -55,7 +55,7 @@ struct Node* buildTree(int iSize)
     for (int i = 1; i < iSize+1; i++) {
         cout << "Elemento " << i << ": ";
         cin >> iArray[i]; 
-        newTree = insertNode(newTree, iArray[i]);
+        newTree = insertNode(newTree, iArray[i]);        
         
     }
     return newTree;   
@@ -448,6 +448,62 @@ void SelectionSort(struct ListNode** ptrHead) {
 
     free(ptrAux);
 }
+
+//bubblesort com ponteiros
+void bubbleSort(struct DoubleNode** head)
+{
+    struct DoubleNode* current = (*head);
+    
+    int iLength = 0;
+    while ((*head) != nullptr)
+    {
+        iLength++;
+        (*head) = (*head) -> ptrNext;
+    }
+    
+    (*head) = current;
+    
+    for(int iOuterLoop = 0; iOuterLoop < iLength - 2; iOuterLoop++)
+    {
+        current = (*head);
+        
+        for(int iInnerLoop = 0; iInnerLoop < iLength - 2; iInnerLoop++)
+        {
+            if(comparison(current->iPayload,current->ptrNext->iPayload) == false)
+            {
+                if(current == (*head)) //pro primeiro nó
+                {
+                    current->ptrNext->ptrPrevious = nullptr;
+                    current->ptrPrevious = current->ptrNext;
+                    current->ptrNext->ptrNext->ptrPrevious = current;
+                    current->ptrNext = current->ptrNext->ptrNext;
+                    current->ptrPrevious->ptrNext = current;
+                    (*head) = current->ptrPrevious;
+                }
+                else if(current->ptrNext->ptrNext == nullptr) //pro penúltimo nó
+                {
+                    current->ptrNext->ptrPrevious = current->ptrPrevious;
+                    current->ptrPrevious->ptrNext = current->ptrNext;
+                    current->ptrNext->ptrNext = current;
+                    current->ptrPrevious = current->ptrNext;
+                    current->ptrNext = nullptr;
+                }
+                else
+                {
+                    //pro nó do meio
+                    current->ptrNext->ptrPrevious = current->ptrPrevious;
+                    current->ptrPrevious->ptrNext = current->ptrNext;
+                    current->ptrNext = current->ptrNext->ptrNext;
+                    current->ptrNext->ptrPrevious = current;
+                    current->ptrPrevious = current->ptrPrevious->ptrNext;
+                    current->ptrPrevious->ptrNext = current;
+                }
+            }
+            current = current->ptrNext;
+        }
+    }
+}
+
 
 
 #endif // TREEEXPLORER_HPP_
