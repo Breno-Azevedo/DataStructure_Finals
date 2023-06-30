@@ -4,7 +4,9 @@
 /**
  * @file treeExplorer.h
  * @authors Breno, Juliana e Sofia
+ * 
  * @brief header file for the treeExplorer.hpp and sortingAlgorithms.hpp
+ * 
  * @version 0.7
  * @date 2023-06-30
  * 
@@ -431,4 +433,6 @@ void buildMenu();
 void menu();
 
 #include "./treeExplorer.hpp"
+#include "./sortingAlgorithms.hpp"
+
 #endif // TREEEXPLORER_H
