@@ -515,8 +515,7 @@ void selectionSortMain(struct Node * ptrRoot) {
 
 void insertionSort(struct ListNode** ptrHead) {
     if (*ptrHead == nullptr) {
-        cout << "Lista vazia." << endl;
-        return;
+        throw std::runtime_error("Empty list.");
     }
 
     struct ListNode* sortedHead = nullptr;
@@ -525,13 +524,13 @@ void insertionSort(struct ListNode** ptrHead) {
     while (ptrCurrent != nullptr) {
         struct ListNode* next = ptrCurrent->ptrNext;
 
-        //Inserindo o current na sorted list
+        // Inserting the current node into the sorted list
         if (sortedHead == nullptr || ptrCurrent->iPayload < sortedHead->iPayload) {
             ptrCurrent->ptrNext = sortedHead;
             sortedHead = ptrCurrent;
         } else {
             struct ListNode* sortedCurrent = sortedHead;
-            while (sortedCurrent->ptrNext->ptrNext != nullptr && ptrCurrent->iPayload > sortedCurrent->ptrNext->iPayload) {
+            while (sortedCurrent->ptrNext != nullptr && ptrCurrent->iPayload > sortedCurrent->ptrNext->iPayload) {
                 sortedCurrent = sortedCurrent->ptrNext;
             }
             ptrCurrent->ptrNext = sortedCurrent->ptrNext;
@@ -540,7 +539,16 @@ void insertionSort(struct ListNode** ptrHead) {
         ptrCurrent = next;
     }
     *ptrHead = sortedHead;
-    free(ptrCurrent);
+}
+
+void insertionSortMain(struct Node * ptrRoot) {
+    struct ListNode * ptrHead = nullptr;
+    ptrHead = treeToList(ptrRoot, ptrHead);
+    cout << "Lista antes do Insertion Sort: " << endl;
+    printList(ptrHead);
+    insertionSort(&ptrHead);
+    cout << "Lista depois do Insertion Sort: " << endl;
+    printList(ptrHead);
 }
 
 void insertionSortMain(struct Node * ptrRoot) {
