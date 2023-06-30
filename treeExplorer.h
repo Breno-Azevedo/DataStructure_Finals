@@ -122,6 +122,7 @@ void selectionSort(struct ListNode** ptrHead);
 void insertionSort(struct ListNode** ptrHead);
 void bubbleSort(struct DoubleNode* head);
 void buBBleSort(struct DoubleNode** head);
+void bubbleSortMain(struct Node * ptrRoot);
 
 struct ListNode* FindNodeByPos(struct ListNode* ptrHead, int position);
 

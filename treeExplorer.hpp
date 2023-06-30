@@ -658,6 +658,15 @@ void bubbleSort(struct DoubleNode* head)
     }
 }
 
+void bubbleSortMain(struct Node * ptrRoot) {
+    struct DoubleNode * ptrHead = nullptr;
+    ptrHead = treeToDoubleList(ptrRoot, ptrHead);
+    cout << "Lista antes do Bubble Sort: " << endl;
+    printDoubleList(ptrHead);
+    buBBleSort(&ptrHead);
+    cout << "Lista depois do Bubble Sort: " << endl;
+    printDoubleList(ptrHead);
+}
 
 /*FUNÇÕES DO MENU*/
 void createUpperBound(int iSize) {
@@ -754,6 +763,9 @@ void menu() {
             case 10:
                 cout << "Árvore exibida pelo algoritmo Breadth First Search: " << endl;
                 Breadth_First_Search(ptrRoot);
+                break;
+            case 11:
+                bubbleSortMain(ptrRoot);
                 break;
         }
     } while (choice != 0);
