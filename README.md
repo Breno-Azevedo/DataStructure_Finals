@@ -6,11 +6,11 @@ O objetivo do trabalho é construir um explorador de árvores.
 
 ## Requisitos - Código Fonte
 - [X] Identificadores com significado - utilizando a notação Húngara
-- [] Comentários em funções e driver code
+- [-] Comentários em funções e driver code
 - [X] Código organizado em módulos - .h e .hpp
 
 ## Requisitos - Objetivos (1 ponto)
-- [] O programa deve oferecer um menu ASCII contendo as opções de uso para o usuário.
+- [-] O programa deve oferecer um menu ASCII contendo as opções de uso para o usuário.
 - [] Todas as operações devem indicar o tempo de processamento utilizado.
 - [X] Opção de criar uma árvore binária de busca (BST) a partir de um arquivo de texto.
 - [X] Opção de criar uma árvore binária de busca (BST) a partir de inputs do usuário.
@@ -24,11 +24,11 @@ O objetivo do trabalho é construir um explorador de árvores.
 - [X] Uma das opções deve ser informar se a árvore é completa.
 - [X] Uma das opções deve ser informar se a árvore é perfeita.
 - [X] Uma das opções deve ser exibir a árvore usando o algoritmo de BFS.
-- [] Uma das opções deve converter a árvore em uma lista e ordenar por Bubble sort.
-- [-] Uma das opções deve converter a árvore em uma lista e ordenar por Selection sort.
-- [] Uma das opções deve converter a árvore em uma lista e ordenar por Insertion sort.
-- [-] Uma das opções deve converter a árvore em uma lista e ordenar por Shell sort.
-- [] Representação gráfica da ordenação.
+- [X] Uma das opções deve converter a árvore em uma lista e ordenar por Bubble sort.
+- [X] Uma das opções deve converter a árvore em uma lista e ordenar por Selection sort.
+- [X] Uma das opções deve converter a árvore em uma lista e ordenar por Insertion sort.
+- [X] Uma das opções deve converter a árvore em uma lista e ordenar por Shell sort.
+- [-] Representação gráfica da ordenação.
 
 ## Integrantes
 - Breno Marques Azevedo - 211708010
