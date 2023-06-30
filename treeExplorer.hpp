@@ -551,16 +551,6 @@ void insertionSortMain(struct Node * ptrRoot) {
     printList(ptrHead);
 }
 
-void insertionSortMain(struct Node * ptrRoot) {
-    struct ListNode * ptrHead = nullptr;
-    ptrHead = treeToList(ptrRoot, ptrHead);
-    cout << "Lista antes do Insertion Sort: " << endl;
-    printList(ptrHead);
-    insertionSort(&ptrHead);
-    cout << "Lista depois do Insertion Sort: " << endl;
-    printList(ptrHead);
-}
-
 struct ListNode* FindNodeByPos(struct ListNode* ptrHead, int position) {
     struct ListNode* ptrNode = ptrHead;
     for (int i = 0; i < position && ptrNode != nullptr; i++) ptrNode = ptrNode->ptrNext;
