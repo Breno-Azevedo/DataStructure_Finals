@@ -96,7 +96,9 @@ void Breadth_First_Search(struct Node * ptrRoot);
  * @param iPayload 
  * @return Node* 
  */
-Node * SearchElement(Node* ptrRoot, int iPayload);
+struct Node * SearchElement(struct Node* ptrRoot, int iPayload);
+
+struct Node * searchElementMain(struct Node * ptrRoot);
 
 int heightTree(struct Node * ptrRoot);
 

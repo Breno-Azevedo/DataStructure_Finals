@@ -249,7 +249,7 @@ void Breadth_First_Search(struct Node* ptrRoot) {
     cout << endl;
 }
 
-Node* SearchElement(Node* ptrRoot, int iPayload) {
+struct Node* SearchElement(struct Node* ptrRoot, int iPayload) {
     if (ptrRoot == nullptr) {
         return nullptr;
     }
@@ -262,7 +262,7 @@ Node* SearchElement(Node* ptrRoot, int iPayload) {
         qQueue.pop();
 
         if (ptrCurrentNode->iPayload == iPayload) {
-            cout << "The memory address is: " << ptrCurrentNode << endl;
+            cout << "O endereço de memória é: " << ptrCurrentNode << endl;
             return ptrCurrentNode;
         }
 
@@ -270,8 +270,16 @@ Node* SearchElement(Node* ptrRoot, int iPayload) {
         if (ptrCurrentNode->ptrRight != nullptr) qQueue.push(ptrCurrentNode->ptrRight);
     }
 
-    cout << "Element Not found." << endl;
+    cout << "Elemento não encontrado." << endl;
     return nullptr;
+}
+
+struct Node * searchElementMain(struct Node * ptrRoot) {
+    int iValue;
+    cout << "Digite o valor do nó cujo endereço deve ser encontrado: ";
+    cin >> iValue;
+    ptrRoot = SearchElement(ptrRoot, iValue);
+    return ptrRoot;
 }
 
 int sizeTree(struct Node * ptrRoot) {
@@ -722,6 +730,9 @@ void menu() {
                 break;
             case 6:
                 ptrRoot = deleteNodeMain(ptrRoot);
+                break;
+            case 7:
+                ptrRoot = searchElementMain(ptrRoot);
                 break;
         }
     } while (choice != 0);
