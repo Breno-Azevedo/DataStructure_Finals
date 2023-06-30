@@ -46,6 +46,17 @@ struct Node * insertNode(struct Node * ptrRoot, int iPayload) {
     return ptrRoot;
 }
 
+struct Node * insertNodeMain(struct Node * ptrRoot) {
+    int iValue;
+    cout << "Digite o valor a ser inserido na árvore: ";
+    cin >> iValue;
+    ptrRoot = insertNode(ptrRoot, iValue);
+    cout << "A árore construída foi: " << endl;
+    printTree(ptrRoot);
+    cout << endl;
+    return ptrRoot;
+}
+
 struct Node * createTree(const char cList[], int iTamanho) {
     struct Node * ptrRoot = nullptr;
     for (int i = 0; i < iTamanho; i++) {
@@ -693,6 +704,9 @@ void menu() {
             case 4:
                 iSize = sizeTree(ptrRoot);
                 cout << "O tamanho da árvore é: " << iSize << endl;
+                break;
+            case 5:
+                ptrRoot = insertNodeMain(ptrRoot);
                 break;
         }
     } while (choice != 0);

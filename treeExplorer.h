@@ -49,6 +49,7 @@ struct DoubleNode* createDoubleNode(int iPayload);
  * @return struct Node* 
 **/
 struct Node * insertNode(struct Node * ptrRoot, int iPayload);
+struct Node * insertNodeMain(struct Node * ptrRoot);
 
 /**
  * @brief createTree() - Given a char list, it creates a
