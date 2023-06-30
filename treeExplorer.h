@@ -108,6 +108,11 @@ struct Node* deleteNode(struct Node* ptrRoot, int iData);
 struct ListNode * treeToList(struct Node * ptrStartingNode, struct ListNode * ptrHead);
 void printList(struct ListNode* ptrHead);
 struct ListNode * insertList(struct ListNode **ptrHead, int iValue);
+
+struct DoubleNode * treeToDoubleList(struct Node * ptrStartingNode, struct DoubleNode * ptrHead);
+void printDoubleList(struct DoubleNode* ptrHead);
+struct DoubleNode * insertDouble(struct DoubleNode ** ptrHead, int iValue);
+
 void selectionSort(struct ListNode** ptrHead);
 void insertionSort(struct ListNode** ptrHead);
 

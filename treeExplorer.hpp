@@ -364,10 +364,29 @@ void menu() {
     } while (choice != 0);
 }
 
-//para simples e double
 void printList(struct ListNode* ptrHead) {
     if (ptrHead == nullptr) {
         cout << "Lista vazia." << endl;
+        return;
+    }
+
+    while (ptrHead != nullptr) {
+        cout << ptrHead->iPayload << " ";
+        ptrHead = ptrHead->ptrNext;
+    }
+    cout << endl;
+}
+
+void printDoubleList(struct DoubleNode* ptrHead) {
+    if(ptrHead == nullptr)
+    {
+        cout << "Não é possível exibir: lista vazia!" << endl;
+        return;
+    }
+    
+    if(ptrHead->ptrPrevious != nullptr)
+    {
+        cout << "Não é possível exibir: meio da lista!" << endl;
         return;
     }
 
@@ -401,7 +420,7 @@ struct DoubleNode * insertDouble(struct DoubleNode ** ptrHead, int iValue) {
     {
         newNode->ptrPrevious = nullptr;
         (*ptrHead) = newNode;
-        return;
+        return *ptrHead;
     }
     
     //chegando no último nó da lista
@@ -415,13 +434,24 @@ struct DoubleNode * insertDouble(struct DoubleNode ** ptrHead, int iValue) {
     return *ptrHead;
 }
 
-//Transformando a arvore em lista
+//Transformando a arvore em lista encadeada
 struct ListNode * treeToList(struct Node * ptrStartingNode, struct ListNode * ptrHead) {
     if(ptrStartingNode != nullptr) {
         insertList(&ptrHead, ptrStartingNode->iPayload);
 
         treeToList(ptrStartingNode->ptrLeft, ptrHead);
         treeToList(ptrStartingNode->ptrRight, ptrHead);
+    }
+    return ptrHead;
+}
+
+//Transformando a arvore em lista duplamente encadeada
+struct DoubleNode * treeToDoubleList(struct Node * ptrStartingNode, struct DoubleNode * ptrHead) {
+    if(ptrStartingNode != nullptr) {
+        insertDouble(&ptrHead, ptrStartingNode->iPayload);
+
+        treeToDoubleList(ptrStartingNode->ptrLeft, ptrHead);
+        treeToDoubleList(ptrStartingNode->ptrRight, ptrHead);
     }
     return ptrHead;
 }
