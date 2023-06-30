@@ -510,7 +510,6 @@ void selectionSort(struct ListNode** ptrHead) {
 }
 
 void insertionSort(struct ListNode** ptrHead) {
-    //Checando se a lista é vazia
     if (*ptrHead == nullptr) {
         cout << "Lista vazia." << endl;
         return;

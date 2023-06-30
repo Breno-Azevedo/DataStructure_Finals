@@ -90,10 +90,10 @@ int main() {
     ptrHead = treeToList(ptrRoot,ptrHead);
     printList(ptrHead);
 
-    struct DoubleNode * ptrHead2 = nullptr;
+    //struct DoubleNode * ptrHead2 = nullptr;
     
-    ptrHead2 = treeToDoubleList(ptrRoot,ptrHead2);
-    printDoubleList(ptrHead2);
+    //ptrHead2 = treeToDoubleList(ptrRoot,ptrHead2);
+    //printDoubleList(ptrHead2);
 
     //selectionSort(&ptrHead);
     //printList(ptrHead);
