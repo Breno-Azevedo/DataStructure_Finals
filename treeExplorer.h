@@ -119,7 +119,11 @@ void printDoubleList(struct DoubleNode* ptrHead);
 struct DoubleNode * insertDouble(struct DoubleNode ** ptrHead, int iValue);
 
 void selectionSort(struct ListNode** ptrHead);
+void selectionSortMain(struct Node * ptrRoot);
+
 void insertionSort(struct ListNode** ptrHead);
+void insertionSortMain(struct Node * ptrRoot);
+
 void bubbleSort(struct DoubleNode* head);
 void buBBleSort(struct DoubleNode** head);
 void bubbleSortMain(struct Node * ptrRoot);
@@ -127,6 +131,7 @@ void bubbleSortMain(struct Node * ptrRoot);
 struct ListNode* FindNodeByPos(struct ListNode* ptrHead, int position);
 
 void ShellSort(struct ListNode** ptrHead);
+void shellSortMain(struct Node * ptrRoot);
 
 //MENU ASCII
 /*Cria a linha de cima*/

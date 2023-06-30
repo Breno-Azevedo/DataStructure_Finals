@@ -503,6 +503,16 @@ void selectionSort(struct ListNode** ptrHead) {
     free(ptrAux);
 }
 
+void selectionSortMain(struct Node * ptrRoot) {
+    struct ListNode * ptrHead = nullptr;
+    ptrHead = treeToList(ptrRoot, ptrHead);
+    cout << "Lista antes do Selection Sort: " << endl;
+    printList(ptrHead);
+    selectionSort(&ptrHead);
+    cout << "Lista depois do Selection Sort: " << endl;
+    printList(ptrHead);
+}
+
 void insertionSort(struct ListNode** ptrHead) {
     if (*ptrHead == nullptr) {
         cout << "Lista vazia." << endl;
@@ -531,6 +541,16 @@ void insertionSort(struct ListNode** ptrHead) {
     }
     *ptrHead = sortedHead;
     free(ptrCurrent);
+}
+
+void insertionSortMain(struct Node * ptrRoot) {
+    struct ListNode * ptrHead = nullptr;
+    ptrHead = treeToList(ptrRoot, ptrHead);
+    cout << "Lista antes do Insertion Sort: " << endl;
+    printList(ptrHead);
+    insertionSort(&ptrHead);
+    cout << "Lista depois do Insertion Sort: " << endl;
+    printList(ptrHead);
 }
 
 struct ListNode* FindNodeByPos(struct ListNode* ptrHead, int position) {
@@ -569,6 +589,16 @@ void ShellSort(struct ListNode** ptrHead) {
         }
         gap /= 2;
     }
+}
+
+void shellSortMain(struct Node * ptrRoot) {
+    struct ListNode * ptrHead = nullptr;
+    ptrHead = treeToList(ptrRoot, ptrHead);
+    cout << "Lista antes do Shell Sort: " << endl;
+    printList(ptrHead);
+    ShellSort(&ptrHead);
+    cout << "Lista depois do Shell Sort: " << endl;
+    printList(ptrHead);
 }
 
 //bubblesort com dados
@@ -766,6 +796,15 @@ void menu() {
                 break;
             case 11:
                 bubbleSortMain(ptrRoot);
+                break;
+            case 12:
+                selectionSortMain(ptrRoot);
+                break;
+            case 13:
+                insertionSortMain(ptrRoot);
+                break;
+            case 14:
+                shellSortMain(ptrRoot);
                 break;
         }
     } while (choice != 0);
