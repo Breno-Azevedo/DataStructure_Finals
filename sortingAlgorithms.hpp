@@ -19,16 +19,16 @@
 
 using namespace std;
 
-void selectionSort(struct ListNode** ptrHead) {
+void selectionSort(struct ListNode ** ptrHead) {
     if (ptrHead == nullptr) {
         cout << "Lista vazia." << endl;
         return;
     }
 
-    struct ListNode* ptrTemp = (*ptrHead);
-    struct ListNode* auxNode = (*ptrHead);
-    struct ListNode* ptrMin = nullptr;
-    struct ListNode* ptrAux = nullptr;
+    struct ListNode * ptrTemp = (*ptrHead);
+    struct ListNode * auxNode = (*ptrHead);
+    struct ListNode * ptrMin = nullptr;
+    struct ListNode * ptrAux = nullptr;
 
     int iLength = 0;
     while (auxNode != nullptr) {
@@ -58,23 +58,23 @@ void selectionSort(struct ListNode** ptrHead) {
 }
 
 
-void insertionSort(struct ListNode** ptrHead) {
+void insertionSort(struct ListNode ** ptrHead) {
     if (*ptrHead == nullptr) {
-        throw std::runtime_error("Empty list.");
+        throw runtime_error("Empty list.");
     }
 
-    struct ListNode* sortedHead = nullptr;
-    struct ListNode* ptrCurrent = *ptrHead;
+    struct ListNode * sortedHead = nullptr;
+    struct ListNode * ptrCurrent = *ptrHead;
 
     while (ptrCurrent != nullptr) {
-        struct ListNode* next = ptrCurrent->ptrNext;
+        struct ListNode * next = ptrCurrent->ptrNext;
 
         // Inserting the current node into the sorted list
         if (sortedHead == nullptr || ptrCurrent->iPayload < sortedHead->iPayload) {
             ptrCurrent->ptrNext = sortedHead;
             sortedHead = ptrCurrent;
         } else {
-            struct ListNode* sortedCurrent = sortedHead;
+            struct ListNode * sortedCurrent = sortedHead;
             while (sortedCurrent->ptrNext != nullptr && ptrCurrent->iPayload > sortedCurrent->ptrNext->iPayload) {
                 sortedCurrent = sortedCurrent->ptrNext;
             }
@@ -87,20 +87,20 @@ void insertionSort(struct ListNode** ptrHead) {
 }
 
 
-struct ListNode* FindNodeByPos(struct ListNode* ptrHead, int position) {
-    struct ListNode* ptrNode = ptrHead;
+struct ListNode * FindNodeByPos(struct ListNode * ptrHead, int position) {
+    struct ListNode * ptrNode = ptrHead;
     for (int i = 0; i < position && ptrNode != nullptr; i++) ptrNode = ptrNode->ptrNext;
 
     return ptrNode;
 }
 
 
-void ShellSort(struct ListNode** ptrHead) {
+void ShellSort(struct ListNode ** ptrHead) {
     if (*ptrHead == nullptr || (*ptrHead)->ptrNext == nullptr)
         return;
 
     int length = 0;
-    struct ListNode* ptrTemp = *ptrHead;
+    struct ListNode * ptrTemp = *ptrHead;
 
     while (ptrTemp != nullptr) {
         length++;
@@ -110,8 +110,8 @@ void ShellSort(struct ListNode** ptrHead) {
     int gap = length / 2;
     while (gap > 0) {
         for (int iOuterLoop = gap; iOuterLoop < length; iOuterLoop++) {
-            struct ListNode* ptrNodeI = FindNodeByPos(*ptrHead, iOuterLoop);
-            struct ListNode* ptrNodeJ = FindNodeByPos(*ptrHead, iOuterLoop - gap);
+            struct ListNode * ptrNodeI = FindNodeByPos(*ptrHead, iOuterLoop);
+            struct ListNode * ptrNodeJ = FindNodeByPos(*ptrHead, iOuterLoop - gap);
 
             int temp = ptrNodeI->iPayload;
             while (iOuterLoop >= gap && ptrNodeJ->iPayload > temp) {
@@ -129,41 +129,41 @@ void ShellSort(struct ListNode** ptrHead) {
 
 
 //Função auxiliar(pra bubble sort) que troca dois nós
-void swap(ListNode* a, ListNode* b) {
+void swap(struct ListNode * a, struct ListNode * b) {
     int temp = a->iPayload;
     a->iPayload = b->iPayload;
     b->iPayload = temp;
 }
 
 // Função de Bubble Sort para linked list
-void bubbleSort(ListNode* head) {
+void bubbleSort(struct ListNode * ptrHead) {
     int swapped;
-    ListNode* ptr1;
-    ListNode* lptr = nullptr;
+    struct ListNode* ptr1;
+    struct ListNode* ptrLast = nullptr;
 
     // Verifica se a linked list está vazia
-    if (head == nullptr)
+    if (ptrHead == nullptr)
         return;
 
     do {
         swapped = 0;
-        ptr1 = head;
+        ptr1 = ptrHead;
 
         // Executa uma passagem do Bubble Sort na linked list
-        while (ptr1->ptrNext != lptr) {
+        while (ptr1->ptrNext != ptrLast) {
             if (ptr1->iPayload > ptr1->ptrNext->iPayload) {
                 swap(ptr1, ptr1->ptrNext);
                 swapped = 1;
             }
             ptr1 = ptr1->ptrNext;
         }
-        lptr = ptr1;
+        ptrLast = ptr1;
     } while (swapped);
 }
 
 
-void sortGraphRep(ListNode* ptrHead) {
-    ListNode* current = ptrHead;
+void sortGraphRep(struct ListNode * ptrHead) {
+    struct ListNode * current = ptrHead;
 
     // Determina o valor máximo na linked list
     int maxVal = 0;
@@ -178,21 +178,21 @@ void sortGraphRep(ListNode* ptrHead) {
         current = ptrHead;
         while (current != nullptr) {
             if (current->iPayload >= i)
-                std::cout << "*";
+                cout << "*";
             else
-                std::cout << " ";
+                cout << " ";
             current = current->ptrNext;
         }
-        std::cout << std::endl;
+        cout << endl;
     }
 
     // Exibe os números da linked list
     current = ptrHead;
     while (current != nullptr) {
-        std::cout <<" "<< current->iPayload << " ";
+        cout <<" "<< current->iPayload << " ";
         current = current->ptrNext;
     }
-    std::cout << std::endl;
+    cout << endl;
 }
 
 

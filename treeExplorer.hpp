@@ -32,8 +32,8 @@ struct Node * createNode(int iPayload) {
     return ptrNewNode;
 }
 
-struct ListNode* createListNode(int iPayload) {
-    struct ListNode* newNode = (struct ListNode*)malloc(sizeof(struct ListNode));
+struct ListNode * createListNode(int iPayload) {
+    struct ListNode * newNode = (struct ListNode *)malloc(sizeof(struct ListNode));
     newNode->iPayload = iPayload;
     newNode->ptrNext = nullptr;
     return newNode;
@@ -59,7 +59,7 @@ struct Node * insertNode(struct Node * ptrRoot, int iPayload) {
 }
 
 
-struct Node* buildTree(int iSize) {
+struct Node * buildTree(int iSize) {
     int* iArray = new int[iSize];
     struct Node * newTree = nullptr;
 
@@ -133,9 +133,8 @@ int heightTree(struct Node * ptrRoot) {
 
 //Função auxiliar para dizer se um determinado nível de uma árvore é completo ou não
 
-bool fullLevel(struct Node* ptrRoot, int iLevel) {
-    if (ptrRoot == nullptr)return false;
-    
+bool fullLevel(struct Node * ptrRoot, int iLevel) {
+    if (ptrRoot == nullptr)return false;    
 
     if (iLevel == 1) {
         ptrRoot->ptrLeft != nullptr && ptrRoot-> ptrRight != nullptr;
@@ -149,7 +148,7 @@ bool fullLevel(struct Node* ptrRoot, int iLevel) {
     
 }
 
-bool completeTree(struct Node* ptrRoot)
+bool completeTree(struct Node * ptrRoot)
 {
     if(ptrRoot == nullptr)return false;
     
@@ -170,9 +169,8 @@ bool completeTree(struct Node* ptrRoot)
 //função que diz se a árvore é perfeita
 //usa a função de altura e de completa em níveis
 //analisa todos os níveis e se todos forem completos retorna que a árvore é perfeita
-bool perfectTree(struct Node* ptrRoot) {
+bool perfectTree(struct Node * ptrRoot) {
     int iHeight = heightTree(ptrRoot);
-
     for(int i = 1; i <= iHeight ; i++)
     {
         if(fullLevel(ptrRoot,i) != 1)return false;
@@ -181,13 +179,13 @@ bool perfectTree(struct Node* ptrRoot) {
 }
 
 
-bool queueEmpty(Queue* ptrQueue) {
+bool queueEmpty(struct Queue * ptrQueue) {
     return ptrQueue->ptrFront == nullptr;
 }
 
-void queuePop(Queue* ptrQueue) {
+void queuePop(struct Queue * ptrQueue) {
     if (ptrQueue == nullptr || queueEmpty(ptrQueue)) return;
-    QueueNode* ptrTemp = ptrQueue->ptrFront;
+    struct QueueNode * ptrTemp = ptrQueue->ptrFront;
     ptrQueue->ptrFront = ptrQueue->ptrFront->ptrNext;
     if (ptrQueue->ptrFront == nullptr) {
         ptrQueue->ptrRear = nullptr;
@@ -195,9 +193,9 @@ void queuePop(Queue* ptrQueue) {
     delete ptrTemp;
 }
 
-void queuePush(Queue* ptrQueue, Node* ptrNode) {
+void queuePush(struct Queue * ptrQueue, struct Node * ptrNode) {
     if (ptrQueue == nullptr || ptrNode == nullptr) return;
-    QueueNode* ptrNewNode = new QueueNode;
+    struct QueueNode * ptrNewNode = new QueueNode;
     ptrNewNode->ptrNode = ptrNode;
     ptrNewNode->ptrNext = nullptr;
     if (queueEmpty(ptrQueue)) {
@@ -209,24 +207,24 @@ void queuePush(Queue* ptrQueue, Node* ptrNode) {
     }
 }
 
-Node* queueFront(Queue* ptrQueue) {
+struct Node * queueFront(struct Queue * ptrQueue) {
     if (ptrQueue == nullptr || queueEmpty(ptrQueue)) return nullptr;
     return ptrQueue->ptrFront->ptrNode;
 }
 
-void Breadth_First_Search(Node* ptrRoot) {
+void Breadth_First_Search(struct Node * ptrRoot) {
     if (ptrRoot == nullptr) {
-        std::cout << "Empty Tree" << std::endl;
+        cout << "Empty Tree" << endl;
         return;
     }
 
-    Queue queue;
+    struct Queue queue;
     queue.ptrFront = nullptr;
     queue.ptrRear = nullptr;
     queuePush(&queue, ptrRoot);
 
     while (!queueEmpty(&queue)) {
-        Node* ptrCurrentNode = queueFront(&queue);
+        struct Node * ptrCurrentNode = queueFront(&queue);
         std::cout << ptrCurrentNode->iPayload << " ";
         queuePop(&queue);
 
@@ -239,26 +237,26 @@ void Breadth_First_Search(Node* ptrRoot) {
         }
     }
 
-    std::cout << std::endl;
+    cout << endl;
 }
 
 
-Node* SearchElement(Node* ptrRoot, int iPayload) {
+struct Node * SearchElement(struct Node * ptrRoot, int iPayload) {
     if (ptrRoot == nullptr) {
         return nullptr;
     }
 
-    Queue queue;
+    struct Queue queue;
     queue.ptrFront = nullptr;
     queue.ptrRear = nullptr;
     queuePush(&queue, ptrRoot);
 
     while (!queueEmpty(&queue)) {
-        Node* ptrCurrentNode = queueFront(&queue);
+        struct Node* ptrCurrentNode = queueFront(&queue);
         queuePop(&queue);
 
         if (ptrCurrentNode->iPayload == iPayload) {
-            std::cout << "The node's memory address: " << ptrCurrentNode << std::endl;
+            cout << "The node's memory address: " << ptrCurrentNode << endl;
             return ptrCurrentNode;
         }
 
@@ -271,7 +269,7 @@ Node* SearchElement(Node* ptrRoot, int iPayload) {
         }
     }
 
-    std::cout << "Element not found." << std::endl;
+    cout << "Element not found." << endl;
     return nullptr;
 }
 
@@ -288,7 +286,7 @@ int sizeTree(struct Node * ptrRoot) {
 }
 
 
-struct Node* lesserNode(struct Node* ptrRoot)
+struct Node * lesserNode(struct Node * ptrRoot)
 {
     /*Vai para a esquerda toda vida e pega o menor elemento*/
     struct Node* ptrCurrent = ptrRoot;
@@ -299,7 +297,7 @@ struct Node* lesserNode(struct Node* ptrRoot)
 }
 
 // Função recursiva para deletar nós de árvores binárias de busca
-struct Node* deleteNode(struct Node* ptrRoot, int iData)
+struct Node * deleteNode(struct Node * ptrRoot, int iData)
 {
     struct Node * ptrNode = searchNode(ptrRoot, iData);
     if (ptrNode == nullptr) {
@@ -333,7 +331,7 @@ struct Node* deleteNode(struct Node* ptrRoot, int iData)
     return ptrRoot;
  }
 
-void printList(struct ListNode* ptrHead) {
+void printList(struct ListNode * ptrHead) {
     if (ptrHead == nullptr) {
         cout << "Empty List." << endl;
         return;
@@ -358,7 +356,6 @@ struct ListNode * insertList(struct ListNode ** ptrHead, int iValue) {
     while (ptrCurrent -> ptrNext != nullptr) ptrCurrent = ptrCurrent -> ptrNext;
     
     ptrCurrent -> ptrNext = newNode;
-
     return *ptrHead;
 }
 
