@@ -16,6 +16,14 @@ struct Node {
     struct Node * ptrRight;
 };
 
+struct DoubleNode
+{
+    int iPayload;
+    struct DoubleNode* ptrNext;
+    struct DoubleNode* ptrPrevious;
+};
+
+
 struct ListNode {
     int iPayload;
     struct ListNode * ptrNext;
@@ -101,6 +109,7 @@ struct ListNode * treeToList(struct Node * ptrStartingNode, struct ListNode * pt
 void printList(struct ListNode* ptrHead);
 struct ListNode * insertList(struct ListNode **ptrHead, int iValue);
 void SelectionSort(struct ListNode** ptrHead);
+void bubbleSort(struct Node** head);
 
 //MENU ASCII
 /*Cria a linha de cima*/
