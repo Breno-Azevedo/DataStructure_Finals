@@ -289,7 +289,6 @@ void buildMenu() {
     createMenuItem("12 - Convert the BST to a list and sort it through the Selection Sort.", iSize);
     createMenuItem("13 - Convert the BST to a list and sort it through the Insertion Sort.", iSize);
     createMenuItem("14 - Convert the BST to a list and sort it through the Shell Sort.", iSize);
-    createMenuItem("15 - Graphic representation of the sort.", iSize);
     createMenuItem("0 - Finish program.", iSize);
     createLowerBound(iSize);
 }
@@ -352,9 +351,6 @@ void menu() {
                 break;
             case 14:
                 shellSortMain(ptrRoot);
-                break;
-            case 15:
-                cout << "Graphic Representation of the Sort." << endl;
                 break;
         }
     } while (choice != 0);
