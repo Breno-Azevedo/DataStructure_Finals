@@ -130,9 +130,6 @@ int heightTree(struct Node * ptrRoot) {
     return iTreeHeight;
 }
 
-
-//Função auxiliar para dizer se um determinado nível de uma árvore é completo ou não
-
 bool fullLevel(struct Node * ptrRoot, int iLevel) {
     if (ptrRoot == nullptr)return false;    
 
@@ -165,10 +162,6 @@ bool completeTree(struct Node * ptrRoot)
     
 }
 
-
-//função que diz se a árvore é perfeita
-//usa a função de altura e de completa em níveis
-//analisa todos os níveis e se todos forem completos retorna que a árvore é perfeita
 bool perfectTree(struct Node * ptrRoot) {
     int iHeight = heightTree(ptrRoot);
     for(int i = 1; i <= iHeight ; i++)
@@ -240,7 +233,6 @@ void Breadth_First_Search(struct Node * ptrRoot) {
     cout << endl;
 }
 
-
 void SearchElement(struct Node * ptrRoot, int iPayload) {
     if (ptrRoot == nullptr) {
         return;
@@ -257,7 +249,6 @@ void SearchElement(struct Node * ptrRoot, int iPayload) {
 
         if (ptrCurrentNode->iPayload == iPayload) {
             cout << "The node's memory address: " << ptrCurrentNode << endl;
-            //return ptrCurrentNode;
             return;
         }
 
@@ -287,9 +278,7 @@ int sizeTree(struct Node * ptrRoot) {
 }
 
 
-struct Node * lesserNode(struct Node * ptrRoot)
-{
-    /*Vai para a esquerda toda vida e pega o menor elemento*/
+struct Node * lesserNode(struct Node * ptrRoot) {
     struct Node* ptrCurrent = ptrRoot;
     
     while(ptrCurrent && ptrCurrent->ptrLeft != nullptr) ptrCurrent = ptrCurrent->ptrLeft;
@@ -297,9 +286,7 @@ struct Node * lesserNode(struct Node * ptrRoot)
     return ptrCurrent;
 }
 
-// Função recursiva para deletar nós de árvores binárias de busca
-struct Node * deleteNode(struct Node * ptrRoot, int iData)
-{
+struct Node * deleteNode(struct Node * ptrRoot, int iData) {
     struct Node * ptrNode = searchNode(ptrRoot, iData);
     if (ptrNode == nullptr) {
         cout << "Invalid input. The node is not on the tree." << endl;
@@ -360,8 +347,6 @@ struct ListNode * insertList(struct ListNode ** ptrHead, int iValue) {
     return *ptrHead;
 }
 
-
-//Transformando a arvore em lista encadeada
 struct ListNode * treeToList(struct Node * ptrStartingNode, struct ListNode * ptrHead) {
     if(ptrStartingNode != nullptr) {
         insertList(&ptrHead, ptrStartingNode->iPayload);

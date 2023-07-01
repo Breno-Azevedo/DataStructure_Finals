@@ -170,8 +170,19 @@ void buildMenu();
  */
 void menu();
 
+/**
+ * @brief sortGraphRep() - Sorts the graph representation
+ * 
+ * @param ptrHead 
+ */
 void sortGraphRep(struct ListNode * ptrHead);
 
+/**
+ * @brief swap() - Swaps two ListNode structs
+ * 
+ * @param a 
+ * @param b 
+ */
 void swap(struct ListNode * a, struct ListNode * b);
 
 #include "./menu.hpp"
