@@ -35,9 +35,12 @@ O objetivo do trabalho é construir um explorador de árvores.
 PAA-A2
 │   README.md
 │   main.cpp                    → Arquivo principal do programa
-|   treeExplorer.h              → Arquivo de cabeçalho contendo as estruturas criadas e as declarações das funções
-|   treeExplorer.hpp            → Arquivo de implementação da classe TreeExplorer
+|   menu.h                      → Arquivo de cabeçalho contendo as declarações referentes ao menu
+|   sortingAlgorithms.h         → Arquivo de cabeçalho contendo as declarações referentes aos algoritmos de ordenação
+|   treeExplorer.h              → Arquivo de cabeçalho contendo as estruturas criadas e as declarações referentes ao explorador de árvores
+|   menu.hpp                    → Arquivo de implementação do menu
 |   sortingAlgorithms.hpp       → Arquivo de implementação dos algoritmos de ordenação
+|   treeExplorer.hpp            → Arquivo de implementação da classe TreeExplorer
 |   test.txt                    → Arquivo de teste para a criação de árvores
 ```
 
