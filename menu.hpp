@@ -15,6 +15,7 @@
  */
 
 #include "./treeExplorer.h"
+#include "./menu.h"
 #include <iostream>
 
 using namespace std;
@@ -135,7 +136,8 @@ struct Node * searchElementMain(struct Node * ptrRoot) {
     cin >> iValue;
 
     auto start = chrono::high_resolution_clock::now();
-    ptrRoot = SearchElement(ptrRoot, iValue);
+    // ptrRoot = SearchElement(ptrRoot, iValue);
+    SearchElement(ptrRoot, iValue);
     auto stop = chrono::high_resolution_clock::now();
 
     auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);

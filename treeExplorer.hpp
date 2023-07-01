@@ -241,9 +241,9 @@ void Breadth_First_Search(struct Node * ptrRoot) {
 }
 
 
-struct Node * SearchElement(struct Node * ptrRoot, int iPayload) {
+void SearchElement(struct Node * ptrRoot, int iPayload) {
     if (ptrRoot == nullptr) {
-        return nullptr;
+        return;
     }
 
     struct Queue queue;
@@ -257,7 +257,8 @@ struct Node * SearchElement(struct Node * ptrRoot, int iPayload) {
 
         if (ptrCurrentNode->iPayload == iPayload) {
             cout << "The node's memory address: " << ptrCurrentNode << endl;
-            return ptrCurrentNode;
+            //return ptrCurrentNode;
+            return;
         }
 
         if (ptrCurrentNode->ptrLeft != nullptr) {
@@ -270,7 +271,7 @@ struct Node * SearchElement(struct Node * ptrRoot, int iPayload) {
     }
 
     cout << "Element not found." << endl;
-    return nullptr;
+    return;
 }
 
 

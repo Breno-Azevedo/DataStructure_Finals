@@ -15,6 +15,7 @@
  */
 
 #include "./treeExplorer.h"
+#include "./sortingAlgorithms.h"
 #include <iostream>
 
 using namespace std;

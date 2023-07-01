@@ -158,7 +158,7 @@ void Breadth_First_Search(struct Node * ptrRoot);
  * @param iPayload 
  * @return struct Node * 
  */
-struct Node * SearchElement(struct Node* ptrRoot, int iPayload);
+void SearchElement(struct Node* ptrRoot, int iPayload);
 
 /**
  * @brief heightTree() - Returns the height of the tree.
