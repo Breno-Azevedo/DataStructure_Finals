@@ -16,6 +16,8 @@
 #include <string>
 #include <fstream>
 #include "./treeExplorer.h"
+#include "./sortingAlgorithms.h"
+#include "./menu.h"
 
 using namespace std;
 
